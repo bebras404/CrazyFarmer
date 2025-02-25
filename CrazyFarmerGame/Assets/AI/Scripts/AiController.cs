@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class AiController : MonoBehaviour
 {
-    private float horizontal;
     public GameObject player;
     public float speed;
     public float distance;
     public LayerMask groundLayer;
     public float groundCheckDistance = 0.1f;
     private bool isFacingRight = true;
+    public float range;
 
     private Rigidbody2D rb;
 
@@ -19,24 +19,32 @@ public class AiController : MonoBehaviour
 
     void Update()
     {
-        horizontal = Input.GetAxisRaw("Horizontal");
         distance = Vector2.Distance(transform.position, player.transform.position);
         Vector2 direction = (player.transform.position - transform.position).normalized;
-        direction.y = 0; 
+        direction.y = 0;
 
-        transform.position = Vector2.MoveTowards(transform.position, new Vector2(player.transform.position.x, transform.position.y), speed * Time.deltaTime);
-        Flip();
+        if (distance <= range) 
+        {
+            transform.position = Vector2.MoveTowards(transform.position, new Vector2(player.transform.position.x, transform.position.y), speed * Time.deltaTime);
+            Flip(direction.x);
+        }
+       
+
+        
+        
     }
 
-    private void Flip()
+    private void Flip(float moveDirection)
     {
-        if (isFacingRight && horizontal < 0f || !isFacingRight && horizontal > 0f)
+        if (moveDirection > 0 && !isFacingRight)
         {
-            isFacingRight = !isFacingRight;
-            Vector3 localScale = transform.localScale;
-            localScale.x *= -1f;
-            transform.localScale = localScale;
-
+            isFacingRight = true;
+            transform.localScale = new Vector3(1, transform.localScale.y, transform.localScale.z);
+        }
+        else if (moveDirection < 0 && isFacingRight)
+        {
+            isFacingRight = false;
+            transform.localScale = new Vector3(-1, transform.localScale.y, transform.localScale.z);
         }
     }
 }
