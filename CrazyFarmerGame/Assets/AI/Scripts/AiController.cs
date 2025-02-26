@@ -1,8 +1,8 @@
 using UnityEngine;
+using System.Collections;
 
 public class AiController : MonoBehaviour
 {
-    public PlayerHealth playerHealth;
     private bool isPlayerAlive = true;
     public GameObject player;
     public float speed;
@@ -11,6 +11,10 @@ public class AiController : MonoBehaviour
     public float groundCheckDistance = 0.1f;
     private bool isFacingRight = true;
     public float range;
+    public int Damage = 2;
+    public PlayerHealth playerHealth;
+    private bool isTouchingPlayer = false;
+    private Coroutine damageCoroutine;
 
     private Rigidbody2D rb;
 
@@ -22,7 +26,8 @@ public class AiController : MonoBehaviour
     void Update()
     {
         CheckPlayerStatus();
-        if (isPlayerAlive) 
+
+        if (isPlayerAlive)
         {
             distance = Vector2.Distance(transform.position, player.transform.position);
             Vector2 direction = (player.transform.position - transform.position).normalized;
@@ -32,7 +37,7 @@ public class AiController : MonoBehaviour
                 transform.position = Vector2.MoveTowards(transform.position, new Vector2(player.transform.position.x, transform.position.y), speed * Time.deltaTime);
                 Flip(direction.x);
             }
-        }                    
+        }
     }
 
     private void Flip(float moveDirection)
@@ -49,11 +54,48 @@ public class AiController : MonoBehaviour
         }
     }
 
-    private void CheckPlayerStatus() 
+    private void CheckPlayerStatus()
     {
-        if (playerHealth.health <= 0) 
+        if (playerHealth.health <= 0)
         {
             isPlayerAlive = false;
         }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            isTouchingPlayer = true;
+            if (damageCoroutine == null)
+            {
+                damageCoroutine = StartCoroutine(DealDamage());
+            }
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            isTouchingPlayer = false;
+
+            if (damageCoroutine != null)
+            {
+                StopCoroutine(damageCoroutine);
+                damageCoroutine = null;
+            }
+        }
+    }
+
+    private IEnumerator DealDamage()
+    {
+        while (isTouchingPlayer)
+        {
+            playerHealth.TakeDamage(Damage);
+            yield return new WaitForSeconds(2f);
+        }
+
+        damageCoroutine = null;
     }
 }
