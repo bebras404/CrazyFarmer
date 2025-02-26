@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class AiController : MonoBehaviour
 {
+    public PlayerHealth playerHealth;
+    private bool isPlayerAlive = true;
     public GameObject player;
     public float speed;
     public float distance;
@@ -19,19 +21,18 @@ public class AiController : MonoBehaviour
 
     void Update()
     {
-        distance = Vector2.Distance(transform.position, player.transform.position);
-        Vector2 direction = (player.transform.position - transform.position).normalized;
-        direction.y = 0;
-
-        if (distance <= range) 
+        CheckPlayerStatus();
+        if (isPlayerAlive) 
         {
-            transform.position = Vector2.MoveTowards(transform.position, new Vector2(player.transform.position.x, transform.position.y), speed * Time.deltaTime);
-            Flip(direction.x);
-        }
-       
-
-        
-        
+            distance = Vector2.Distance(transform.position, player.transform.position);
+            Vector2 direction = (player.transform.position - transform.position).normalized;
+            direction.y = 0;
+            if (distance <= range)
+            {
+                transform.position = Vector2.MoveTowards(transform.position, new Vector2(player.transform.position.x, transform.position.y), speed * Time.deltaTime);
+                Flip(direction.x);
+            }
+        }                    
     }
 
     private void Flip(float moveDirection)
@@ -45,6 +46,14 @@ public class AiController : MonoBehaviour
         {
             isFacingRight = false;
             transform.localScale = new Vector3(-1, transform.localScale.y, transform.localScale.z);
+        }
+    }
+
+    private void CheckPlayerStatus() 
+    {
+        if (playerHealth.health <= 0) 
+        {
+            isPlayerAlive = false;
         }
     }
 }
