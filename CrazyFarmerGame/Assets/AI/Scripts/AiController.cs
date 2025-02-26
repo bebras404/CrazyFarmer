@@ -15,7 +15,7 @@ public class AiController : MonoBehaviour
     public PlayerHealth playerHealth;
     private bool isTouchingPlayer = false;
     private Coroutine damageCoroutine;
-
+    
     private Rigidbody2D rb;
 
     void Start()
@@ -26,7 +26,10 @@ public class AiController : MonoBehaviour
     void Update()
     {
         CheckPlayerStatus();
-
+        if (transform.position.y < -20) 
+        {
+            Destroy(this.gameObject);
+        }
         if (isPlayerAlive)
         {
             distance = Vector2.Distance(transform.position, player.transform.position);
