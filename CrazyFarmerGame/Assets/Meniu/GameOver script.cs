@@ -28,7 +28,7 @@ public class RestartScript : MonoBehaviour
     {
         PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
 
-        if (playerHealth.health == 8)
+        if (playerHealth.health <= 0)
         {
             SceneManager.LoadSceneAsync(3);
             Console.WriteLine("VEIKIAAAAAAAAAA");
