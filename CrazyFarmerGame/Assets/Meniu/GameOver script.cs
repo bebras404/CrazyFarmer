@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class RestartScript : MonoBehaviour
 {
     public GameObject player;
+    private int LastKnownHealth;
 
     public void RestartButton()
     {
@@ -26,17 +27,16 @@ public class RestartScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
-
-        if (playerHealth.health <= 0)
+        if (player.gameObject != null) 
+        {
+            PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
+            LastKnownHealth = playerHealth.health;
+         
+        }
+        if (LastKnownHealth <= 2 && player.gameObject == null)
         {
             SceneManager.LoadSceneAsync(3);
-            Console.WriteLine("VEIKIAAAAAAAAAA");
         }
-        //if (player.gameObject.activeInHierarchy)
-        //{
-
-        //}
 
 
     }
