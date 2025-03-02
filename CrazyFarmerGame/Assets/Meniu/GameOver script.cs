@@ -8,6 +8,7 @@ public class RestartScript : MonoBehaviour
     public GameObject player;
     private int LastKnownHealth;
 
+
     public void RestartButton()
     {
         SceneManager.LoadSceneAsync(2);
