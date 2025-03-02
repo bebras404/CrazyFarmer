@@ -14,12 +14,7 @@ public class AIDamageDealing : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (AIcontroller != null)
-        {
-            //AIcontroller.enabled = false;
-        }
-
-        //GetComponent<Collider2D>().enabled = false;
+        GetComponent<Collider2D>().enabled = false;
         Enemy.GetComponent<SpriteRenderer>().flipY = true;
         Enemy.GetComponent<Collider2D>().enabled = false;
         Vector3 movement = new Vector3(Random.Range(40, 70), Random.Range(-40, 40), 0f);
