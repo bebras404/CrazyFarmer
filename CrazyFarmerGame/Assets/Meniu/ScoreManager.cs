@@ -4,7 +4,8 @@ using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
 {
-    public Text scoreText;
+    GameObject Enemy;
+    public TextMeshProUGUI scoreText;
 
     int score = 0;
 
@@ -18,6 +19,9 @@ public class ScoreManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Enemy.activeInHierarchy)
+        {
+            score = score + 10;
+        }
     }
 }
