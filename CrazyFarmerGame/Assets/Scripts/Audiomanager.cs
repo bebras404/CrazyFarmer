@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using UnityEngine;
 
 public class Audiomanager : MonoBehaviour
@@ -15,5 +16,6 @@ public class Audiomanager : MonoBehaviour
     {
         musicSource.clip = background;
         musicSource.Play();
+        musicSource.volume = 0.1f;
     }
 }
