@@ -15,7 +15,9 @@ public class AiController : MonoBehaviour
     public PlayerHealth playerHealth;
     private bool isTouchingPlayer = false;
     private Coroutine damageCoroutine;
-    
+    public SpriteRenderer EnemySr;
+
+
     private Rigidbody2D rb;
 
     void Start()
@@ -28,6 +30,7 @@ public class AiController : MonoBehaviour
         CheckPlayerStatus();
         if (transform.position.y < -20) 
         {
+
             Destroy(this.gameObject);
         }
         if (isPlayerAlive)

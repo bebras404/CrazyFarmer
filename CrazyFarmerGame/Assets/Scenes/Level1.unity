@@ -307,6 +307,7 @@ MonoBehaviour:
   range: 5
   Damage: 2
   playerHealth: {fileID: 799521451}
+  EnemySr: {fileID: 0}
 --- !u!50 &266786165
 Rigidbody2D:
   serializedVersion: 5
@@ -1155,6 +1156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afbff24cc0438b047b1a2ec767f10db2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Enemy: {fileID: 266786161}
   scoreText: {fileID: 458495220}
 --- !u!1 &952809512
 GameObject:
