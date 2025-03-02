@@ -5,7 +5,7 @@ public class AIDamageDealing : MonoBehaviour
 {
     GameObject Enemy;
     AiController AIcontroller;
-    GameObject Player;
+
     
 
     void Start()

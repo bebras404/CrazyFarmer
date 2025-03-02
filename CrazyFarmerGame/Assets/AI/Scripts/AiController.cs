@@ -28,7 +28,7 @@ public class AiController : MonoBehaviour
     void Update()
     {
         CheckPlayerStatus();
-        if (transform.position.y < -20) 
+        if (transform.position.y < -15) 
         {
 
             Destroy(this.gameObject);
