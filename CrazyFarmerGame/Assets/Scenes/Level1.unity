@@ -162,7 +162,6 @@ GameObject:
   - component: {fileID: 266786166}
   - component: {fileID: 266786165}
   - component: {fileID: 266786164}
-  - component: {fileID: 266786163}
   - component: {fileID: 266786162}
   m_Layer: 8
   m_Name: Slime1
@@ -208,18 +207,6 @@ CapsuleCollider2D:
   m_Offset: {x: -0.0000000037385632, y: -0.031361345}
   m_Size: {x: 1.0000005, y: 0.6977983}
   m_Direction: 1
---- !u!114 &266786163
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 266786161}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd0b0bfaeae364e48a5d9d3d86b78f46, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &266786164
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -702,6 +689,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 10
   MaxHealth: 10
+  playerSr: {fileID: 799521446}
+  playerMovement: {fileID: 799521449}
 --- !u!1 &841653254
 GameObject:
   m_ObjectHideFlags: 0
