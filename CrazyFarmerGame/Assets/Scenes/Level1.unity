@@ -497,8 +497,9 @@ MonoBehaviour:
   musicSource: {fileID: 34394508}
   SFXSource: {fileID: 501540842}
   background: {fileID: 8300000, guid: 559c232a43caebe41870ce54786f604e, type: 3}
-  death: {fileID: 0}
+  death: {fileID: 8300000, guid: b9eff218e132a4e76be78840eca96fb2, type: 3}
   wallTouch: {fileID: 0}
+  player: {fileID: 799521445}
 --- !u!4 &201424877
 Transform:
   m_ObjectHideFlags: 0
@@ -591,7 +592,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   groundCheckDistance: 0.1
-  range: 5
+  range: 10
   Damage: 2
   playerHealth: {fileID: 799521451}
   EnemySr: {fileID: 0}
