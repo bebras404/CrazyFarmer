@@ -6,6 +6,9 @@ public class PlayerHealth : MonoBehaviour
     public int health;
     public int MaxHealth = 10;
 
+    public SpriteRenderer playerSr;
+    public PlayerMovement playerMovement;
+
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -20,7 +23,8 @@ public class PlayerHealth : MonoBehaviour
         health = health - amount;
         if (health <= 0) 
         {
-            Destroy(gameObject);
+            playerSr.enabled = false;
+            playerMovement.enabled = false;
         }
     }
 
