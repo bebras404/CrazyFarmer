@@ -6,7 +6,7 @@ public class AiController : MonoBehaviour
     private bool isPlayerAlive = true;
     public GameObject player;
     public float speed;
-    public float distance;
+    private float distance;
     public LayerMask groundLayer;
     public float groundCheckDistance = 0.1f;
     private bool isFacingRight = true;
