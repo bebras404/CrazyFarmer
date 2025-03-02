@@ -7,4 +7,10 @@ public class RestartSceneScript : MonoBehaviour
     {
         SceneManager.LoadSceneAsync(2);
     }
+
+    public void BackToMenu()
+    {
+        SceneManager.LoadSceneAsync(0);
+    }
+
 }
