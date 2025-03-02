@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 23242600}
   m_Layer: 7
   m_Name: GroundCheck
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -304,7 +304,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   groundCheckDistance: 0.1
-  range: 5
+  range: 8
   Damage: 2
   playerHealth: {fileID: 799521451}
   EnemySr: {fileID: 0}
@@ -399,7 +399,7 @@ Transform:
   m_GameObject: {fileID: 266786161}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.98, y: 0.882, z: 0}
+  m_LocalPosition: {x: -9.47, y: 0.89, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -793,7 +793,7 @@ Transform:
   m_GameObject: {fileID: 799521445}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.54, y: -1.12, z: 0}
+  m_LocalPosition: {x: -0.54, y: -1.09, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1167,10 +1167,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 952809513}
-  - component: {fileID: 952809514}
   - component: {fileID: 952809515}
+  - component: {fileID: 952809516}
   m_Layer: 8
-  m_Name: HeadCheck
+  m_Name: HeadDetect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1191,27 +1191,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 266786167}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &952809514
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 952809512}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.6335373, y: 0.15644622, z: 1}
-  m_Center: {x: 0.0034570694, y: 0.38374776, z: 0}
 --- !u!114 &952809515
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1224,6 +1203,52 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd0b0bfaeae364e48a5d9d3d86b78f46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &952809516
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 952809512}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0.025875568, y: 0.40107048}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 0.7067442, y: 0.19785905}
+  m_EdgeRadius: 0
 --- !u!1 &991980162
 GameObject:
   m_ObjectHideFlags: 0
@@ -1726,7 +1751,6 @@ GameObject:
   - component: {fileID: 1407387296}
   - component: {fileID: 1407387300}
   - component: {fileID: 1407387299}
-  - component: {fileID: 1407387301}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1866,19 +1890,6 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
---- !u!114 &1407387301
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1407387295}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c303f4164474ee4982aa639381d0c2c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 799521445}
 --- !u!1 &1430450521
 GameObject:
   m_ObjectHideFlags: 0
