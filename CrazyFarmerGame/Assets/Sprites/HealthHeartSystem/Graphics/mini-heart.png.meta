@@ -1,5 +1,4 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:CrazyFarmerGame/Assets/Sprites/HealthHeartSystem/Graphics/mini-heart.png.meta
 guid: fed24bd82cefc0c4a8ef64dab6231b53
 AssetOrigin:
   serializedVersion: 1
@@ -16,14 +15,6 @@ TextureImporter:
   - first:
       213: 21300002
     second: mini-heart_1
-========
-guid: 4798d718aa9e7a44faf0060e3403b6c0
-TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: 2204463888271427460
-    second: slime_idle_anim_f0_0
->>>>>>>> 1f3d34b (Fix):CrazyFarmerGame/Assets/Sprites/Enemy/slime_idle_anim_f0.png.meta
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -57,11 +48,7 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-<<<<<<<< HEAD:CrazyFarmerGame/Assets/Sprites/HealthHeartSystem/Graphics/mini-heart.png.meta
     aniso: 16
-========
-    aniso: 1
->>>>>>>> 1f3d34b (Fix):CrazyFarmerGame/Assets/Sprites/Enemy/slime_idle_anim_f0.png.meta
     mipBias: 0
     wrapU: 1
     wrapV: 1
@@ -74,11 +61,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-<<<<<<<< HEAD:CrazyFarmerGame/Assets/Sprites/HealthHeartSystem/Graphics/mini-heart.png.meta
   spritePixelsToUnits: 1
-========
-  spritePixelsToUnits: 16
->>>>>>>> 1f3d34b (Fix):CrazyFarmerGame/Assets/Sprites/Enemy/slime_idle_anim_f0.png.meta
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -99,10 +82,10 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 16384
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -140,7 +123,6 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-<<<<<<<< HEAD:CrazyFarmerGame/Assets/Sprites/HealthHeartSystem/Graphics/mini-heart.png.meta
       name: mini-heart_0
       rect:
         serializedVersion: 2
@@ -148,15 +130,6 @@ TextureImporter:
         y: 5
         width: 8
         height: 7
-========
-      name: slime_idle_anim_f0_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 16
-        height: 14
->>>>>>>> 1f3d34b (Fix):CrazyFarmerGame/Assets/Sprites/Enemy/slime_idle_anim_f0.png.meta
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -165,7 +138,6 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-<<<<<<<< HEAD:CrazyFarmerGame/Assets/Sprites/HealthHeartSystem/Graphics/mini-heart.png.meta
       spriteID: 02305410000000000800000000000000
       internalID: 21300000
       vertices: []
@@ -190,10 +162,6 @@ TextureImporter:
       bones: []
       spriteID: 22305410000000000800000000000000
       internalID: 21300002
-========
-      spriteID: 48748940a34d79e10800000000000000
-      internalID: 2204463888271427460
->>>>>>>> 1f3d34b (Fix):CrazyFarmerGame/Assets/Sprites/Enemy/slime_idle_anim_f0.png.meta
       vertices: []
       indices: 
       edges: []
@@ -212,12 +180,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-<<<<<<<< HEAD:CrazyFarmerGame/Assets/Sprites/HealthHeartSystem/Graphics/mini-heart.png.meta
       mini-heart_0: 21300000
       mini-heart_1: 21300002
-========
-      slime_idle_anim_f0_0: 2204463888271427460
->>>>>>>> 1f3d34b (Fix):CrazyFarmerGame/Assets/Sprites/Enemy/slime_idle_anim_f0.png.meta
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
