@@ -29,21 +29,32 @@ public class AiController : MonoBehaviour
     void Update()
     {
         CheckPlayerStatus();
-        if (transform.position.y < -15) 
+
+        if (transform.position.y < -15)
         {
             Destroy(this.gameObject);
         }
+
         if (isPlayerAlive)
         {
             distance = Vector2.Distance(transform.position, player.transform.position);
-            Vector2 direction = (player.transform.position - transform.position).normalized;
-            direction.y = 0;
+
             if (distance <= range)
             {
-                transform.position = Vector2.MoveTowards(transform.position, new Vector2(player.transform.position.x, transform.position.y), speed * Time.deltaTime);
-                Flip(direction.x);
+                MoveTowardsPlayer();
             }
         }
+    }
+
+    private void MoveTowardsPlayer()
+    {
+        Vector2 direction = (player.transform.position - transform.position).normalized;
+        direction.y = 0; // Keep movement horizontal only
+
+        // Apply velocity instead of directly changing position
+        rb.linearVelocity = new Vector2(direction.x * speed, rb.linearVelocity.y);
+
+        Flip(direction.x);
     }
 
     private void Flip(float moveDirection)
@@ -65,12 +76,14 @@ public class AiController : MonoBehaviour
         if (playerHealth.health <= 0)
         {
             isPlayerAlive = false;
+            rb.linearVelocity = new Vector2(0, rb.linearVelocity.y); // Stop moving when player is dead
         }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player") &&
+        (collision.gameObject.name != "HeadCheck" && !collision.transform.IsChildOf(player.transform.Find("HeadCheck"))))
         {
             isTouchingPlayer = true;
             if (damageCoroutine == null)
@@ -82,7 +95,8 @@ public class AiController : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player") &&
+        (collision.gameObject.name != "HeadCheck" && !collision.transform.IsChildOf(player.transform.Find("HeadCheck"))))
         {
             isTouchingPlayer = false;
 
