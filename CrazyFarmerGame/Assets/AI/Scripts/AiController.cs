@@ -82,8 +82,7 @@ public class AiController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player") &&
-        (collision.gameObject.name != "HeadCheck" && !collision.transform.IsChildOf(player.transform.Find("HeadCheck"))))
+        if (collision.gameObject.CompareTag("Player"))
         {
             isTouchingPlayer = true;
             if (damageCoroutine == null)
@@ -95,8 +94,7 @@ public class AiController : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player") &&
-        (collision.gameObject.name != "HeadCheck" && !collision.transform.IsChildOf(player.transform.Find("HeadCheck"))))
+        if (collision.gameObject.CompareTag("Player"))
         {
             isTouchingPlayer = false;
 
