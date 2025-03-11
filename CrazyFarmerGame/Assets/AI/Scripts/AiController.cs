@@ -16,13 +16,14 @@ public class AiController : MonoBehaviour
     private bool isTouchingPlayer = false;
     private Coroutine damageCoroutine;
     public SpriteRenderer EnemySr;
-
+    public float gravityScale = 1;
 
     private Rigidbody2D rb;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        rb.gravityScale = gravityScale;
     }
 
     void Update()
@@ -30,7 +31,6 @@ public class AiController : MonoBehaviour
         CheckPlayerStatus();
         if (transform.position.y < -15) 
         {
-
             Destroy(this.gameObject);
         }
         if (isPlayerAlive)
