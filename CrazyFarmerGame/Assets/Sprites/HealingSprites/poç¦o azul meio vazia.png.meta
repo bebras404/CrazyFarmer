@@ -184,7 +184,10 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      "po\xE7\xA6o azul meio vazia_0": 5755379104416060203
+      "po\xE7\xA6o azul meio vazia_1": -3928154769351097735
+      "po\xE7\xA6o azul meio vazia_2": -8829076503418191757
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
