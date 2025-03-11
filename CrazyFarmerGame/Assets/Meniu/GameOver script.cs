@@ -2,6 +2,7 @@ using System;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class RestartScript : MonoBehaviour
 {
@@ -34,11 +35,17 @@ public class RestartScript : MonoBehaviour
             LastKnownHealth = playerHealth.health;
          
         }
-        if (LastKnownHealth <= 2 && player.gameObject == null)
+        if (LastKnownHealth <= 0)
         {
-            SceneManager.LoadSceneAsync(3);
+            StartCoroutine(WaitAndLoadScene());
         }
 
 
+    }
+    private IEnumerator WaitAndLoadScene()
+    {
+        yield return new WaitForSeconds(2f); // Wait for 2 seconds
+
+        SceneManager.LoadSceneAsync(3); // Load scene asynchronously after the wait
     }
 }
