@@ -81,30 +81,39 @@ public class AiController : MonoBehaviour
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
+{
+    // Ignore collisions with the head layer
+    if (collision.gameObject.layer == LayerMask.NameToLayer("Head"))
     {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            isTouchingPlayer = true;
-            if (damageCoroutine == null)
-            {
-                damageCoroutine = StartCoroutine(DealDamage());
-            }
-        }
+        return;
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
+    if (collision.gameObject.CompareTag("Player"))
     {
-        if (collision.gameObject.CompareTag("Player"))
+        isTouchingPlayer = true;
+        if (damageCoroutine == null)
         {
-            isTouchingPlayer = false;
-
-            if (damageCoroutine != null)
-            {
-                StopCoroutine(damageCoroutine);
-                damageCoroutine = null;
-            }
+            damageCoroutine = StartCoroutine(DealDamage());
         }
     }
+}
+
+private void OnCollisionExit2D(Collision2D collision)
+{
+
+
+    if (collision.gameObject.CompareTag("Player"))
+    {
+        isTouchingPlayer = false;
+
+        if (damageCoroutine != null)
+        {
+            StopCoroutine(damageCoroutine);
+            damageCoroutine = null;
+        }
+    }
+}
+
 
     private IEnumerator DealDamage()
     {
