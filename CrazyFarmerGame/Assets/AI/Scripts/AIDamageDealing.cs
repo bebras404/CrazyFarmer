@@ -14,7 +14,7 @@ public class AIDamageDealing : MonoBehaviour
         AIcontroller = Enemy.GetComponent<AiController>();
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
 
         Debug.Log("Touched!");
