@@ -11,7 +11,7 @@ public class FlyingAIController : MonoBehaviour
 
     Pathfinding.Path path;
     int currentWaypoint = 0;
-    bool reachedTheEndOfPath = false;
+    //bool reachedTheEndOfPath = false;
     Seeker seeker;
     Rigidbody2D rb;
 
@@ -48,12 +48,12 @@ public class FlyingAIController : MonoBehaviour
         { return; }
         if (currentWaypoint >= path.vectorPath.Count)
         {
-            reachedTheEndOfPath = true;
+            //reachedTheEndOfPath = true;
             return;
         }
         else 
         {
-            reachedTheEndOfPath = false;
+            //reachedTheEndOfPath = false;
         }
         Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
         Vector2 force = direction * Speed * Time.deltaTime;
