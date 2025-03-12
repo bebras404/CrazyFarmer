@@ -1,9 +1,8 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 public class SoundScript : MonoBehaviour
 {
-    
+
 
 
 
@@ -14,7 +13,7 @@ public class SoundScript : MonoBehaviour
         {
             AudioListener.volume = 0;
         }
-        else if(!muted)
+        else if (!muted)
         {
             AudioListener.volume = 1;
         }

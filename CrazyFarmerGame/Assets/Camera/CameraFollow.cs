@@ -13,18 +13,18 @@ public class CameraFollow : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
         CheckPlayerStatus();
-        if (isPlayerAlive) 
+        if (isPlayerAlive)
         {
             Vector3 targetPostition = target.position + offset;
             transform.position = Vector3.SmoothDamp(transform.position, targetPostition, ref velocity, smoothTime);
-        }      
+        }
     }
 
     private void CheckPlayerStatus()

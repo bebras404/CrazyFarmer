@@ -1,8 +1,6 @@
-using System;
-using Unity.VisualScripting;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using System.Collections;
 
 public class RestartScript : MonoBehaviour
 {
@@ -20,20 +18,20 @@ public class RestartScript : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+
     }
 
-    
+
 
 
     // Update is called once per frame
     void Update()
     {
-        if (player.gameObject != null) 
+        if (player.gameObject != null)
         {
             PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
             LastKnownHealth = playerHealth.health;
-         
+
         }
         if (LastKnownHealth <= 0)
         {
