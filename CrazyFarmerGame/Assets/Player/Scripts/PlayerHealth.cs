@@ -17,30 +17,30 @@ public class PlayerHealth : MonoBehaviour
         health = MaxHealth;
     }
 
-    public void TakeDamage(int amount) 
+    public void TakeDamage(int amount)
     {
 
         health = health - amount;
-        if (health <= 0) 
+        if (health <= 0)
         {
             playerSr.enabled = false;
             playerMovement.enabled = false;
         }
     }
 
-    public void Heal(int amount) 
+    public void Heal(int amount)
     {
         health += amount;
-        if (health > MaxHealth) 
+        if (health > MaxHealth)
         {
             health = MaxHealth;
         }
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

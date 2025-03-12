@@ -11,11 +11,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
 
-      // Update is called once per frame
+    // Update is called once per frame
     void Update()
     {
         horizontal = Input.GetAxisRaw("Horizontal");
-        if (Input.GetButtonDown("Jump") && IsGrounded()) 
+        if (Input.GetButtonDown("Jump") && IsGrounded())
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpingPower);
         }
@@ -28,20 +28,20 @@ public class PlayerMovement : MonoBehaviour
         Flip();
     }
 
-    private void FixedUpdate() 
+    private void FixedUpdate()
     {
         rb.linearVelocity = new Vector2(horizontal * speed, rb.linearVelocity.y);
 
     }
 
-    private bool IsGrounded() 
+    private bool IsGrounded()
     {
         return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
     }
 
-    private void Flip() 
+    private void Flip()
     {
-        if (isFacingRight && horizontal < 0f || !isFacingRight && horizontal > 0f)          
+        if (isFacingRight && horizontal < 0f || !isFacingRight && horizontal > 0f)
         {
             isFacingRight = !isFacingRight;
             Vector3 localScale = transform.localScale;

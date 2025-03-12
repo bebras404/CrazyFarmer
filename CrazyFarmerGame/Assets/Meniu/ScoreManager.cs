@@ -1,14 +1,13 @@
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
 {
     public GameObject Enemy;
     public TextMeshProUGUI scoreText;
     private bool Added = false;
-    
+
 
     int score = 0;
 
