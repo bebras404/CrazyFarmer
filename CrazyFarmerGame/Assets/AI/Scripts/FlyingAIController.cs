@@ -64,10 +64,15 @@ public class FlyingAIController : MonoBehaviour
         {
             currentWaypoint++;
         }
-        if ((force.x > 0 && transform.localScale.x < 0) || (force.x < 0 && transform.localScale.x > 0))
+        if (direction.x < 0)
         {
-            transform.localScale = new Vector3(Mathf.Sign(force.x), 1f, 1f);
+            transform.localScale = new Vector3(1f, 1f, 1f); // Face right
         }
+        else if (direction.x > 0)
+        {
+            transform.localScale = new Vector3(-1f, 1f, 1f); // Face left
+        }
+
 
 
 

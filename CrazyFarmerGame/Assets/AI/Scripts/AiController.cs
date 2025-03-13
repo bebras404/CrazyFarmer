@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
+
 
 public class AiController : MonoBehaviour
 {
@@ -11,12 +11,9 @@ public class AiController : MonoBehaviour
     public float groundCheckDistance = 0.1f;
     private bool isFacingRight = true;
     public float range;
-    public int Damage = 2;
     public PlayerHealth playerHealth;
     private bool isTouchingPlayer = false;
-    private Coroutine damageCoroutine;
-    public SpriteRenderer EnemySr;
-    public float gravityScale = 1;
+
     
 
 
@@ -26,7 +23,6 @@ public class AiController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        rb.gravityScale = gravityScale;
     }
 
     void Update()
@@ -40,8 +36,16 @@ public class AiController : MonoBehaviour
         {
             animator.SetBool("IsTouchingPlayer", false);
         }
+        if (playerHealth.health <= 0)
+        {
+            animator.SetBool("IsPlayerDead", true);
+        }
+        else if (playerHealth.health > 0) 
+        {
+            animator.SetBool("IsPlayerDead", false);
+        }
 
-        CheckPlayerStatus();
+            CheckPlayerStatus();
 
         if (transform.position.y < -15)
         {
@@ -100,51 +104,5 @@ public class AiController : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        // Ignore collisions with the head layer
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Head"))
-        {
-            return;
-        }
-
-        if (collision.gameObject.CompareTag("Player"))
-        {
-
-            isTouchingPlayer = true;
-            if (damageCoroutine == null)
-            {
-                damageCoroutine = StartCoroutine(DealDamage());
-            }
-        }
-    }
-
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-
-
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            isTouchingPlayer = false;
-
-            if (damageCoroutine != null)
-            {
-                StopCoroutine(damageCoroutine);
-                damageCoroutine = null;
-            }
-        }
-
-    }
-
-
-    private IEnumerator DealDamage()
-    {
-        while (isTouchingPlayer)
-        {
-            playerHealth.TakeDamage(Damage);
-
-            yield return new WaitForSeconds(2f);
-        }
-        damageCoroutine = null;
-    }
+   
 }
