@@ -53,5 +53,8 @@ TagManager:
   - name: PlatformsAndGrounds
     uniqueID: 2689994471
     locked: 0
+  - name: Entities
+    uniqueID: 4019606699
+    locked: 0
   m_RenderingLayers:
   - Default
