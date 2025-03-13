@@ -17,7 +17,10 @@ public class AiController : MonoBehaviour
     private Coroutine damageCoroutine;
     public SpriteRenderer EnemySr;
     public float gravityScale = 1;
+    
 
+
+    public Animator animator;
     private Rigidbody2D rb;
 
     void Start()
@@ -28,6 +31,16 @@ public class AiController : MonoBehaviour
 
     void Update()
     {
+        if (isTouchingPlayer)
+        {
+            animator.SetBool("IsTouchingPlayer", true);
+
+        }
+        else if (!isTouchingPlayer)
+        {
+            animator.SetBool("IsTouchingPlayer", false);
+        }
+
         CheckPlayerStatus();
 
         if (transform.position.y < -15)
@@ -41,13 +54,19 @@ public class AiController : MonoBehaviour
 
             if (distance <= range)
             {
+                animator.SetBool("IsWalking", true);
                 MoveTowardsPlayer();
+            }
+            else
+            {
+                animator.SetBool("IsWalking", false);
             }
         }
     }
 
     private void MoveTowardsPlayer()
     {
+        
         Vector2 direction = (player.transform.position - transform.position).normalized;
         direction.y = 0; // Keep movement horizontal only
 
@@ -75,44 +94,47 @@ public class AiController : MonoBehaviour
     {
         if (playerHealth.health <= 0)
         {
+            animator.SetBool("IsWalking", false);
             isPlayerAlive = false;
             rb.linearVelocity = new Vector2(0, rb.linearVelocity.y); // Stop moving when player is dead
         }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
-{
-    // Ignore collisions with the head layer
-    if (collision.gameObject.layer == LayerMask.NameToLayer("Head"))
     {
-        return;
-    }
-
-    if (collision.gameObject.CompareTag("Player"))
-    {
-        isTouchingPlayer = true;
-        if (damageCoroutine == null)
+        // Ignore collisions with the head layer
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Head"))
         {
-            damageCoroutine = StartCoroutine(DealDamage());
+            return;
+        }
+
+        if (collision.gameObject.CompareTag("Player"))
+        {
+
+            isTouchingPlayer = true;
+            if (damageCoroutine == null)
+            {
+                damageCoroutine = StartCoroutine(DealDamage());
+            }
         }
     }
-}
 
-private void OnCollisionExit2D(Collision2D collision)
-{
-
-
-    if (collision.gameObject.CompareTag("Player"))
+    private void OnCollisionExit2D(Collision2D collision)
     {
-        isTouchingPlayer = false;
 
-        if (damageCoroutine != null)
+
+        if (collision.gameObject.CompareTag("Player"))
         {
-            StopCoroutine(damageCoroutine);
-            damageCoroutine = null;
+            isTouchingPlayer = false;
+
+            if (damageCoroutine != null)
+            {
+                StopCoroutine(damageCoroutine);
+                damageCoroutine = null;
+            }
         }
+
     }
-}
 
 
     private IEnumerator DealDamage()
@@ -120,9 +142,9 @@ private void OnCollisionExit2D(Collision2D collision)
         while (isTouchingPlayer)
         {
             playerHealth.TakeDamage(Damage);
+
             yield return new WaitForSeconds(2f);
         }
-
         damageCoroutine = null;
     }
 }
