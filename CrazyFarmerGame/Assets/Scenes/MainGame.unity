@@ -507,6 +507,10 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 594884045}
+    - target: {fileID: 6336756094204376009, guid: f387682f0ff457046971a254ef934d9b, type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6528784915070850434, guid: f387682f0ff457046971a254ef934d9b, type: 3}
       propertyPath: cam
       value: 
