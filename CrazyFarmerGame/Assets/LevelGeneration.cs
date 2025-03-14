@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Pathfinding;
 
 public class LevelGenerator : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class LevelGenerator : MonoBehaviour
     public int maxSections = 10;
     public Transform player;
     public float SpawningDistance = 30f;
-
+    
     private List<GameObject> spawnedSections = new List<GameObject>();
 
     private Transform lastSectionStart; // Track the last section's starting point
@@ -93,6 +94,8 @@ public class LevelGenerator : MonoBehaviour
         {
             Transform lastSectionEnd = spawnedSections[spawnedSections.Count - 1].transform.Find("LevelEnd");
             Transform newSectionStart = newSection.transform.Find("LevelStart");
+
+            
 
             if (lastSectionEnd != null && newSectionStart != null)
             {

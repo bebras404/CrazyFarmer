@@ -22,7 +22,7 @@ TagManager:
   - AI
   - Healing
   - AI check
-  - 
+  - FlyingAI
   - 
   - 
   - 
@@ -55,6 +55,9 @@ TagManager:
     locked: 0
   - name: Entities
     uniqueID: 4019606699
+    locked: 0
+  - name: Player
+    uniqueID: 967685663
     locked: 0
   m_RenderingLayers:
   - Default

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8907968964023700485}
   - component: {fileID: 8092230937713953745}
   m_Layer: 0
-  m_Name: LEVEL GENERATION
+  m_Name: LevelGenerator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -51,6 +51,6 @@ MonoBehaviour:
   - {fileID: 1357910944933298653, guid: 3c93f01daf5db0143996ca0d409f3e68, type: 3}
   - {fileID: 7212127030756401427, guid: 607737ef9f7eca7499e606c9d915bb8d, type: 3}
   - {fileID: 3807561428770514474, guid: 17fbbc2cea8d9724fb47a020e4d47485, type: 3}
-  maxSections: 2
+  maxSections: 10
   player: {fileID: 0}
   SpawningDistance: 30

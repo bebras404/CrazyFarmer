@@ -27,6 +27,7 @@ public class AiController : MonoBehaviour
 
     void Update()
     {
+        
         if (isTouchingPlayer)
         {
             animator.SetBool("IsTouchingPlayer", true);
@@ -61,23 +62,25 @@ public class AiController : MonoBehaviour
                 animator.SetBool("IsWalking", true);
                 MoveTowardsPlayer();
             }
-            else
+            else if(distance > range)
             {
                 animator.SetBool("IsWalking", false);
+                StopMovement();
             }
         }
     }
 
     private void MoveTowardsPlayer()
-    {
-        
+    {       
         Vector2 direction = (player.transform.position - transform.position).normalized;
-        direction.y = 0; // Keep movement horizontal only
-
-        // Apply velocity instead of directly changing position
+        direction.y = 0;
         rb.linearVelocity = new Vector2(direction.x * speed, rb.linearVelocity.y);
-
         Flip(direction.x);
+    }
+
+    private void StopMovement() 
+    {
+        rb.linearVelocity = new Vector2(0, 0);
     }
 
     private void Flip(float moveDirection)
@@ -94,11 +97,28 @@ public class AiController : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player")) 
+        {
+            isTouchingPlayer = true;
+        }
+        
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            isTouchingPlayer = false;
+        }
+    }
+
     private void CheckPlayerStatus()
     {
         if (playerHealth.health <= 0)
         {
-            animator.SetBool("IsWalking", false);
+            
             isPlayerAlive = false;
             rb.linearVelocity = new Vector2(0, rb.linearVelocity.y); // Stop moving when player is dead
         }
