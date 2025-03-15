@@ -170,7 +170,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b786fe4aaab0374d8bc71284fcac497, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealth: {fileID: 0}
+  playerHealth: {fileID: 2963926436729097530, guid: c8bef31b20c4a1642a34da84cab2800e, type: 3}
   HealAmount: 5
   floatSpeed: 3
   floatHeight: 0.1

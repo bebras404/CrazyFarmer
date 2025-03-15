@@ -128,7 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 314d8ce371d1dca4f828934dac032f0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  player: {fileID: 0}
   Speed: 500
   nextWaypointDistance: 3
 --- !u!114 &8563466094325546553
@@ -235,7 +235,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2b4e519e6e49f8478e232dfc85cafdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealth: {fileID: 0}
+  playerHealth: {fileID: 2963926436729097530, guid: c8bef31b20c4a1642a34da84cab2800e, type: 3}
   Damage: 3
 --- !u!1 &3634076018071309153
 GameObject:
@@ -248,7 +248,7 @@ GameObject:
   - component: {fileID: 6686658425580589904}
   - component: {fileID: 6563888248492078741}
   - component: {fileID: 5093895446673931646}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: HeadCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}

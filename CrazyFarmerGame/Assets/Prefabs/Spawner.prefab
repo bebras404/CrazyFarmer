@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7655187848799140831
+--- !u!1 &4716879474278392361
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,8 +8,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3319368094442778383}
-  - component: {fileID: 8913656815384471247}
+  - component: {fileID: 7988703621752260520}
+  - component: {fileID: 2169347720082026906}
   m_Layer: 0
   m_Name: Spawner
   m_TagString: Untagged
@@ -17,36 +17,40 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3319368094442778383
+--- !u!4 &7988703621752260520
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7655187848799140831}
+  m_GameObject: {fileID: 4716879474278392361}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.200519, y: -0.379717, z: -0.035532907}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 6.885175, y: 2.4891427, z: 0.046008173}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8913656815384471247
+--- !u!114 &2169347720082026906
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7655187848799140831}
+  m_GameObject: {fileID: 4716879474278392361}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c0642b89e88da0241ae1882b44a29ae5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefabs: []
-  player: {fileID: 0}
-  spawnInterval: 3
-  maxEnemies: 10
-  minSpawnDistance: 5
-  maxSpawnDistance: 15
+  enemyPrefabs:
+  - {fileID: 6358507573066290634, guid: 2adb12ed104f6ee429487d1b05c53f84, type: 3}
+  - {fileID: 3205182364496061563, guid: 567e18f041ce22342a96a592d7fbd3da, type: 3}
+  - {fileID: 585394838583268646, guid: a32c68a70be714b43b02bce8646325bc, type: 3}
+  - {fileID: 9062061995775160294, guid: 4bcefedc5cefac24b8ad817957440b7b, type: 3}
+  spawnPoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  spawnDelay: 1

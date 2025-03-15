@@ -4,8 +4,8 @@ using System.IO;
 
 public class FlyingAIController : MonoBehaviour
 {
-
-    public Transform target;
+    public GameObject player;
+    private Transform target;
     public float Speed = 200f;
     public float nextWaypointDistance = 3f;
 
@@ -20,8 +20,14 @@ public class FlyingAIController : MonoBehaviour
     {
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
+        target = player.transform;
         InvokeRepeating("UpdatePath", 0f, .5f);
         
+    }
+
+    public void SetPlayer(GameObject obj) 
+    {
+        player = obj;
     }
 
     void UpdatePath() 

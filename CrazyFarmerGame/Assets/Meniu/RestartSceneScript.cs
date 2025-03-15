@@ -5,7 +5,7 @@ public class RestartSceneScript : MonoBehaviour
 {
     public void RestartScene()
     {
-        SceneManager.LoadSceneAsync(2);
+        SceneManager.LoadSceneAsync(3);
     }
 
     public void BackToMenu()

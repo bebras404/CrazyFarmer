@@ -14,6 +14,11 @@ public class HealingPotion : MonoBehaviour
         startPosition = transform.position;
     }
 
+    public void SetPlayer(GameObject obj) 
+    {
+        playerHealth = obj.GetComponent<PlayerHealth>();     
+    }
+
     private void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.gameObject.CompareTag("Player"))

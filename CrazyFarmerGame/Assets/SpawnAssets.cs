@@ -1,56 +1,92 @@
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.InputSystem.XR;
 
 public class SpawnAssets : MonoBehaviour
 {
-    public GameObject[] enemyPrefabs;
-    public Transform player;
-    public float spawnInterval = 3f;
-    public int maxEnemies = 10;
-    public float minSpawnDistance = 5f;
-    public float maxSpawnDistance = 15f;
+    public GameObject[] enemyPrefabs; // Assign your 3 enemy prefabs in the Inspector
+    public Transform[] spawnPoints;   // Assign spawn points in the LevelBlock
+    public float spawnDelay = 1.0f;   // Time between spawns
+    public float SpawnRangeFar = 50f;
+    public float SpawnRangeClose = 20f;
+    private float DistanceToPlayer;
 
-    private int currentEnemyCount = 0;
-    private List<Transform> spawnPoints = new List<Transform>(); // Dynamic list of spawn points
+    private List<Transform> availableSpawnPoints;
+    private GameObject player;
 
-    void Start()
+    private void Start()
     {
-        InvokeRepeating(nameof(SpawnEnemy), spawnInterval, spawnInterval);
+        // Find the PlayerHealth component in the scene
+        player = GameObject.FindWithTag("Player");
+
+        
+        availableSpawnPoints = new List<Transform>(spawnPoints);
+
+        if (availableSpawnPoints.Count > 0 && enemyPrefabs.Length > 0)
+        {
+            InvokeRepeating(nameof(SpawnEnemy), 0f, spawnDelay);
+        }
+        else
+        {
+            Debug.LogWarning("No spawn points or enemy prefabs assigned!");
+        }
     }
 
-    public void RegisterSpawnPoints(Transform[] newSpawnPoints)
+    private void Update()
     {
-        spawnPoints.AddRange(newSpawnPoints);
+        DistanceToPlayer = Vector2.Distance(transform.position, player.transform.position);
     }
 
     void SpawnEnemy()
     {
-        if (currentEnemyCount >= maxEnemies || spawnPoints.Count == 0 || enemyPrefabs.Length == 0) return;
-
-        // Find a valid spawn point
-        Transform validSpawnPoint = null;
-        foreach (Transform spawnPoint in spawnPoints)
+        if (availableSpawnPoints.Count == 0)
         {
-            float distance = Vector2.Distance(player.position, spawnPoint.position);
-            if (distance >= minSpawnDistance && distance <= maxSpawnDistance)
-            {
-                validSpawnPoint = spawnPoint;
-                break;
-            }
+            Debug.Log("All spawn points are used up. Stopping spawner.");
+            CancelInvoke(nameof(SpawnEnemy));
+            return;
         }
+        if (DistanceToPlayer <= SpawnRangeFar && DistanceToPlayer>=SpawnRangeClose)
+        {
+            // Pick a random available spawn point
+            int index = Random.Range(0, availableSpawnPoints.Count);
+            Transform spawnPoint = availableSpawnPoints[index];
 
-        if (validSpawnPoint == null) return;
+            // Pick a random enemy type
+            GameObject enemyPrefab = enemyPrefabs[Random.Range(0, enemyPrefabs.Length)];
 
-        // Select a random enemy prefab
-        GameObject enemyToSpawn = enemyPrefabs[Random.Range(0, enemyPrefabs.Length)];
+            // Instantiate enemy at spawn point
+            GameObject newEnemy = Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity);
 
-        // Spawn the enemy at the chosen point
-        Instantiate(enemyToSpawn, validSpawnPoint.position, Quaternion.identity);
-        currentEnemyCount++;
-    }
+            // Assign PlayerHealth to the AIController.
 
-    public void EnemyDestroyed()
-    {
-        currentEnemyCount--;
+            if (newEnemy.GetComponent<AiController>() != null)
+            {
+                AiController aiController = newEnemy.GetComponent<AiController>();
+                aiController.SetTarget(player);
+            }
+
+            if (newEnemy.GetComponent<AiDamageToPlayer>() != null)
+            {
+                AiDamageToPlayer damageScript = newEnemy.GetComponent<AiDamageToPlayer>();
+                damageScript.SetTarget(player);
+            }
+
+            if (newEnemy.GetComponent<FlyingAIController>() != null)
+            {
+                FlyingAIController Fcontroller = newEnemy.GetComponent<FlyingAIController>();
+                Fcontroller.SetPlayer(player);
+            }
+
+            if (newEnemy.GetComponent<HealingPotion>() != null)
+            {
+                HealingPotion hp = newEnemy.GetComponent<HealingPotion>();
+                hp.SetPlayer(player);
+            }
+
+
+
+            // Remove the used spawn point from the list
+            availableSpawnPoints.RemoveAt(index);
+        }
     }
 }

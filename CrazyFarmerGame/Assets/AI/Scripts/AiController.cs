@@ -23,7 +23,19 @@ public class AiController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        
+
+        if (player == null)
+        {
+            Debug.LogError("AiController: Player is not assigned! Make sure LevelBlock sets it.");
+        }
     }
+    public void SetTarget(GameObject playerObj)
+    {
+        this.player = playerObj;
+        playerHealth = playerObj.GetComponent<PlayerHealth>();
+    }
+
 
     void Update()
     {

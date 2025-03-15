@@ -20,10 +20,15 @@ public class AiDamageToPlayer : MonoBehaviour
         
     }
 
+    public void SetTarget(GameObject obj) 
+    {
+        playerHealth = obj.GetComponent<PlayerHealth>();
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         // Ignore collisions with the head layer
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Head"))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("HeadCheckAI"))
         {
             return;
         }
