@@ -1,14 +1,15 @@
 using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.InputSystem.XR;
+using System;
 
 public class SpawnAssets : MonoBehaviour
 {
     public GameObject[] enemyPrefabs; // Assign your 3 enemy prefabs in the Inspector
     public Transform[] spawnPoints;   // Assign spawn points in the LevelBlock
     public float spawnDelay = 1.0f;   // Time between spawns
-    public float SpawnRangeFar = 50f;
-    public float SpawnRangeClose = 20f;
+    public float SpawnRangeFar = 60f;
+    public float SpawnRangeClose = 30f;
     private float DistanceToPlayer;
 
     private List<Transform> availableSpawnPoints;
@@ -19,7 +20,7 @@ public class SpawnAssets : MonoBehaviour
         // Find the PlayerHealth component in the scene
         player = GameObject.FindWithTag("Player");
 
-        
+
         availableSpawnPoints = new List<Transform>(spawnPoints);
 
         if (availableSpawnPoints.Count > 0 && enemyPrefabs.Length > 0)
@@ -34,7 +35,7 @@ public class SpawnAssets : MonoBehaviour
 
     private void Update()
     {
-        DistanceToPlayer = Vector2.Distance(transform.position, player.transform.position);
+
     }
 
     void SpawnEnemy()
@@ -45,14 +46,15 @@ public class SpawnAssets : MonoBehaviour
             CancelInvoke(nameof(SpawnEnemy));
             return;
         }
-        if (DistanceToPlayer <= SpawnRangeFar && DistanceToPlayer>=SpawnRangeClose)
-        {
-            // Pick a random available spawn point
-            int index = Random.Range(0, availableSpawnPoints.Count);
-            Transform spawnPoint = availableSpawnPoints[index];
 
+        // Pick a random available spawn point
+        int index = UnityEngine.Random.Range(0, availableSpawnPoints.Count);
+        Transform spawnPoint = availableSpawnPoints[index];
+        DistanceToPlayer = Vector2.Distance(spawnPoint.position, player.transform.position);
+        if (DistanceToPlayer <= SpawnRangeFar && DistanceToPlayer >= SpawnRangeClose)
+        {
             // Pick a random enemy type
-            GameObject enemyPrefab = enemyPrefabs[Random.Range(0, enemyPrefabs.Length)];
+            GameObject enemyPrefab = enemyPrefabs[UnityEngine.Random.Range(0, enemyPrefabs.Length)];
 
             // Instantiate enemy at spawn point
             GameObject newEnemy = Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity);

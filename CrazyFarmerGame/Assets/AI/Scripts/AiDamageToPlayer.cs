@@ -3,31 +3,18 @@ using System.Collections;
 
 public class AiDamageToPlayer : MonoBehaviour
 {
-
     private bool isTouchingPlayer = false;
     private Coroutine damageCoroutine;
     public PlayerHealth playerHealth;
     public int Damage = 0;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public void SetTarget(GameObject obj) 
+    public void SetTarget(GameObject obj)
     {
         playerHealth = obj.GetComponent<PlayerHealth>();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        // Ignore collisions with the head layer
         if (collision.gameObject.layer == LayerMask.NameToLayer("HeadCheckAI"))
         {
             return;
@@ -35,7 +22,6 @@ public class AiDamageToPlayer : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Player"))
         {
-
             isTouchingPlayer = true;
             if (damageCoroutine == null)
             {
@@ -46,8 +32,6 @@ public class AiDamageToPlayer : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-
-
         if (collision.gameObject.CompareTag("Player"))
         {
             isTouchingPlayer = false;
@@ -58,19 +42,28 @@ public class AiDamageToPlayer : MonoBehaviour
                 damageCoroutine = null;
             }
         }
-
     }
-
 
     private IEnumerator DealDamage()
     {
         while (isTouchingPlayer)
         {
-            playerHealth.TakeDamage(Damage);
+            if (playerHealth != null)
+            {
+                playerHealth.TakeDamage(Damage);
+            }
 
             yield return new WaitForSeconds(2f);
         }
         damageCoroutine = null;
     }
 
+    private void OnDestroy()
+    {
+        if (damageCoroutine != null)
+        {
+            StopCoroutine(damageCoroutine);
+            damageCoroutine = null;
+        }
+    }
 }
