@@ -702,6 +702,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Despawnder
       objectReference: {fileID: 0}
+    - target: {fileID: 8215832144352416407, guid: acbc6a00f5bf7bb4fb691979d8703859, type: 3}
+      propertyPath: despawnDistance
+      value: 300
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -887,11 +891,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 137313487999735425, guid: d15e5e1d7cad0dd4a807db80ea085d63, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 3.46
       objectReference: {fileID: 0}
     - target: {fileID: 137313487999735425, guid: d15e5e1d7cad0dd4a807db80ea085d63, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 24.59
       objectReference: {fileID: 0}
     - target: {fileID: 137313487999735425, guid: d15e5e1d7cad0dd4a807db80ea085d63, type: 3}
       propertyPath: m_LocalPosition.z
