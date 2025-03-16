@@ -56,7 +56,7 @@ public class AiController : MonoBehaviour
 
             CheckPlayerStatus();
 
-        if (transform.position.y < -10)
+        if (transform.position.y < -5)
         {
             Destroy(this.gameObject);
         }

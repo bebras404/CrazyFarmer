@@ -20,8 +20,9 @@ public class SpawnAssets : MonoBehaviour
     {
         // Find the PlayerHealth component in the scene
         player = GameObject.FindWithTag("Player");
-        UIcanvas = GameObject.FindWithTag("UI");
 
+        UIcanvas = GameObject.FindWithTag("UI");
+        Debug.Log(UIcanvas != null);
         availableSpawnPoints = new List<Transform>(spawnPoints);
 
         if (availableSpawnPoints.Count > 0 && enemyPrefabs.Length > 0)
@@ -62,7 +63,7 @@ public class SpawnAssets : MonoBehaviour
 
             // Assign PlayerHealth to the AIController.
 
-            
+
 
             if (newEnemy.GetComponent<AiController>() != null)
             {
@@ -73,10 +74,7 @@ public class SpawnAssets : MonoBehaviour
             if (newEnemy.GetComponent<AiDamageToPlayer>() != null)
             {
                 AiDamageToPlayer damageScript = newEnemy.GetComponent<AiDamageToPlayer>();
-                if (UIcanvas.GetComponent<ScoreManager>() != null)
-                {
-                    damageScript.SetManager(UIcanvas);
-                }
+                damageScript.SetManager(UIcanvas);
                 damageScript.SetTarget(player);
             }
 
@@ -92,9 +90,6 @@ public class SpawnAssets : MonoBehaviour
                 hp.SetPlayer(player);
             }
 
-
-
-            // Remove the used spawn point from the list
             availableSpawnPoints.RemoveAt(index);
         }
     }

@@ -268,6 +268,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerHealth: {fileID: 2963926436729097530, guid: c8bef31b20c4a1642a34da84cab2800e, type: 3}
   Damage: 5
+  sm: {fileID: 0}
+  ScoreToAdd: 1000
 --- !u!70 &3470421183189873721
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
