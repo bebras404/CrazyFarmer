@@ -7,6 +7,9 @@ TagManager:
   - Menu
   - Enemy
   - Background
+  - Ground
+  - Healing
+  - HeadCheck
   layers:
   - Default
   - TransparentFX
@@ -17,9 +20,9 @@ TagManager:
   - BG
   - Player
   - AI
-  - 
-  - 
-  - 
+  - Healing
+  - HeadCheckAI
+  - FlyingAI
   - 
   - 
   - 
@@ -43,6 +46,18 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Decorations
+    uniqueID: 1667892369
+    locked: 0
+  - name: PlatformsAndGrounds
+    uniqueID: 2689994471
+    locked: 0
+  - name: Entities
+    uniqueID: 4019606699
+    locked: 0
+  - name: Player
+    uniqueID: 967685663
     locked: 0
   m_RenderingLayers:
   - Default

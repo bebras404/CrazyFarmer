@@ -1,32 +1,49 @@
-using System;
+using Pathfinding;
 using UnityEngine;
 
 public class AIDamageDealing : MonoBehaviour
 {
     GameObject Enemy;
-    AiController AIcontroller;
+    MonoBehaviour Controller;
+    MonoBehaviour Seeker;
 
-    
+
+
 
     void Start()
     {
         Enemy = gameObject.transform.parent.gameObject;
-        AIcontroller = Enemy.GetComponent<AiController>();
+        if (Enemy.GetComponent<AiController>() != null)
+        {
+            Controller = Enemy.GetComponent<AiController>();
+        }
+        else 
+        {
+            Controller = Enemy.GetComponent<FlyingAIController>();
+            Seeker = Enemy.GetComponent<Seeker>();
+        }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
+        
+        if (Seeker != null && collision.gameObject.CompareTag("Player")) 
+        {
+            Controller.enabled = false;
+            Seeker.enabled = false;
+            Destroy(Enemy);
+        }
 
         Debug.Log("Touched!");
 
-        if (collision.gameObject.CompareTag("Player")) 
+        if (collision.gameObject.CompareTag("Player"))
         {
             GetComponent<Collider2D>().enabled = false;
             Enemy.GetComponent<SpriteRenderer>().flipY = true;
             Enemy.GetComponent<Collider2D>().enabled = false;
             Vector3 movement = new Vector3(UnityEngine.Random.Range(40, 70), UnityEngine.Random.Range(-40, 40), 0f);
             Enemy.transform.position = Enemy.transform.position + movement * Time.deltaTime;
-        }     
+        }
     }
 
     // Update is called once per frame

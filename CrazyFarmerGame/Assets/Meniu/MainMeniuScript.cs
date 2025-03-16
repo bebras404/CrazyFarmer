@@ -5,7 +5,7 @@ public class MainMeniuScript : MonoBehaviour
 {
     public void PlayButton()
     {
-        SceneManager.LoadSceneAsync(2);
+        SceneManager.LoadSceneAsync(3);
     }
 
     public void SettingsButton()

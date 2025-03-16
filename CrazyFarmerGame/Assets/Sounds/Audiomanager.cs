@@ -1,4 +1,3 @@
-using JetBrains.Annotations;
 using UnityEngine;
 
 public class Audiomanager : MonoBehaviour
@@ -10,7 +9,7 @@ public class Audiomanager : MonoBehaviour
     [Header("--------- Audio Clip ---------")]
     public AudioClip background;
     public AudioClip death;
-    public AudioClip wallTouch;
+    //public AudioClip wallTouch;
     public GameObject player;
 
     private bool hasPlayedDeathSFX = false;
@@ -24,6 +23,7 @@ public class Audiomanager : MonoBehaviour
 
     private void Update()
     {
+       
         if (player.GetComponent<PlayerHealth>().health <= 0 && !hasPlayedDeathSFX)
         {
             SFXSource.PlayOneShot(death);

@@ -1,51 +1,36 @@
-using System;
-using Unity.VisualScripting;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using System.Collections;
 
-public class RestartScript : MonoBehaviour
+public class GameOverscript : MonoBehaviour
 {
     public GameObject player;
     private int LastKnownHealth;
-
+    private bool isLoading = false; // Prevent multiple loads
 
     public void RestartButton()
     {
-        SceneManager.LoadSceneAsync(2);
+        SceneManager.LoadSceneAsync(3);
     }
 
-
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    
-
-
-    // Update is called once per frame
     void Update()
     {
-        if (player.gameObject != null) 
+        if (player != null)
         {
             PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
             LastKnownHealth = playerHealth.health;
-         
         }
-        if (LastKnownHealth <= 0)
+
+        if (LastKnownHealth <= 0 && !isLoading)
         {
+            isLoading = true; // Set flag to prevent multiple loads
             StartCoroutine(WaitAndLoadScene());
         }
-
-
     }
+
     private IEnumerator WaitAndLoadScene()
     {
-        yield return new WaitForSeconds(2f); // Wait for 2 seconds
-
-        SceneManager.LoadSceneAsync(3); // Load scene asynchronously after the wait
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadSceneAsync(2);
     }
 }

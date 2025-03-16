@@ -1,5 +1,5 @@
-using UnityEngine;
-using System.Collections;
+﻿using UnityEngine;
+
 
 public class AiController : MonoBehaviour
 {
@@ -11,39 +11,88 @@ public class AiController : MonoBehaviour
     public float groundCheckDistance = 0.1f;
     private bool isFacingRight = true;
     public float range;
-    public int Damage = 2;
     public PlayerHealth playerHealth;
     private bool isTouchingPlayer = false;
-    private Coroutine damageCoroutine;
-    public SpriteRenderer EnemySr;
+
+    
 
 
+    public Animator animator;
     private Rigidbody2D rb;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        
+
+        if (player == null)
+        {
+            Debug.LogError("AiController: Player is not assigned! Make sure LevelBlock sets it.");
+        }
     }
+    public void SetTarget(GameObject playerObj)
+    {
+        this.player = playerObj;
+        playerHealth = playerObj.GetComponent<PlayerHealth>();
+    }
+
 
     void Update()
     {
-        CheckPlayerStatus();
-        if (transform.position.y < -15) 
+        
+        if (isTouchingPlayer)
         {
+            animator.SetBool("IsTouchingPlayer", true);
 
+        }
+        else if (!isTouchingPlayer)
+        {
+            animator.SetBool("IsTouchingPlayer", false);
+        }
+        if (playerHealth.health <= 0)
+        {
+            animator.SetBool("IsPlayerDead", true);
+        }
+        else if (playerHealth.health > 0) 
+        {
+            animator.SetBool("IsPlayerDead", false);
+        }
+
+            CheckPlayerStatus();
+
+        if (transform.position.y < -10)
+        {
             Destroy(this.gameObject);
         }
+
         if (isPlayerAlive)
         {
             distance = Vector2.Distance(transform.position, player.transform.position);
-            Vector2 direction = (player.transform.position - transform.position).normalized;
-            direction.y = 0;
+
             if (distance <= range)
             {
-                transform.position = Vector2.MoveTowards(transform.position, new Vector2(player.transform.position.x, transform.position.y), speed * Time.deltaTime);
-                Flip(direction.x);
+                animator.SetBool("IsWalking", true);
+                MoveTowardsPlayer();
+            }
+            else if(distance > range)
+            {
+                animator.SetBool("IsWalking", false);
+                StopMovement();
             }
         }
+    }
+
+    private void MoveTowardsPlayer()
+    {       
+        Vector2 direction = (player.transform.position - transform.position).normalized;
+        direction.y = 0;
+        rb.linearVelocity = new Vector2(direction.x * speed, rb.linearVelocity.y);
+        Flip(direction.x);
+    }
+
+    private void StopMovement() 
+    {
+        rb.linearVelocity = new Vector2(0, 0);
     }
 
     private void Flip(float moveDirection)
@@ -60,24 +109,13 @@ public class AiController : MonoBehaviour
         }
     }
 
-    private void CheckPlayerStatus()
-    {
-        if (playerHealth.health <= 0)
-        {
-            isPlayerAlive = false;
-        }
-    }
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player")) 
         {
             isTouchingPlayer = true;
-            if (damageCoroutine == null)
-            {
-                damageCoroutine = StartCoroutine(DealDamage());
-            }
         }
+        
     }
 
     private void OnCollisionExit2D(Collision2D collision)
@@ -85,23 +123,18 @@ public class AiController : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             isTouchingPlayer = false;
-
-            if (damageCoroutine != null)
-            {
-                StopCoroutine(damageCoroutine);
-                damageCoroutine = null;
-            }
         }
     }
 
-    private IEnumerator DealDamage()
+    private void CheckPlayerStatus()
     {
-        while (isTouchingPlayer)
+        if (playerHealth.health <= 0)
         {
-            playerHealth.TakeDamage(Damage);
-            yield return new WaitForSeconds(2f);
+            
+            isPlayerAlive = false;
+            rb.linearVelocity = new Vector2(0, rb.linearVelocity.y); // Stop moving when player is dead
         }
-
-        damageCoroutine = null;
     }
+
+   
 }
