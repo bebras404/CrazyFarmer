@@ -7,8 +7,7 @@ public class AiDamageToPlayer : MonoBehaviour
     private Coroutine damageCoroutine;
     public PlayerHealth playerHealth;
     public int Damage = 0;
-    public ScoreManager sm;
-    public int ScoreToAdd = 1;
+
 
 
     public void SetTarget(GameObject obj)
@@ -16,37 +15,14 @@ public class AiDamageToPlayer : MonoBehaviour
         playerHealth = obj.GetComponent<PlayerHealth>();
     }
 
-    public void SetManager(GameObject obj)
-    {
-        if (obj != null)
-        {
-            Transform scoreMTransform = obj.transform.Find("ScoreM");
-
-            if (scoreMTransform != null)
-            {
-                sm = scoreMTransform.GetComponent<ScoreManager>();
-            }
-            else
-            {
-                Debug.LogError("AiDamageToPlayer: ScoreM object not found as a child of UIcanvas!");
-            }
-
-            if (sm == null)
-            {
-                Debug.LogError("AiDamageToPlayer: ScoreManager script not found on ScoreM object!");
-            }
-        }
-        else
-        {
-            Debug.LogError("AiDamageToPlayer: Provided GameObject is null!");
-        }
-    }
+    
 
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("HeadCheckAI"))
         {
+            
             return;
         }
 
@@ -61,9 +37,7 @@ public class AiDamageToPlayer : MonoBehaviour
     }
 
     private void OnCollisionExit2D(Collision2D collision)
-    {
-        
-        
+    {    
             isTouchingPlayer = false;
 
             if (damageCoroutine != null)
@@ -91,7 +65,7 @@ public class AiDamageToPlayer : MonoBehaviour
 
     private void OnDestroy()
     {
-        sm.AddScore(ScoreToAdd);
+        
         if (damageCoroutine != null)
         {
             StopCoroutine(damageCoroutine);

@@ -237,8 +237,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerHealth: {fileID: 2963926436729097530, guid: c8bef31b20c4a1642a34da84cab2800e, type: 3}
   Damage: 3
-  sm: {fileID: 0}
-  ScoreToAdd: 1500
 --- !u!1 &3634076018071309153
 GameObject:
   m_ObjectHideFlags: 0
@@ -284,6 +282,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd0b0bfaeae364e48a5d9d3d86b78f46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sm: {fileID: 0}
+  ScoreToAdd: 1500
 --- !u!61 &5093895446673931646
 BoxCollider2D:
   m_ObjectHideFlags: 0

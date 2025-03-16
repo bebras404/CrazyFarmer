@@ -12,6 +12,8 @@ public class SpawnAssets : MonoBehaviour
     public float SpawnRangeClose = 30f;
     private float DistanceToPlayer;
     private GameObject UIcanvas;
+    private AIDamageDealing Playerdmg;
+
 
     private List<Transform> availableSpawnPoints;
     private GameObject player;
@@ -22,7 +24,7 @@ public class SpawnAssets : MonoBehaviour
         player = GameObject.FindWithTag("Player");
 
         UIcanvas = GameObject.FindWithTag("UI");
-        Debug.Log(UIcanvas != null);
+        //Debug.Log(UIcanvas != null);
         availableSpawnPoints = new List<Transform>(spawnPoints);
 
         if (availableSpawnPoints.Count > 0 && enemyPrefabs.Length > 0)
@@ -33,6 +35,10 @@ public class SpawnAssets : MonoBehaviour
         {
             Debug.LogWarning("No spawn points or enemy prefabs assigned!");
         }
+
+
+        
+        
     }
 
     private void Update()
@@ -63,7 +69,16 @@ public class SpawnAssets : MonoBehaviour
 
             // Assign PlayerHealth to the AIController.
 
+            
+            
+            Transform newEnemytrans = newEnemy.transform.Find("HeadCheck");
 
+            if (newEnemytrans != null)
+            {
+                Playerdmg = newEnemytrans.GetComponent<AIDamageDealing>();
+                Playerdmg.SetManager(UIcanvas);
+            }
+            
 
             if (newEnemy.GetComponent<AiController>() != null)
             {
@@ -74,7 +89,7 @@ public class SpawnAssets : MonoBehaviour
             if (newEnemy.GetComponent<AiDamageToPlayer>() != null)
             {
                 AiDamageToPlayer damageScript = newEnemy.GetComponent<AiDamageToPlayer>();
-                damageScript.SetManager(UIcanvas);
+                
                 damageScript.SetTarget(player);
             }
 
