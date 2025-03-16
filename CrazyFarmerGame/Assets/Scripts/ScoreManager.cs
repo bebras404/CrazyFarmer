@@ -1,52 +1,54 @@
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class ScoreManager : MonoBehaviour
 {
-    public GameObject Enemy;
     public TextMeshProUGUI scoreText;
-    private bool Added = false;
-    int amount;
+    public TextMeshProUGUI highScoreText;
 
+    private int score = 0;
+    private int highScore = 0;
 
-    int score = 0;
-
-    public List<GameObject> Enemies;
-
-
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        scoreText.text = "Score: " + score.ToString();
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-        
-        //score = score + 10;
-;
-        Debug.Log(score);
-        scoreText.text = "Score: " + score.ToString();
+        // Load High Score from PlayerPrefs
+        if (PlayerPrefs.HasKey("highScore"))
+        {
+            highScore = PlayerPrefs.GetInt("highScore");
+        }
 
 
-        
+
+        // Update UI
+        UpdateScoreUI();
     }
 
     public void AddScore(int amount)
     {
-        score+= amount;
+        score += amount;
+
+        // Check if high score is beaten
+        if (score > highScore)
+        {
+            highScore = score;
+            PlayerPrefs.SetInt("highScore", highScore);
+        }
+
+        // Save changes
+        PlayerPrefs.Save();
+
+        // Update UI
+        UpdateScoreUI();
     }
 
+    private void UpdateScoreUI()
+    {
+        if (scoreText != null)
+            scoreText.text = "Score: " + score.ToString();
 
-
-
-
-
+        if (highScoreText != null)
+            highScoreText.text = "High Score: " + highScore.ToString();
+    }
 
 }
