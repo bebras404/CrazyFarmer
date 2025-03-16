@@ -32,8 +32,8 @@ public class AiDamageToPlayer : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
-        {
+        
+        
             isTouchingPlayer = false;
 
             if (damageCoroutine != null)
@@ -41,7 +41,7 @@ public class AiDamageToPlayer : MonoBehaviour
                 StopCoroutine(damageCoroutine);
                 damageCoroutine = null;
             }
-        }
+        
     }
 
     private IEnumerator DealDamage()
