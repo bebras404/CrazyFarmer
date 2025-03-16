@@ -11,6 +11,7 @@ public class SpawnAssets : MonoBehaviour
     public float SpawnRangeFar = 60f;
     public float SpawnRangeClose = 30f;
     private float DistanceToPlayer;
+    private GameObject UIcanvas;
 
     private List<Transform> availableSpawnPoints;
     private GameObject player;
@@ -19,7 +20,7 @@ public class SpawnAssets : MonoBehaviour
     {
         // Find the PlayerHealth component in the scene
         player = GameObject.FindWithTag("Player");
-
+        UIcanvas = GameObject.FindWithTag("UI");
 
         availableSpawnPoints = new List<Transform>(spawnPoints);
 
@@ -61,6 +62,8 @@ public class SpawnAssets : MonoBehaviour
 
             // Assign PlayerHealth to the AIController.
 
+            
+
             if (newEnemy.GetComponent<AiController>() != null)
             {
                 AiController aiController = newEnemy.GetComponent<AiController>();
@@ -70,6 +73,10 @@ public class SpawnAssets : MonoBehaviour
             if (newEnemy.GetComponent<AiDamageToPlayer>() != null)
             {
                 AiDamageToPlayer damageScript = newEnemy.GetComponent<AiDamageToPlayer>();
+                if (UIcanvas.GetComponent<ScoreManager>() != null)
+                {
+                    damageScript.SetManager(UIcanvas);
+                }
                 damageScript.SetTarget(player);
             }
 

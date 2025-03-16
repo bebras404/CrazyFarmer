@@ -7,10 +7,18 @@ public class AiDamageToPlayer : MonoBehaviour
     private Coroutine damageCoroutine;
     public PlayerHealth playerHealth;
     public int Damage = 0;
+    public ScoreManager sm;
+    public int Score = 0;
+
 
     public void SetTarget(GameObject obj)
     {
         playerHealth = obj.GetComponent<PlayerHealth>();
+    }
+
+    public void SetManager(GameObject obj) 
+    {
+        sm = obj.GetComponent<ScoreManager>();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -57,6 +65,7 @@ public class AiDamageToPlayer : MonoBehaviour
         }
         damageCoroutine = null;
     }
+
 
     private void OnDestroy()
     {

@@ -13,10 +13,6 @@ public class AiController : MonoBehaviour
     public float range;
     public PlayerHealth playerHealth;
     private bool isTouchingPlayer = false;
-
-    
-
-
     public Animator animator;
     private Rigidbody2D rb;
 
