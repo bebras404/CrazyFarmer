@@ -25,7 +25,7 @@ public class FlyingAIController : MonoBehaviour
         
     }
 
-    public void SetPlayer(GameObject obj) 
+     public void SetPlayer(GameObject obj) 
     {
         player = obj;
     }

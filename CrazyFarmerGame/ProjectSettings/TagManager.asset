@@ -10,6 +10,8 @@ TagManager:
   - Ground
   - Healing
   - HeadCheck
+  - UI
+  - SimpleScoreUI
   layers:
   - Default
   - TransparentFX

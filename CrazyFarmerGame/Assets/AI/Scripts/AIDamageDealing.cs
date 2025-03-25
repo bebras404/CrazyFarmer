@@ -6,8 +6,8 @@ public class AIDamageDealing : MonoBehaviour
     GameObject Enemy;
     MonoBehaviour Controller;
     MonoBehaviour Seeker;
-
-
+    public ScoreManager sm;
+    public int ScoreToAdd = 1;
 
 
     void Start()
@@ -23,21 +23,34 @@ public class AIDamageDealing : MonoBehaviour
             Seeker = Enemy.GetComponent<Seeker>();
         }
     }
+    public void SetManager(GameObject obj)
+    {
+        if (obj != null)
+        {
+            Transform scoreMTransform = obj.transform.Find("ScoreM");
+
+            if (scoreMTransform != null)
+            {
+                sm = scoreMTransform.GetComponent<ScoreManager>();
+            }        
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         
         if (Seeker != null && collision.gameObject.CompareTag("Player")) 
         {
+            sm.AddScore(ScoreToAdd);
+            Debug.Log("Touched eagle!");
             Controller.enabled = false;
             Seeker.enabled = false;
             Destroy(Enemy);
-        }
-
-        Debug.Log("Touched!");
-
+        }        
         if (collision.gameObject.CompareTag("Player"))
         {
+            sm.AddScore(ScoreToAdd);
+            Debug.Log("Touched!");
             GetComponent<Collider2D>().enabled = false;
             Enemy.GetComponent<SpriteRenderer>().flipY = true;
             Enemy.GetComponent<Collider2D>().enabled = false;

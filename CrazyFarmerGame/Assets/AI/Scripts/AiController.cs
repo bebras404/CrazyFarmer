@@ -13,10 +13,6 @@ public class AiController : MonoBehaviour
     public float range;
     public PlayerHealth playerHealth;
     private bool isTouchingPlayer = false;
-
-    
-
-
     public Animator animator;
     private Rigidbody2D rb;
 
@@ -60,7 +56,7 @@ public class AiController : MonoBehaviour
 
             CheckPlayerStatus();
 
-        if (transform.position.y < -10)
+        if (transform.position.y < -5)
         {
             Destroy(this.gameObject);
         }

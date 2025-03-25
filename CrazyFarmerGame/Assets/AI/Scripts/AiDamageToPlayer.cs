@@ -8,15 +8,21 @@ public class AiDamageToPlayer : MonoBehaviour
     public PlayerHealth playerHealth;
     public int Damage = 0;
 
+
+
     public void SetTarget(GameObject obj)
     {
         playerHealth = obj.GetComponent<PlayerHealth>();
     }
 
+    
+
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("HeadCheckAI"))
         {
+            
             return;
         }
 
@@ -31,9 +37,7 @@ public class AiDamageToPlayer : MonoBehaviour
     }
 
     private void OnCollisionExit2D(Collision2D collision)
-    {
-        
-        
+    {    
             isTouchingPlayer = false;
 
             if (damageCoroutine != null)
@@ -58,8 +62,10 @@ public class AiDamageToPlayer : MonoBehaviour
         damageCoroutine = null;
     }
 
+
     private void OnDestroy()
     {
+        
         if (damageCoroutine != null)
         {
             StopCoroutine(damageCoroutine);

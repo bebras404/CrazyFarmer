@@ -11,6 +11,9 @@ public class SpawnAssets : MonoBehaviour
     public float SpawnRangeFar = 60f;
     public float SpawnRangeClose = 30f;
     private float DistanceToPlayer;
+    private GameObject UIcanvas;
+    private AIDamageDealing Playerdmg;
+
 
     private List<Transform> availableSpawnPoints;
     private GameObject player;
@@ -20,7 +23,8 @@ public class SpawnAssets : MonoBehaviour
         // Find the PlayerHealth component in the scene
         player = GameObject.FindWithTag("Player");
 
-
+        UIcanvas = GameObject.FindWithTag("UI");
+        //Debug.Log(UIcanvas != null);
         availableSpawnPoints = new List<Transform>(spawnPoints);
 
         if (availableSpawnPoints.Count > 0 && enemyPrefabs.Length > 0)
@@ -31,6 +35,10 @@ public class SpawnAssets : MonoBehaviour
         {
             Debug.LogWarning("No spawn points or enemy prefabs assigned!");
         }
+
+
+        
+        
     }
 
     private void Update()
@@ -61,6 +69,17 @@ public class SpawnAssets : MonoBehaviour
 
             // Assign PlayerHealth to the AIController.
 
+            
+            
+            Transform newEnemytrans = newEnemy.transform.Find("HeadCheck");
+
+            if (newEnemytrans != null)
+            {
+                Playerdmg = newEnemytrans.GetComponent<AIDamageDealing>();
+                Playerdmg.SetManager(UIcanvas);
+            }
+            
+
             if (newEnemy.GetComponent<AiController>() != null)
             {
                 AiController aiController = newEnemy.GetComponent<AiController>();
@@ -70,6 +89,7 @@ public class SpawnAssets : MonoBehaviour
             if (newEnemy.GetComponent<AiDamageToPlayer>() != null)
             {
                 AiDamageToPlayer damageScript = newEnemy.GetComponent<AiDamageToPlayer>();
+                
                 damageScript.SetTarget(player);
             }
 
@@ -85,9 +105,6 @@ public class SpawnAssets : MonoBehaviour
                 hp.SetPlayer(player);
             }
 
-
-
-            // Remove the used spawn point from the list
             availableSpawnPoints.RemoveAt(index);
         }
     }
