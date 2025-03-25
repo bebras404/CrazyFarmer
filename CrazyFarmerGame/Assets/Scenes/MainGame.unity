@@ -259,7 +259,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreText: {fileID: 293349074}
   highScoreText: {fileID: 905511267}
-  Enemies: []
 --- !u!114 &293349074
 MonoBehaviour:
   m_ObjectHideFlags: 0
