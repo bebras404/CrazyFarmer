@@ -49,8 +49,11 @@ MonoBehaviour:
   - {fileID: 3205182364496061563, guid: 567e18f041ce22342a96a592d7fbd3da, type: 3}
   - {fileID: 585394838583268646, guid: a32c68a70be714b43b02bce8646325bc, type: 3}
   - {fileID: 9062061995775160294, guid: 4bcefedc5cefac24b8ad817957440b7b, type: 3}
+  - {fileID: 3030482113749901279, guid: fbe5e70150c0b0740937ad7d64d23d27, type: 3}
   spawnPoints:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   spawnDelay: 1
+  SpawnRangeFar: 60
+  SpawnRangeClose: 30

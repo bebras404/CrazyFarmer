@@ -12,6 +12,7 @@ TagManager:
   - HeadCheck
   - UI
   - SimpleScoreUI
+  - Pick up
   layers:
   - Default
   - TransparentFX
