@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 2009209794708390170}
   - component: {fileID: 645434767631871065}
   - component: {fileID: -4153524056270424034}
+  - component: {fileID: -542173699250566313}
   m_Layer: 8
   m_Name: MiniEagle
   m_TagString: Enemy
@@ -37,6 +38,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 7281859642017527018}
   - {fileID: 3287517142533495899}
   - {fileID: 6686658425580589904}
   m_Father: {fileID: 0}
@@ -239,6 +241,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerHealth: {fileID: 2963926436729097530, guid: c8bef31b20c4a1642a34da84cab2800e, type: 3}
   Damage: 3
+  damageInterval: 2
 --- !u!114 &-4153524056270424034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -251,8 +254,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3861097cd94784b4ea58495fe7780242, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 8
   health: 2
-  maxHealth: 2
+--- !u!210 &-542173699250566313
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 585394838583268646}
+  m_Enabled: 1
+  m_SortingLayerID: -275360597
+  m_SortingLayer: 3
+  m_SortingOrder: 3
+  m_SortAtRoot: 0
 --- !u!1 &920732162147614275
 GameObject:
   m_ObjectHideFlags: 0
@@ -338,7 +353,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6897074893958170210}
   - component: {fileID: 1309868110299067485}
-  - component: {fileID: 3868234593780989831}
+  - component: {fileID: 4107014319858385700}
   m_Layer: 5
   m_Name: HealthBar
   m_TagString: Untagged
@@ -418,7 +433,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &3868234593780989831
+--- !u!114 &4107014319858385700
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -427,9 +442,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1917826150611508120}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1792cfa35bd96140944ec5d1835f6dd, type: 3}
+  m_Script: {fileID: 11500000, guid: da5d3521e990a554689b0b7421e27207, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slider: {fileID: 1309868110299067485}
 --- !u!1 &3634076018071309153
 GameObject:
   m_ObjectHideFlags: 0
@@ -477,6 +493,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sm: {fileID: 0}
   ScoreToAdd: 1500
+  healthBar: {fileID: 4107014319858385700}
+  enemyHealth: {fileID: 0}
+  DamageFromPlayer: 5
 --- !u!61 &5093895446673931646
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -582,7 +601,7 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: -275360597
   m_SortingOrder: 3
   m_TargetDisplay: 0
 --- !u!114 &6640978474533627110
@@ -700,6 +719,91 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &7121471638049701847
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7281859642017527018}
+  - component: {fileID: 6431559495390335215}
+  - component: {fileID: 3397159260311512688}
+  m_Layer: 8
+  m_Name: ProjDamage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7281859642017527018
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7121471638049701847}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.118, y: 0.42, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 428483042581806403}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6431559495390335215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7121471638049701847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f4a5cbe2e5444d459dd79102afeb3e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sm: {fileID: 0}
+  ScoreToAdd: 1500
+  healthBar: {fileID: 4107014319858385700}
+  enemyHealth: {fileID: -4153524056270424034}
+--- !u!58 &3397159260311512688
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7121471638049701847}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_Radius: 0.45
 --- !u!1 &7712667069652429332
 GameObject:
   m_ObjectHideFlags: 0

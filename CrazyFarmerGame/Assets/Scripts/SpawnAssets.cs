@@ -72,6 +72,13 @@ public class SpawnAssets : MonoBehaviour
             
             
             Transform newEnemytrans = newEnemy.transform.Find("HeadCheck");
+            Transform newEnemytrans2 = newEnemy.transform.Find("ProjDamage");
+
+            if (newEnemytrans2 != null) 
+            {
+                ProjDamage projDamage = newEnemytrans2.GetComponent<ProjDamage>();
+                projDamage.SetManager(UIcanvas);
+            }
 
             if (newEnemytrans != null)
             {
