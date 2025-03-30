@@ -11,6 +11,13 @@ public class ProjDamage : MonoBehaviour
     public int ScoreToAdd = 1;
     public HealthBarScript healthBar;
     public EnemyHealth enemyHealth;
+    private Transform projDamage;
+    private Transform headCheck;
+
+    private void Awake()
+    {
+        headCheck = transform.Find("HeadCheck");
+    }
 
     public void SetManager(GameObject obj)
     {
@@ -56,13 +63,23 @@ public class ProjDamage : MonoBehaviour
 
     private void Die()
     {
-        
+        GameObject root = transform.root.gameObject;
         sm.AddScore(ScoreToAdd);
+
+        GetComponent<Collider2D>().enabled = false;
+        root.GetComponent<Collider2D>().enabled = false;
+        if (root.GetComponent<AiController>() != null) 
+        {
+            root.GetComponent<AiController>().enabled = false;
+        }
+        else
+        {
+            root.GetComponent<FlyingAIController>().enabled = false;
+        }
+
         Vector3 movement = new Vector3(UnityEngine.Random.Range(40, 70), UnityEngine.Random.Range(-40, 40), 0f);
         this.gameObject.transform.position = this.gameObject.transform.position + movement * Time.deltaTime;
-        this.gameObject.GetComponentInParent<Collider2D>().enabled = false;
-        transform.Find("ProjDamage").GetComponent<Collider2D>().enabled = false;
-        transform.Find("HeadCheck").GetComponent<Collider2D>().enabled = false;
-        this.gameObject.GetComponentInParent<SpriteRenderer>().flipY = true;
+
+
     }
 }
