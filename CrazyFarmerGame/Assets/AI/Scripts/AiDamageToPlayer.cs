@@ -13,7 +13,6 @@ public class AiDamageToPlayer : MonoBehaviour
     public void SetTarget(GameObject obj)
     {
         playerHealth = obj.GetComponent<PlayerHealth>();
-        Debug.Log("PlayerHealth set to: " + playerHealth.health);
         if (playerHealth == null)
         {
             Debug.LogWarning("PlayerHealth component not found on target.");
