@@ -6,9 +6,9 @@ public class PlayerMovement : MonoBehaviour
     public float speed = 8f;
     private float jumpingPower = 16f;
     private bool isFacingRight = true;
+    private bool isAttacking = false;
 
     public CoinManager cm;
-
     public Animator animator;
 
     [SerializeField] private Rigidbody2D rb;
@@ -16,39 +16,59 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private LayerMask EntityLayer;
 
-    // Update is called once per frame
+    private float attackCooldown = 0.5f;
+    private float lastAttackTime = 0f;
+
     void Update()
     {
         horizontal = Input.GetAxisRaw("Horizontal");
 
         animator.SetFloat("Speed", Mathf.Abs(horizontal));
-        if (Input.GetButtonDown("Jump") && IsGrounded())
+
+        if (Input.GetButtonDown("Jump") && IsGrounded() && !isAttacking)
         {
-            
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpingPower);
         }
+
         if (Input.GetButtonUp("Jump") && rb.linearVelocity.y > 0f)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * 0.5f);
-            
         }
-        if (IsGrounded()) 
+
+        if (IsGrounded())
         {
             animator.SetBool("IsJumping", false);
         }
-        if (!IsGrounded()) 
+        else
         {
             animator.SetBool("IsJumping", true);
         }
+
+        if (Input.GetMouseButtonDown(0) && Time.time > lastAttackTime + attackCooldown && IsGrounded())
+        {
+            isAttacking = true;
+            animator.SetBool("IsAttacking", true);
+            lastAttackTime = Time.time;
+        }
+        else if (Time.time > lastAttackTime + attackCooldown * 0.5f)
+        {
+            isAttacking = false;
+            animator.SetBool("IsAttacking", false);
+        }
+
         Flip();
     }
 
-
-
     private void FixedUpdate()
     {
-        rb.linearVelocity = new Vector2(horizontal * speed, rb.linearVelocity.y);
-
+        if (!isAttacking)
+        {
+            rb.linearVelocity = new Vector2(horizontal * speed, rb.linearVelocity.y);
+        }
+        else
+        {
+            rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
+        }
     }
 
     private bool IsGrounded()
@@ -64,7 +84,6 @@ public class PlayerMovement : MonoBehaviour
             Vector3 localScale = transform.localScale;
             localScale.x *= -1f;
             transform.localScale = localScale;
-
         }
     }
 
@@ -75,5 +94,9 @@ public class PlayerMovement : MonoBehaviour
             Destroy(other.gameObject);
             cm.coinCount++;
         }
+    }
+    public bool IsFacingRight()
+    {
+        return isFacingRight;
     }
 }
