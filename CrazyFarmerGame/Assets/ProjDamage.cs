@@ -60,11 +60,9 @@ public class ProjDamage : MonoBehaviour
         sm.AddScore(ScoreToAdd);
         Vector3 movement = new Vector3(UnityEngine.Random.Range(40, 70), UnityEngine.Random.Range(-40, 40), 0f);
         this.gameObject.transform.position = this.gameObject.transform.position + movement * Time.deltaTime;
-        GetComponentInParent<Collider2D>().enabled = false;
-        GetComponent<Collider2D>().enabled = false;
-        GetComponentInChildren<Collider2D>().enabled = false;
+        this.gameObject.GetComponentInParent<Collider2D>().enabled = false;
+        transform.Find("ProjDamage").GetComponent<Collider2D>().enabled = false;
+        transform.Find("HeadCheck").GetComponent<Collider2D>().enabled = false;
         this.gameObject.GetComponentInParent<SpriteRenderer>().flipY = true;
-
-        Destroy(this.gameObject);
     }
 }
