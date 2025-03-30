@@ -120,8 +120,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4107742167643081994}
-  - component: {fileID: 1971414510210652717}
   - component: {fileID: 7354481088979494464}
+  - component: {fileID: 4110233212479364559}
   m_Layer: 8
   m_Name: ProjDamage
   m_TagString: Untagged
@@ -137,14 +137,30 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2385826703723942951}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.1569996, y: 0.7507069, z: 0}
-  m_LocalScale: {x: 3.4499998, y: 1, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.026, y: 0.338, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2420371367534119966}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!70 &1971414510210652717
+--- !u!114 &7354481088979494464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2385826703723942951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f4a5cbe2e5444d459dd79102afeb3e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sm: {fileID: 0}
+  ScoreToAdd: 1000
+  healthBar: {fileID: 7309016939061452199}
+  enemyHealth: {fileID: 7492059347730160961}
+--- !u!70 &4110233212479364559
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -174,29 +190,13 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.83, y: 1.32}
+  m_Offset: {x: 0.011011063, y: -0.022022758}
+  m_Size: {x: 1.2275662, y: 0.54487526}
   m_Direction: 1
---- !u!114 &7354481088979494464
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2385826703723942951}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f4a5cbe2e5444d459dd79102afeb3e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sm: {fileID: 0}
-  ScoreToAdd: 1000
-  healthBar: {fileID: 7309016939061452199}
-  enemyHealth: {fileID: 7492059347730160961}
 --- !u!1 &3205182364496061563
 GameObject:
   m_ObjectHideFlags: 0

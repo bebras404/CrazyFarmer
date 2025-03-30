@@ -57,7 +57,8 @@ public class ProjDamage : MonoBehaviour
             Debug.Log("Touched eagle!");
             Controller.enabled = false;
             Seeker.enabled = false;
-            Destroy(this.gameObject);
+            Die();
+            Destroy(transform.root.gameObject);
         }
     }
 
@@ -75,6 +76,7 @@ public class ProjDamage : MonoBehaviour
         else
         {
             root.GetComponent<FlyingAIController>().enabled = false;
+            Destroy(root.gameObject);
         }
 
         Vector3 movement = new Vector3(UnityEngine.Random.Range(40, 70), UnityEngine.Random.Range(-40, 40), 0f);
