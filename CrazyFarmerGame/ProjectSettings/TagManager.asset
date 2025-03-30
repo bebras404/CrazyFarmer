@@ -13,6 +13,7 @@ TagManager:
   - UI
   - SimpleScoreUI
   - Pick up
+  - Coin
   layers:
   - Default
   - TransparentFX
