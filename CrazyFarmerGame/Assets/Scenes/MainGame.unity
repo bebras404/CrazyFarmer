@@ -3222,9 +3222,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79ff2d31cb1fdd64c9e06a90185a3fcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireballPrefab: {fileID: 0}
+  fireballPrefab: {fileID: 4041260553914031819, guid: 633e3ef6816cedc448971b7fcf5149b4, type: 3}
   firePoint: {fileID: 533253533}
-  powerUpDuration: 10
+  powerUpDuration: 100
   cooldownTime: 60
 --- !u!1001 &1520878632
 PrefabInstance:
