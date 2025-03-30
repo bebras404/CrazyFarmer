@@ -8,7 +8,7 @@ public class AiDamageToPlayer : MonoBehaviour
     public PlayerHealth playerHealth;
     public int Damage = 0;
 
-
+    
 
     public void SetTarget(GameObject obj)
     {
@@ -18,15 +18,11 @@ public class AiDamageToPlayer : MonoBehaviour
     
 
 
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("HeadCheckAI"))
-        {
-            
-            return;
-        }
 
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player") && collision.gameObject.layer != LayerMask.NameToLayer("HeadCheckAI"))
         {
             isTouchingPlayer = true;
             if (damageCoroutine == null)
@@ -53,7 +49,7 @@ public class AiDamageToPlayer : MonoBehaviour
         while (isTouchingPlayer)
         {
             if (playerHealth != null)
-            {
+            {     
                 playerHealth.TakeDamage(Damage);
             }
 

@@ -1,4 +1,5 @@
 using Pathfinding;
+using UnityEditor;
 using UnityEngine;
 
 public class AIDamageDealing : MonoBehaviour
@@ -8,10 +9,19 @@ public class AIDamageDealing : MonoBehaviour
     MonoBehaviour Seeker;
     public ScoreManager sm;
     public int ScoreToAdd = 1;
+    public HealthBarScript healthBar;
+    public EnemyHealth enemyHealth;
+    public float DamageFromPlayer = 5f;
 
+
+    private void Awake()
+    {
+        
+    }
 
     void Start()
-    {
+    {      
+        enemyHealth = GetComponentInParent<EnemyHealth>();      
         Enemy = gameObject.transform.parent.gameObject;
         if (Enemy.GetComponent<AiController>() != null)
         {
@@ -49,14 +59,24 @@ public class AIDamageDealing : MonoBehaviour
         }        
         if (collision.gameObject.CompareTag("Player"))
         {
-            sm.AddScore(ScoreToAdd);
-            Debug.Log("Touched!");
-            GetComponent<Collider2D>().enabled = false;
-            Enemy.GetComponent<SpriteRenderer>().flipY = true;
-            Enemy.GetComponent<Collider2D>().enabled = false;
-            Vector3 movement = new Vector3(UnityEngine.Random.Range(40, 70), UnityEngine.Random.Range(-40, 40), 0f);
-            Enemy.transform.position = Enemy.transform.position + movement * Time.deltaTime;
+            enemyHealth.TakeDamageFromPlayer(DamageFromPlayer);
+            Debug.Log(enemyHealth.health);
+            healthBar.UpdateHealthBar(enemyHealth.health, enemyHealth.maxHealth);
+            if (enemyHealth.health <= 0) 
+            {
+                Die();
+            }
         }
+    }
+
+    private void Die() 
+    {
+        sm.AddScore(ScoreToAdd);
+        GetComponent<Collider2D>().enabled = false;
+        Enemy.GetComponent<SpriteRenderer>().flipY = true;
+        Enemy.GetComponent<Collider2D>().enabled = false;
+        Vector3 movement = new Vector3(UnityEngine.Random.Range(40, 70), UnityEngine.Random.Range(-40, 40), 0f);
+        Enemy.transform.position = Enemy.transform.position + movement * Time.deltaTime;
     }
 
     // Update is called once per frame

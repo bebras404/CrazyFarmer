@@ -127,6 +127,7 @@ GameObject:
   - component: {fileID: 1421159054683296398}
   - component: {fileID: 3303825484224562349}
   - component: {fileID: 7492059347730160961}
+  - component: {fileID: 3997787474666139534}
   m_Layer: 8
   m_Name: MiniWolf
   m_TagString: Enemy
@@ -339,8 +340,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3861097cd94784b4ea58495fe7780242, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 6
   health: 3
-  maxHealth: 3
+--- !u!210 &3997787474666139534
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3205182364496061563}
+  m_Enabled: 1
+  m_SortingLayerID: -275360597
+  m_SortingLayer: 3
+  m_SortingOrder: 3
+  m_SortAtRoot: 0
 --- !u!1 &4831127500253712491
 GameObject:
   m_ObjectHideFlags: 0
@@ -434,6 +447,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sm: {fileID: 0}
   ScoreToAdd: 1000
+  healthBar: {fileID: 7309016939061452199}
+  enemyHealth: {fileID: 0}
+  DamageFromPlayer: 5
 --- !u!1 &5975792943813797353
 GameObject:
   m_ObjectHideFlags: 0
@@ -493,8 +509,8 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -275360597
+  m_SortingOrder: 3
   m_TargetDisplay: 0
 --- !u!114 &8729811965999599964
 MonoBehaviour:
@@ -621,7 +637,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4043524280623119422}
   - component: {fileID: 5164704218869001532}
-  - component: {fileID: 5686864501266413247}
+  - component: {fileID: 7309016939061452199}
   m_Layer: 5
   m_Name: HealthBar
   m_TagString: Untagged
@@ -701,7 +717,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &5686864501266413247
+--- !u!114 &7309016939061452199
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -710,6 +726,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8226601992862808901}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1792cfa35bd96140944ec5d1835f6dd, type: 3}
+  m_Script: {fileID: 11500000, guid: da5d3521e990a554689b0b7421e27207, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slider: {fileID: 5164704218869001532}

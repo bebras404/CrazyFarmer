@@ -209,7 +209,7 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: -275360597
   m_SortingOrder: 3
   m_TargetDisplay: 0
 --- !u!114 &7816182368771934251
@@ -252,6 +252,84 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!1 &4020647134337814247
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6873070065626334631}
+  - component: {fileID: 4217660438883776366}
+  m_Layer: 10
+  m_Name: HeadCheckAntiDamage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6873070065626334631
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4020647134337814247}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.022000313, y: 0.046000004, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 0}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6183458220501695919}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &4217660438883776366
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4020647134337814247}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 1.5055252}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1.9949493, y: 0.113001585}
+  m_EdgeRadius: 0
 --- !u!1 &5816779651391878696
 GameObject:
   m_ObjectHideFlags: 0
@@ -279,7 +357,7 @@ Transform:
   m_GameObject: {fileID: 5816779651391878696}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.418, y: 1.33, z: 0}
+  m_LocalPosition: {x: -0.467, y: 1.407, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -299,6 +377,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sm: {fileID: 0}
   ScoreToAdd: 2000
+  healthBar: {fileID: 7188109073291487325}
+  enemyHealth: {fileID: 0}
+  DamageFromPlayer: 5
 --- !u!61 &6586699878034175098
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -361,6 +442,7 @@ GameObject:
   - component: {fileID: 6588832957877016382}
   - component: {fileID: 3470421183189873721}
   - component: {fileID: 1070211933059556731}
+  - component: {fileID: 2969261577148103085}
   m_Layer: 8
   m_Name: MiniBear
   m_TagString: Enemy
@@ -381,6 +463,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 6873070065626334631}
   - {fileID: 210701880303765930}
   - {fileID: 8188394643759295850}
   m_Father: {fileID: 0}
@@ -573,8 +656,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3861097cd94784b4ea58495fe7780242, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
-  maxHealth: 10
+  maxHealth: 20
+  health: 1
+--- !u!210 &2969261577148103085
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6358507573066290634}
+  m_Enabled: 1
+  m_SortingLayerID: -275360597
+  m_SortingLayer: 3
+  m_SortingOrder: 3
+  m_SortAtRoot: 0
 --- !u!1 &7273119167547342911
 GameObject:
   m_ObjectHideFlags: 0
@@ -585,7 +680,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4007749843059019916}
   - component: {fileID: 1054423230163437252}
-  - component: {fileID: 4780776388294654836}
+  - component: {fileID: 7188109073291487325}
   m_Layer: 5
   m_Name: HealthBar
   m_TagString: Untagged
@@ -665,7 +760,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &4780776388294654836
+--- !u!114 &7188109073291487325
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -674,9 +769,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7273119167547342911}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1792cfa35bd96140944ec5d1835f6dd, type: 3}
+  m_Script: {fileID: 11500000, guid: da5d3521e990a554689b0b7421e27207, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slider: {fileID: 1054423230163437252}
 --- !u!1 &8824520318498728397
 GameObject:
   m_ObjectHideFlags: 0
