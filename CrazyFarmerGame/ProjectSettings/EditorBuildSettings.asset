@@ -6,19 +6,19 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Meniu/Main menu.unity
+    path: Assets/Scenes/Main menu.unity
     guid: ef66878e5b787c24ca55e8ee98428b59
   - enabled: 1
-    path: Assets/Meniu/Settings.unity
+    path: Assets/Scenes/Settings.unity
     guid: 6c39625fef7782640b7a87c215036a2f
   - enabled: 1
-    path: Assets/Meniu/Restart.unity
+    path: Assets/Scenes/Restart.unity
     guid: 0076be4faf909064f8054444f0f3532e
   - enabled: 1
     path: Assets/Scenes/MainGame.unity
     guid: a9277632c8013c14aaeb9375f5c16675
   - enabled: 1
-    path: Assets/Meniu/Credit Scene.unity
+    path: Assets/Scenes/Credit Scene.unity
     guid: 1bc92caf73d2add49a2f79bd950c20d5
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
