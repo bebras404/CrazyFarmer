@@ -13,5 +13,14 @@ public class MainMeniuScript : MonoBehaviour
         SceneManager.LoadSceneAsync(1);
     }
 
+    public void CreditsButton()
+    {
+        SceneManager.LoadSceneAsync(4);
+    }
+
+    public void BackButton()
+    {
+        SceneManager.LoadSceneAsync(0);
+    }
 
 }
