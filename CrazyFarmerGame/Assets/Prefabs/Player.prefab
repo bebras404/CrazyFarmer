@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8684574897397543499}
   m_Layer: 7
   m_Name: GroundCheck
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -188,6 +188,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 6
+  cm: {fileID: 0}
   animator: {fileID: 3754891978047544136}
   rb: {fileID: 6803454138311911570}
   groundCheck: {fileID: 8684574897397543499}

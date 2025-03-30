@@ -72,6 +72,7 @@ public class AIDamageDealing : MonoBehaviour
     private void Die() 
     {
         sm.AddScore(ScoreToAdd);
+        GetComponentInParent<Collider2D>().enabled = false;
         GetComponent<Collider2D>().enabled = false;
         Enemy.GetComponent<SpriteRenderer>().flipY = true;
         Enemy.GetComponent<Collider2D>().enabled = false;

@@ -13,6 +13,7 @@ public class AiDamageToPlayer : MonoBehaviour
     public void SetTarget(GameObject obj)
     {
         playerHealth = obj.GetComponent<PlayerHealth>();
+        Debug.Log("PlayerHealth set to: " + playerHealth.health);
         if (playerHealth == null)
         {
             Debug.LogWarning("PlayerHealth component not found on target.");
@@ -21,10 +22,7 @@ public class AiDamageToPlayer : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        GameObject rootObj = collision.transform.root.gameObject;
-
-        if (rootObj.CompareTag("Player") &&
-            collision.gameObject.layer == LayerMask.NameToLayer("AI"))
+        if (collision.gameObject.CompareTag("Player"))
         {
             isTouchingPlayer = true;
             if (damageCoroutine == null)
@@ -36,9 +34,7 @@ public class AiDamageToPlayer : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        GameObject rootObj = collision.transform.root.gameObject;
-
-        if (rootObj.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player"))
         {
             isTouchingPlayer = false;
 
