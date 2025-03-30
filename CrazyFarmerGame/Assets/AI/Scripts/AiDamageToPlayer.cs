@@ -24,7 +24,7 @@ public class AiDamageToPlayer : MonoBehaviour
         GameObject rootObj = collision.transform.root.gameObject;
 
         if (rootObj.CompareTag("Player") &&
-            collision.gameObject.layer == LayerMask.NameToLayer("AI"))
+            collision.gameObject.layer != LayerMask.NameToLayer("HeadCheckAI"))
         {
             isTouchingPlayer = true;
             if (damageCoroutine == null)
