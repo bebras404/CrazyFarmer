@@ -46,25 +46,43 @@ public class AIDamageDealing : MonoBehaviour
         }
     }
 
+    // This is just the relevant modified part of your AIDamageDealing script
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        
-        if (Seeker != null && collision.gameObject.CompareTag("Player")) 
+        // Existing eagle touch code
+        if (Seeker != null && collision.CompareTag("Player"))
         {
             sm.AddScore(ScoreToAdd);
             Debug.Log("Touched eagle!");
             Controller.enabled = false;
             Seeker.enabled = false;
             Destroy(Enemy);
-        }        
-        if (collision.gameObject.CompareTag("Player"))
+        }
+
+        // Player collision (existing)
+        if (collision.CompareTag("Player"))
         {
             enemyHealth.TakeDamageFromPlayer(DamageFromPlayer);
             Debug.Log(enemyHealth.health);
             healthBar.UpdateHealthBar(enemyHealth.health, enemyHealth.maxHealth);
-            if (enemyHealth.health <= 0) 
+            if (enemyHealth.health <= 0)
             {
                 Die();
+            }
+        }
+
+        // Add this for projectile damage (optional - alternative approach)
+        if (collision.CompareTag("Projectile"))
+        {
+            Projectile projectile = collision.GetComponent<Projectile>();
+            if (projectile != null)
+            {
+                enemyHealth.TakeDamageFromPlayer(projectile.damage);
+                healthBar.UpdateHealthBar(enemyHealth.health, enemyHealth.maxHealth);
+                if (enemyHealth.health <= 0)
+                {
+                    Die();
+                }
             }
         }
     }
