@@ -19,7 +19,7 @@ public class MainMeniuScript : MonoBehaviour
         else
         {
             Debug.LogError("LevelLoader not found! Make sure it's in the scene.");
-            SceneManager.LoadScene(3); // Fallback in case LevelLoader is missing
+            SceneManager.LoadScene(3); 
         }
     }
 
@@ -27,4 +27,15 @@ public class MainMeniuScript : MonoBehaviour
     {
         SceneManager.LoadScene(1); // Load Settings (scene 1)
     }
+
+    public void CreditsButton()
+    {
+        SceneManager.LoadScene(4); // Load Credits (scene 5)
+    }
+
+    public void BackButton()
+    {
+        SceneManager.LoadScene(0); // Load Credits (scene 5)
+    }
+
 }
