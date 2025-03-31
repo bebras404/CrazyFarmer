@@ -788,8 +788,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 189ef728d8b65d14982176a3a6f6ba17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  coinText: {fileID: 0}
   coinCount: 0
-  coinText: {fileID: 1190925740}
 --- !u!4 &738429508
 Transform:
   m_ObjectHideFlags: 0
@@ -813,6 +813,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4805961626223718631, guid: bf0a9a19a4f5ce24eaebe158c94fe8a5, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 7213011131333979650, guid: bf0a9a19a4f5ce24eaebe158c94fe8a5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

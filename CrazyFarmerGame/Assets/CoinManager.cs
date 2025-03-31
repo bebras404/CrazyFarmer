@@ -1,10 +1,12 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class CoinManager : MonoBehaviour
 {
+    [SerializeField] TextMeshProUGUI coinText;
+
     public int coinCount;
-    public Text coinText;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
