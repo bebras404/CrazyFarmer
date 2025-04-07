@@ -88,9 +88,7 @@ public class AIDamageDealing : MonoBehaviour
     }
 
     private void Die() 
-    {
-              
-                    
+    {                   
         sm.AddScore(ScoreToAdd);
         GetComponentInParent<Collider2D>().enabled = false;
         GetComponent<Collider2D>().enabled = false;
