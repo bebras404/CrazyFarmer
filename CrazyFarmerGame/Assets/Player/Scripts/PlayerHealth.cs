@@ -2,16 +2,14 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-
     public int health;
     public int MaxHealth = 10;
 
     public SpriteRenderer playerSr;
     public PlayerMovement playerMovement;
 
+    public bool isInvincible = false; // Controls invincibility
 
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         health = MaxHealth;
@@ -19,10 +17,14 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage(int amount)
     {
+        if (isInvincible) return; // Prevent damage if invincible
 
-        health = health - amount;
+        health -= amount;
+        Debug.Log("Player took damage! Health: " + health);
+
         if (health <= 0)
         {
+            Debug.Log("Player died!");
             playerSr.enabled = false;
             playerMovement.enabled = false;
         }
@@ -35,12 +37,6 @@ public class PlayerHealth : MonoBehaviour
         {
             health = MaxHealth;
         }
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        Debug.Log("Player healed! Health: " + health);
     }
 }

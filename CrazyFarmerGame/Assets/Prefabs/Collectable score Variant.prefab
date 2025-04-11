@@ -108,5 +108,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sm: {fileID: 0}
   ScoreToAdd: 2000
-  floatSpeed: 0
-  floatHeight: 0
+  floatSpeed: 0.1
+  floatHeight: 0.5

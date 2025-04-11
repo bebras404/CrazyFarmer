@@ -12,16 +12,11 @@ public class CollectableScore : MonoBehaviour
     void Start()
     {
         startPosition = transform.position;
+        GameObject go = GameObject.Find("PlayerUI");
+        sm = go.GetComponentInChildren<ScoreManager>();
     }
 
-    public void SetPlayer(GameObject obj)
-    {
-        Transform scoreMTransform = obj.transform.Find("ScoreM");
-        if (scoreMTransform != null)
-        {
-            sm = scoreMTransform.GetComponent<ScoreManager>();
-        }
-    }
+    
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
