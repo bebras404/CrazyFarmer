@@ -8,7 +8,6 @@ public class PlayerMovement : MonoBehaviour
     private bool isFacingRight = true;
     private bool isAttacking = false;
 
-    public CoinManager cm;
     public Animator animator;
 
     [SerializeField] private Rigidbody2D rb;
@@ -89,11 +88,7 @@ public class PlayerMovement : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Coin"))
-        {
-            Destroy(other.gameObject);
-            cm.coinCount++;
-        }
+
     }
     public bool IsFacingRight()
     {
