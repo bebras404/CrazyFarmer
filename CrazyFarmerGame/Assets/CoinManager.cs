@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class CoinManager : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI coinText;
+    //[SerializeField] TextMeshProUGUI coinText;
 
     public int coinCount;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -16,6 +16,6 @@ public class CoinManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        coinText.text = ": " + coinCount.ToString();
+        //coinText.text = ": " + coinCount.ToString();
     }
 }
