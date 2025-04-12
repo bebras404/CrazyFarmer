@@ -12,7 +12,22 @@ public class Audiomanager : MonoBehaviour
     //public AudioClip wallTouch;
     public GameObject player;
 
+    public static Audiomanager instance;
+
     private bool hasPlayedDeathSFX = false;
+
+    private void Awake()
+    {
+        if(instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     private void Start()
     {
