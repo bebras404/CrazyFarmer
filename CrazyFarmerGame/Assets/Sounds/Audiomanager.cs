@@ -14,11 +14,17 @@ public class Audiomanager : MonoBehaviour
 
     private bool hasPlayedDeathSFX = false;
 
+    private AudioClip normalizedDeathClip;
+    private AudioClip normalizedBackgroundClip;
+
     private void Start()
     {
-        musicSource.clip = background;
+        // Normalize both clips at start
+        normalizedDeathClip = NormalizeAudio(death);
+        normalizedBackgroundClip = NormalizeAudio(background);
+
+        musicSource.clip = normalizedBackgroundClip;
         musicSource.Play();
-        musicSource.volume = 0.1f;
     }
 
     private void Update()
@@ -30,5 +36,39 @@ public class Audiomanager : MonoBehaviour
             musicSource.Stop();
             hasPlayedDeathSFX = true;
         }
+    }
+    private AudioClip NormalizeAudio(AudioClip clip)
+    {
+        if (clip == null)
+        {
+            Debug.LogWarning("AudioClip is null.");
+            return null;
+        }
+
+        float[] samples = new float[clip.samples * clip.channels];
+        clip.GetData(samples, 0);
+
+        float max = 0f;
+        foreach (float sample in samples)
+        {
+            float abs = Mathf.Abs(sample);
+            if (abs > max) max = abs;
+        }
+
+        if (max <= 0f)
+        {
+            Debug.LogWarning("AudioClip has no audio data.");
+            return clip;
+        }
+
+        float multiplier = 1f / max;
+        for (int i = 0; i < samples.Length; i++)
+        {
+            samples[i] *= multiplier;
+        }
+
+        AudioClip normalizedClip = AudioClip.Create(clip.name + "_normalized", clip.samples, clip.channels, clip.frequency, false);
+        normalizedClip.SetData(samples, 0);
+        return normalizedClip;
     }
 }
