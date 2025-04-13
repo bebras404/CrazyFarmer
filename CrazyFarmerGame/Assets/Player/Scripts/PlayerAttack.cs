@@ -37,6 +37,7 @@ public class PlayerAttack : MonoBehaviour
 
     void Shoot()
     {
+
         // Create the projectile
         GameObject projectile = Instantiate(
             projectilePrefab,
