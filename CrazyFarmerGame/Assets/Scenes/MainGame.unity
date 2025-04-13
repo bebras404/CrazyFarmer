@@ -1227,6 +1227,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81745c511c748a74d95068ae86e78745, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
+=======
+--- !u!114 &1510742632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1510742621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86d1caa461a03024297e5c1617995236, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firePosition: {fileID: 1417224250}
+  projectilePrefab: {fileID: 6223898036703120850, guid: 50375c011ddbfa14791facbd8e56e98d, type: 3}
+  meleePrefab: {fileID: 6223898036703120850, guid: 80f32d53f81c7a54f878e4382bc65ccb, type: 3}
+  fireballDelay: 0.2
+  meleeDelay: 0.1
+>>>>>>> Ranged/melee-toggle
 --- !u!114 &1543968045 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6768941969346967100, guid: 6055ea22e83a2e348a2a53ee8d399ea8, type: 3}
