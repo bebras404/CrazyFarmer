@@ -14,6 +14,9 @@ TagManager:
   - SimpleScoreUI
   - Pick up
   - Coin
+  - Projectile
+  - FAi
+  - ScoreManager
   layers:
   - Default
   - TransparentFX

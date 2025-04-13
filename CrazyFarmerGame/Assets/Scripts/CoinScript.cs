@@ -12,6 +12,11 @@ public class CoinScript : MonoBehaviour
         
     }
 
+    public void SetCM(CoinManager cm) 
+    {
+        this.cm = cm;
+    }
+
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))

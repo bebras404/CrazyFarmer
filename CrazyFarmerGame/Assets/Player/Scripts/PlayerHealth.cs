@@ -22,13 +22,13 @@ public class PlayerHealth : MonoBehaviour
 
         health -= amount;
         Debug.Log("Player took damage! Health: " + health);
-
+        
         if (health <= 0)
-        {
+        {            
             Debug.Log("Player died!");
             playerSr.enabled = false;
             playerMovement.enabled = false;
-            sm.SaveGame();
+            
         }
     }
 

@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using System;
 
 public class Timer : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class Timer : MonoBehaviour
         int secconds = Mathf.FloorToInt(elapsedTime % 60);
         string timerText = string.Format("Time: {0:00}:{1:00}", minutes, secconds);
         text.text = timerText.ToString();
-        sm.SetPlayTime(elapsedTime);
+        double rounded = (Math.Round(elapsedTime / 3600, 5));
+        sm.SetPlayTime(rounded);
     }
 }

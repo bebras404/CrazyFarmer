@@ -317,6 +317,14 @@ PrefabInstance:
       propertyPath: sm
       value: 
       objectReference: {fileID: 738429509}
+    - target: {fileID: 2610562216714925323, guid: 6055ea22e83a2e348a2a53ee8d399ea8, type: 3}
+      propertyPath: savem
+      value: 
+      objectReference: {fileID: 738429509}
+    - target: {fileID: 4745413475171775773, guid: 6055ea22e83a2e348a2a53ee8d399ea8, type: 3}
+      propertyPath: m_TagString
+      value: ScoreManager
+      objectReference: {fileID: 0}
     - target: {fileID: 6362268276960730541, guid: 6055ea22e83a2e348a2a53ee8d399ea8, type: 3}
       propertyPath: m_Name
       value: PlayerUI

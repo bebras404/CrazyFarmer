@@ -28,9 +28,9 @@ public class SaveManager : MonoBehaviour
         data.HighScore = amount;
     }
 
-    public void SetPlayTime(float PlayTime) 
+    public void SetPlayTime(double PlayTime) 
     {
-        data.PlayTime += Mathf.Floor(PlayTime);
+        data.PlayTime += PlayTime;
     }
 
     public int PassCoinCount() 
@@ -53,7 +53,7 @@ public class SaveManager : MonoBehaviour
     }
 
 
-    public float PassPlayTime() 
+    public double PassPlayTime() 
     {
         if (SaveCreated)
         {
@@ -104,6 +104,6 @@ public class SaveData
 {
     public int CoinCount;
     public long HighScore;
-    public float PlayTime;
+    public double PlayTime;
 }
 

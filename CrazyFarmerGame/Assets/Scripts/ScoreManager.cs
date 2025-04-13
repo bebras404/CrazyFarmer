@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ScoreManager : MonoBehaviour
 {
-    public SaveManager sm;
+    public SaveManager savem;
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI highScoreText;
 
@@ -13,7 +13,7 @@ public class ScoreManager : MonoBehaviour
 
     void Start()
     {
-        highScore = sm.PassHighScore();
+        highScore = savem.PassHighScore();
         // Update UI
         UpdateScoreUI();
     }
@@ -26,7 +26,7 @@ public class ScoreManager : MonoBehaviour
         if (score > highScore)
         {
             highScore = score;
-            sm.SetScoreCount(highScore);
+            savem.SetScoreCount(highScore);
         }
 
         // Update UI
