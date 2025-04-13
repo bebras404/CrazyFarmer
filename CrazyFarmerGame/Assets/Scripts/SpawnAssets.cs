@@ -69,7 +69,8 @@ public class SpawnAssets : MonoBehaviour
 
             // Assign PlayerHealth to the AIController.
 
-            
+
+
            if(newEnemy.GetComponent<CoinScript>() != null) 
            {
                 CoinScript cs = newEnemy.GetComponent<CoinScript>();
