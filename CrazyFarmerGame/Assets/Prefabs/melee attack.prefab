@@ -21,6 +21,10 @@ PrefabInstance:
       value: Projectile
       objectReference: {fileID: 0}
     - target: {fileID: 3626916397498700004, guid: 5450aeffddebc384a8b2b31c10bdef3f, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3626916397498700004, guid: 5450aeffddebc384a8b2b31c10bdef3f, type: 3}
       propertyPath: m_SortingLayer
       value: 4
       objectReference: {fileID: 0}
@@ -108,7 +112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileSpeed: 0.1
-  lifetime: 10
+  lifetime: 0.1
   damage: 5
 --- !u!58 &1268626265213078812
 CircleCollider2D:

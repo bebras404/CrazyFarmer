@@ -8,6 +8,8 @@ public class SaveManager : MonoBehaviour
     private bool SaveCreated = false;
 
     private SaveData data = new SaveData();
+    public PlayerHealth playerHealth;
+    private bool SavedData = false;
 
 
     private void Awake()
@@ -26,9 +28,9 @@ public class SaveManager : MonoBehaviour
         data.HighScore = amount;
     }
 
-    public void SetPlayTime(int PlayTime) 
+    public void SetPlayTime(float PlayTime) 
     {
-        data.PlayTime = PlayTime;
+        data.PlayTime += Mathf.Floor(PlayTime);
     }
 
     public int PassCoinCount() 
@@ -87,6 +89,11 @@ public class SaveManager : MonoBehaviour
 
     public void Update()
     {
+        if (playerHealth.health <= 0 && !SavedData) 
+        {
+            SaveGame();
+            SavedData = true;
+        }
 
     }
 

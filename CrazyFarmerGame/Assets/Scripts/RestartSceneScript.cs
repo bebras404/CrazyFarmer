@@ -22,30 +22,15 @@ public class RestartSceneScript : MonoBehaviour
 
     public void RestartScene()
     {
-        Timer timer = FindFirstObjectByType<Timer>();
-        timer?.OnPlayerDeath(); // Save final time before restart
-
+       
         SceneManager.LoadSceneAsync(3);
     }
 
     public void BackToMenu()
     {
-        Timer timer = FindFirstObjectByType<Timer>();
-        timer?.OnPlayerDeath(); // Save final time before going back to the menu
 
         SceneManager.LoadSceneAsync(0);
     }
 
-    public void GameOver()
-    {
-        Timer timer = FindFirstObjectByType<Timer>();
-        if (timer != null)
-        {
-            timer.OnPlayerDeath();
-        }
-        else
-        {
-            Debug.LogError("Timer not found! Make sure it's active in the scene.");
-        }
-    }
+   
 }
