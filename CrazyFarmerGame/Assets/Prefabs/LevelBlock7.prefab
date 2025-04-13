@@ -6446,7 +6446,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2169347720082026906, guid: 746ddbc5eac8cfc4cacee0fb1147e1c3, type: 3}
       propertyPath: spawnDelay
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2169347720082026906, guid: 746ddbc5eac8cfc4cacee0fb1147e1c3, type: 3}
+      propertyPath: SpawnRangeFar
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2169347720082026906, guid: 746ddbc5eac8cfc4cacee0fb1147e1c3, type: 3}
+      propertyPath: SpawnRangeClose
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2169347720082026906, guid: 746ddbc5eac8cfc4cacee0fb1147e1c3, type: 3}
       propertyPath: spawnPoints.Array.size

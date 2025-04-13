@@ -5246,7 +5246,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2169347720082026906, guid: 746ddbc5eac8cfc4cacee0fb1147e1c3, type: 3}
       propertyPath: spawnDelay
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2169347720082026906, guid: 746ddbc5eac8cfc4cacee0fb1147e1c3, type: 3}
+      propertyPath: SpawnRangeFar
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2169347720082026906, guid: 746ddbc5eac8cfc4cacee0fb1147e1c3, type: 3}
+      propertyPath: SpawnRangeClose
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2169347720082026906, guid: 746ddbc5eac8cfc4cacee0fb1147e1c3, type: 3}
       propertyPath: spawnPoints.Array.size
@@ -5287,7 +5295,7 @@ PrefabInstance:
     - target: {fileID: 2169347720082026906, guid: 746ddbc5eac8cfc4cacee0fb1147e1c3, type: 3}
       propertyPath: 'enemyPrefabs.Array.data[1]'
       value: 
-      objectReference: {fileID: -2253911629886400664, guid: 63f979a72e34da94b924baf4fde47abc, type: 3}
+      objectReference: {fileID: 3030482113749901279, guid: fbe5e70150c0b0740937ad7d64d23d27, type: 3}
     - target: {fileID: 4716879474278392361, guid: 746ddbc5eac8cfc4cacee0fb1147e1c3, type: 3}
       propertyPath: m_Name
       value: CoinSpawner
