@@ -74,7 +74,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9062061995775160294, guid: 4bcefedc5cefac24b8ad817957440b7b, type: 3}
       propertyPath: m_Name
-      value: CollectableCarrot
+      value: Collectable score Variant
       objectReference: {fileID: 0}
     - target: {fileID: 9062061995775160294, guid: 4bcefedc5cefac24b8ad817957440b7b, type: 3}
       propertyPath: m_TagString

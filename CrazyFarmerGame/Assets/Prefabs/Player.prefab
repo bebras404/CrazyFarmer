@@ -78,6 +78,7 @@ GameObject:
   - component: {fileID: 2963926436729097530}
   - component: {fileID: 6803454138311911570}
   - component: {fileID: 5263071439593861569}
+  - component: {fileID: 8069184554289208358}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -220,6 +221,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 6
+  cm: {fileID: 0}
   animator: {fileID: 3754891978047544136}
   rb: {fileID: 6803454138311911570}
   groundCheck: {fileID: 8684574897397543499}
@@ -245,7 +247,6 @@ MonoBehaviour:
   MaxHealth: 10
   playerSr: {fileID: 1608632500305954404}
   playerMovement: {fileID: 2476884488792057782}
-  isInvincible: 0
 --- !u!50 &6803454138311911570
 Rigidbody2D:
   serializedVersion: 5
@@ -310,3 +311,17 @@ CapsuleCollider2D:
   m_Offset: {x: -0.028914332, y: 0.46262917}
   m_Size: {x: 0.6022887, y: 0.8282866}
   m_Direction: 0
+--- !u!114 &8069184554289208358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4953423935836144104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86d1caa461a03024297e5c1617995236, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firePosition: {fileID: 7842493571132711756}
+  projectilePrefab: {fileID: 6223898036703120850, guid: 50375c011ddbfa14791facbd8e56e98d, type: 3}
