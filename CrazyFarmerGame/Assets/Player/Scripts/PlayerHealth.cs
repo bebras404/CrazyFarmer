@@ -7,6 +7,7 @@ public class PlayerHealth : MonoBehaviour
 
     public SpriteRenderer playerSr;
     public PlayerMovement playerMovement;
+    public SaveManager sm;
 
     public bool isInvincible = false; // Controls invincibility
 
@@ -27,6 +28,7 @@ public class PlayerHealth : MonoBehaviour
             Debug.Log("Player died!");
             playerSr.enabled = false;
             playerMovement.enabled = false;
+            sm.SaveGame();
         }
     }
 

@@ -4,11 +4,16 @@ using UnityEngine.UI;
 public class CoinManager : MonoBehaviour
 {
     [SerializeField] Text coinText;
-    public int coinCount = 0;
+    public SaveManager sm;
+    private int coinCount = 0;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        if (sm.PassCoinCount() != -1) 
+        {
+            coinCount = sm.PassCoinCount();
+        }
+
     }
 
     // Update is called once per frame
@@ -20,5 +25,6 @@ public class CoinManager : MonoBehaviour
     public void AddCoins(int amount) 
     {
         coinCount += amount;
+        sm.SetCoinCount(coinCount);
     }
 }

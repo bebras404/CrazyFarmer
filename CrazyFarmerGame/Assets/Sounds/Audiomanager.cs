@@ -39,7 +39,7 @@ public class Audiomanager : MonoBehaviour
     private void Update()
     {
        
-        if (player.GetComponent<PlayerHealth>().health <= 0 && !hasPlayedDeathSFX)
+        if (player.GetComponent<PlayerHealth>() != null && player.GetComponent<PlayerHealth>().health <= 0 && !hasPlayedDeathSFX)
         {
             SFXSource.PlayOneShot(death);
             musicSource.Stop();
