@@ -42,7 +42,7 @@ public class PlayerMovement : MonoBehaviour
         {
             animator.SetBool("IsJumping", true);
         }
-
+        //fireball shooting animation logic
         if (Input.GetMouseButtonDown(0) && Time.time > lastAttackTime + attackCooldown && IsGrounded())
         {
             isAttacking = true;
@@ -57,6 +57,13 @@ public class PlayerMovement : MonoBehaviour
 
         Flip();
     }
+    // Add this method to your PlayerMovement class
+    public void StartAttack()
+    {
+        isAttacking = true;
+        animator.SetBool("IsAttacking", true);
+        lastAttackTime = Time.time;
+    }
 
     private void FixedUpdate()
     {
@@ -70,7 +77,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private bool IsGrounded()
+    public bool IsGrounded()
     {
         return Physics2D.OverlapCircle(groundCheck.position, 0.3f, groundLayer) || Physics2D.OverlapCircle(groundCheck.position, 0.3f, EntityLayer);
     }

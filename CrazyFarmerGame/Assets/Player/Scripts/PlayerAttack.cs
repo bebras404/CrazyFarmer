@@ -8,6 +8,13 @@ public class PlayerAttack : MonoBehaviour
     // Reference to your movement script
     private PlayerMovement playerMovement;
 
+    // Shooting cooldown variables
+    private float attackCooldown = 0.5f;
+    private float lastAttackTime = 0f;
+
+    // Delay between attack animation start and actual projectile firing
+    public float fireballDelay = 0.2f;
+
     void Start()
     {
         playerMovement = GetComponent<PlayerMovement>();
@@ -15,9 +22,16 @@ public class PlayerAttack : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        // Check for attack input, cooldown, and grounded status
+        if (Input.GetMouseButtonDown(0) && Time.time > lastAttackTime + attackCooldown && playerMovement.IsGrounded())
         {
-            Shoot();
+            // Start the attack animation through the movement script
+            playerMovement.StartAttack();
+
+            // Schedule the actual projectile firing after a delay
+            Invoke("Shoot", fireballDelay);
+
+            lastAttackTime = Time.time;
         }
     }
 
