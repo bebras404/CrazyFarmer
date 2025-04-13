@@ -880,6 +880,30 @@ PrefabInstance:
       propertyPath: firstSection
       value: 
       objectReference: {fileID: 1245735326}
+    - target: {fileID: 8092230937713953745, guid: b9f8b33b35db6584489d11ff27b8dc59, type: 3}
+      propertyPath: levelSections.Array.size
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8092230937713953745, guid: b9f8b33b35db6584489d11ff27b8dc59, type: 3}
+      propertyPath: 'levelSections.Array.data[5]'
+      value: 
+      objectReference: {fileID: 3807561428770514474, guid: 54919cb25fa417b4f9ec227faefe034d, type: 3}
+    - target: {fileID: 8092230937713953745, guid: b9f8b33b35db6584489d11ff27b8dc59, type: 3}
+      propertyPath: 'levelSections.Array.data[6]'
+      value: 
+      objectReference: {fileID: 7212127030756401427, guid: 2f3567e280c327d41b71c2ac364db4ee, type: 3}
+    - target: {fileID: 8092230937713953745, guid: b9f8b33b35db6584489d11ff27b8dc59, type: 3}
+      propertyPath: 'levelSections.Array.data[7]'
+      value: 
+      objectReference: {fileID: 7212127030756401427, guid: 598afffabb6087b4783f4e18e34d1a86, type: 3}
+    - target: {fileID: 8092230937713953745, guid: b9f8b33b35db6584489d11ff27b8dc59, type: 3}
+      propertyPath: 'levelSections.Array.data[8]'
+      value: 
+      objectReference: {fileID: 1357910944933298653, guid: bdd6bfdf733b0e54ba8ac478f549b59b, type: 3}
+    - target: {fileID: 8092230937713953745, guid: b9f8b33b35db6584489d11ff27b8dc59, type: 3}
+      propertyPath: 'levelSections.Array.data[9]'
+      value: 
+      objectReference: {fileID: 9196470812019132233, guid: 7c233d4338a14da4b916085be8abbdfe, type: 3}
     - target: {fileID: 8907968964023700485, guid: b9f8b33b35db6584489d11ff27b8dc59, type: 3}
       propertyPath: m_LocalPosition.x
       value: 30
