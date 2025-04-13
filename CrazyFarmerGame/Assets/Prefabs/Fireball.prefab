@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -2253911629886400664, guid: 5450aeffddebc384a8b2b31c10bdef3f, type: 3}
       propertyPath: m_Name
-      value: fireball projectile
+      value: Fireball
       objectReference: {fileID: 0}
     - target: {fileID: -2253911629886400664, guid: 5450aeffddebc384a8b2b31c10bdef3f, type: 3}
       propertyPath: m_Layer
@@ -78,9 +78,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -2253911629886400664, guid: 5450aeffddebc384a8b2b31c10bdef3f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1268626265213078812}
-    - targetCorrespondingSourceObject: {fileID: -2253911629886400664, guid: 5450aeffddebc384a8b2b31c10bdef3f, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: -7057909619787823530}
   m_SourcePrefab: {fileID: -8435245712485981826, guid: 5450aeffddebc384a8b2b31c10bdef3f, type: 3}
 --- !u!1 &6223898036703120850 stripped
 GameObject:
@@ -94,7 +91,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6223898036703120850}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fb5df71aed416594d8883bcb59e2212a, type: 3}
   m_Name: 
@@ -138,30 +135,3 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: -0.040513113, y: 0.36454284}
   m_Radius: 0.19464739
---- !u!50 &-7057909619787823530
-Rigidbody2D:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6223898036703120850}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 1
-  m_Constraints: 0

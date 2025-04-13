@@ -97,6 +97,7 @@ public class PlayerMovement : MonoBehaviour
     {
 
     }
+
     public bool IsFacingRight()
     {
         return isFacingRight;
