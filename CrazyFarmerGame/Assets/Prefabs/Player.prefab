@@ -325,4 +325,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firePosition: {fileID: 7842493571132711756}
   projectilePrefab: {fileID: 6223898036703120850, guid: 50375c011ddbfa14791facbd8e56e98d, type: 3}
+  meleePrefab: {fileID: 6223898036703120850, guid: 80f32d53f81c7a54f878e4382bc65ccb, type: 3}
   fireballDelay: 0.2
+  meleeDelay: 0.1
