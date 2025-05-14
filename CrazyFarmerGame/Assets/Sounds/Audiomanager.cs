@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 
 public class Audiomanager : MonoBehaviour
@@ -9,18 +10,24 @@ public class Audiomanager : MonoBehaviour
     [Header("--------- Audio Clip ---------")]
     public AudioClip background;
     public AudioClip death;
-    //public AudioClip wallTouch;
+    public AudioClip SingleJump;
+    public AudioClip DoubleJump;
+    public AudioClip Coin;
+    public AudioClip PlayerHurt;
+    public AudioClip Health;
+    public AudioClip ScoreSound;
+    public AudioClip[] FireBallSounds;
+    public AudioClip MeleeAttack;
     public GameObject player;
 
     private bool hasPlayedDeathSFX = false;
 
-    private AudioClip normalizedDeathClip;
+
     private AudioClip normalizedBackgroundClip;
+
 
     private void Start()
     {
-        // Normalize both clips at start
-        normalizedDeathClip = NormalizeAudio(death);
         normalizedBackgroundClip = NormalizeAudio(background);
 
         musicSource.clip = normalizedBackgroundClip;
@@ -33,9 +40,79 @@ public class Audiomanager : MonoBehaviour
        
         if (player.GetComponent<PlayerHealth>() != null && player.GetComponent<PlayerHealth>().health <= 0 && !hasPlayedDeathSFX)
         {
-            SFXSource.PlayOneShot(normalizedDeathClip);
+            SFXSource.PlayOneShot(death);
             musicSource.Stop();
             hasPlayedDeathSFX = true;
+        }
+        
+    }
+    private void Awake()
+    {
+        SFXSource.volume = 1;
+    }
+
+    public void PlayMeleeAttackSound()
+    {
+        if (SFXSource != null && MeleeAttack != null)
+        {
+            SFXSource.PlayOneShot(MeleeAttack);
+        }
+    }
+
+    public void PlayerFireballSound() 
+    {
+        int randomIndex = Random.Range(0, FireBallSounds.Count());
+        if (SFXSource != null && FireBallSounds[randomIndex] != null)
+        {
+            SFXSource.PlayOneShot(FireBallSounds[randomIndex]);
+        }
+    }
+
+    public void PlayCoinSound()
+    {
+        if (SFXSource != null && Coin != null)
+        {
+            SFXSource.PlayOneShot(Coin);
+        }
+    }
+
+    public void PlayPlayerHurtSound()
+    {
+        if (SFXSource != null && PlayerHurt != null)
+        {
+            SFXSource.PlayOneShot(PlayerHurt);
+        }
+    }
+
+    public void PlayHealthSound()
+    {
+        if (SFXSource != null && Health != null)
+        {
+            SFXSource.PlayOneShot(Health);
+        }
+    }
+
+    public void PlayScoreSound()
+    {
+        if (SFXSource != null && ScoreSound != null)
+        {
+            SFXSource.PlayOneShot(ScoreSound);
+        }
+    }
+
+    public void PlaySingleJumpSound()
+    {
+        if (SFXSource != null && SingleJump != null)
+        {
+            SFXSource.PlayOneShot(SingleJump);
+        }
+    }
+
+    public void PlayDoubleJumpSound()
+    {
+        if (SFXSource != null && DoubleJump != null)
+        {
+            SFXSource.PlayOneShot(DoubleJump);
         }
     }
 

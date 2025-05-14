@@ -8,7 +8,7 @@ public class PlayerAttack : MonoBehaviour
 
     // Attack mode system
     private enum AttackMode { Ranged = 0, Melee = 1 }
-    private AttackMode currentAttackMode = AttackMode.Ranged;
+    private AttackMode currentAttackMode = AttackMode.Melee;
     private KeyCode modeSwitchKey = KeyCode.Q; // Change this to your preferred key
 
     // Reference to your movement script
@@ -20,10 +20,18 @@ public class PlayerAttack : MonoBehaviour
     public float fireballDelay = 0.2f;
     public float meleeDelay = 0.1f;
 
+    private Audiomanager audioManager;
+
     void Start()
     {
         playerMovement = GetComponent<PlayerMovement>();
     }
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("SFXAudio").GetComponent<Audiomanager>();
+    }
+
+
 
     void Update()
     {
@@ -71,6 +79,7 @@ public class PlayerAttack : MonoBehaviour
         Projectile projectileScript = projectile.GetComponent<Projectile>();
         if (projectileScript != null)
         {
+            audioManager.PlayerFireballSound();
             projectileScript.SetDirection(playerMovement.IsFacingRight() ? 1 : -1);
         }
     }
@@ -86,6 +95,7 @@ public class PlayerAttack : MonoBehaviour
         Projectile meleeScript = meleeAttack.GetComponent<Projectile>();
         if (meleeScript != null)
         {
+            audioManager.PlayMeleeAttackSound();
             meleeScript.SetDirection(playerMovement.IsFacingRight() ? 1 : -1);
         }
     }

@@ -6,10 +6,12 @@ public class CoinScript : MonoBehaviour
     
     public int CoinsToAdd = 1;
 
+    private Audiomanager audioManager;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void Awake()
     {
-        
+        audioManager = GameObject.FindGameObjectWithTag("SFXAudio").GetComponent<Audiomanager>();
     }
 
     public void SetCM(CoinManager cm) 
@@ -22,6 +24,7 @@ public class CoinScript : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             cm.AddCoins(CoinsToAdd);
+            audioManager.PlayCoinSound();
             Destroy(this.gameObject);
         }
 

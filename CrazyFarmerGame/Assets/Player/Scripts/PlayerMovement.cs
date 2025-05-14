@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
     private float jumpingPower = 16f;
     private bool isFacingRight = true;
     private bool isAttacking = false;
+    private bool DoubleJump = false;
 
     public Animator animator;
 
@@ -15,8 +16,15 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private LayerMask EntityLayer;
 
+
+    private Audiomanager audioManager;
     private float attackCooldown = 0.5f;
     private float lastAttackTime = 0f;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("SFXAudio").GetComponent<Audiomanager>();
+    }
 
     void Update()
     {
@@ -24,19 +32,27 @@ public class PlayerMovement : MonoBehaviour
 
         animator.SetFloat("Speed", Mathf.Abs(horizontal));
 
-        if (Input.GetButtonDown("Jump") && IsGrounded() && !isAttacking)
+        if (Input.GetButtonDown("Jump") && IsGrounded() && !isAttacking && !DoubleJump)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpingPower);
-        }
+            audioManager.PlaySingleJumpSound();
 
+        }
         if (Input.GetButtonUp("Jump") && rb.linearVelocity.y > 0f)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * 0.5f);
+        }
+        if (Input.GetButtonDown("Jump") && !DoubleJump && !isAttacking && !IsGrounded()) 
+        {
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, (jumpingPower/4)*3);
+            DoubleJump = true;
+            audioManager.PlayDoubleJumpSound();
         }
 
         if (IsGrounded())
         {
             animator.SetBool("IsJumping", false);
+            DoubleJump = false;
         }
         else
         {
@@ -93,10 +109,6 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter2D(Collider2D other)
-    {
-
-    }
     public bool IsFacingRight()
     {
         return isFacingRight;

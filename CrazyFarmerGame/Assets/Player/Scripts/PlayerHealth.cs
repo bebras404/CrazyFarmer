@@ -11,6 +11,13 @@ public class PlayerHealth : MonoBehaviour
 
     public bool isInvincible = false; // Controls invincibility
 
+    private Audiomanager audioManager;
+
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("SFXAudio").GetComponent<Audiomanager>();
+    }
     void Start()
     {
         health = MaxHealth;
@@ -27,9 +34,10 @@ public class PlayerHealth : MonoBehaviour
         {            
             Debug.Log("Player died!");
             playerSr.enabled = false;
-            playerMovement.enabled = false;
-            
+            playerMovement.enabled = false;            
         }
+        audioManager.PlayPlayerHurtSound();
+
     }
 
     public void Heal(int amount)
@@ -39,6 +47,7 @@ public class PlayerHealth : MonoBehaviour
         {
             health = MaxHealth;
         }
+        audioManager.PlayHealthSound();
         Debug.Log("Player healed! Health: " + health);
     }
 }
