@@ -771,6 +771,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: 559c232a43caebe41870ce54786f604e, type: 3}
     - target: {fileID: 528937296788372945, guid: 67779a2002735d24c937b236627b59a9, type: 3}
+      propertyPath: MeleeAttack
+      value: 
+      objectReference: {fileID: 8300000, guid: cd9af9555002e964189a79882d75eccc, type: 3}
+    - target: {fileID: 528937296788372945, guid: 67779a2002735d24c937b236627b59a9, type: 3}
       propertyPath: FireBallSounds.Array.size
       value: 5
       objectReference: {fileID: 0}
