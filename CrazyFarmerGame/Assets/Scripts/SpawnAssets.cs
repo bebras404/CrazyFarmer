@@ -69,22 +69,21 @@ public class SpawnAssets : MonoBehaviour
 
             // Assign PlayerHealth to the AIController.
 
-            
-            
-            Transform newEnemytrans = newEnemy.transform.Find("HeadCheck");
-            Transform newEnemytrans2 = newEnemy.transform.Find("ProjDamage");
 
-            if (newEnemytrans2 != null) 
+
+           if(newEnemy.GetComponent<CoinScript>() != null) 
+           {
+                CoinScript cs = newEnemy.GetComponent<CoinScript>();
+                CoinManager cm = GameObject.Find("GameManager").GetComponent<CoinManager>();
+                cs.SetCM(cm);
+           }
+
+            if (newEnemy.GetComponent<ProjDamage>() != null) 
             {
-                ProjDamage projDamage = newEnemytrans2.GetComponent<ProjDamage>();
+                ProjDamage projDamage = newEnemy.GetComponent<ProjDamage>();
                 projDamage.SetManager(UIcanvas);
             }
 
-            if (newEnemytrans != null)
-            {
-                Playerdmg = newEnemytrans.GetComponent<AIDamageDealing>();
-                Playerdmg.SetManager(UIcanvas);
-            }
             
 
             if (newEnemy.GetComponent<AiController>() != null)

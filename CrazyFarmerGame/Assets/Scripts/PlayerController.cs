@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
@@ -8,12 +9,18 @@ public class PlayerController : MonoBehaviour
     public GameObject fireballPrefab; // Fireball prefab
     public Transform firePoint; // Fireball spawn position
 
+    public TextMeshProUGUI fireballCooldownText; // UI Text for Fireball cooldown
+    public TextMeshProUGUI invincibilityCooldownText; // UI Text for Invincibility cooldown
+
     private bool canUseInvincibility = true;
     private bool canUseFireball = true;
     private bool fireballModeActive = false;
 
     public float powerUpDuration = 5f;
     public float cooldownTime = 60f;
+
+    private float fireballCooldownTimer = 0f;
+    private float invincibilityCooldownTimer = 0f;
 
     void Start()
     {
@@ -41,12 +48,15 @@ public class PlayerController : MonoBehaviour
         {
             ShootFireball();
         }
+
+        UpdateCooldownUI();
     }
 
     IEnumerator ActivateInvincibility()
     {
         canUseInvincibility = false;
         playerHealth.isInvincible = true;
+        invincibilityCooldownTimer = cooldownTime;
         Debug.Log("Invincibility Activated!");
 
         yield return new WaitForSeconds(powerUpDuration);
@@ -63,6 +73,7 @@ public class PlayerController : MonoBehaviour
     {
         canUseFireball = false;
         fireballModeActive = true;
+        fireballCooldownTimer = cooldownTime;
         Debug.Log("Fireball Mode Activated!");
 
         yield return new WaitForSeconds(powerUpDuration);
@@ -81,10 +92,8 @@ public class PlayerController : MonoBehaviour
         {
             GameObject fireball = Instantiate(fireballPrefab, firePoint.position, Quaternion.identity);
 
-            // Determine the direction (1 for right, -1 for left)
             float direction = transform.localScale.x > 0 ? 1f : -1f;
 
-            // Set fireball direction
             fireball.GetComponent<Fireball>().SetDirection(direction);
         }
         else
@@ -93,5 +102,28 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void UpdateCooldownUI()
+    {
+        if (!canUseFireball)
+        {
+            fireballCooldownTimer -= Time.deltaTime;
+            fireballCooldownTimer = Mathf.Max(fireballCooldownTimer, 0f);
+            fireballCooldownText.text = "Fireball: " + Mathf.Ceil(fireballCooldownTimer).ToString() + "s";
+        }
+        else
+        {
+            fireballCooldownText.text = "Fireball: Ready!";
+        }
 
+        if (!canUseInvincibility)
+        {
+            invincibilityCooldownTimer -= Time.deltaTime;
+            invincibilityCooldownTimer = Mathf.Max(invincibilityCooldownTimer, 0f);
+            invincibilityCooldownText.text = "Invincibility: " + Mathf.Ceil(invincibilityCooldownTimer).ToString() + "s";
+        }
+        else
+        {
+            invincibilityCooldownText.text = "Invincibility: Ready!";
+        }
+    }
 }

@@ -8,7 +8,13 @@ public class CollectableScore : MonoBehaviour
     public float floatHeight = 0;
     private Vector3 startPosition;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private Audiomanager audioManager;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("SFXAudio").GetComponent<Audiomanager>();
+    }
+
     void Start()
     {
         startPosition = transform.position;
@@ -23,6 +29,7 @@ public class CollectableScore : MonoBehaviour
         if (collider.gameObject.CompareTag("Player"))
         {
             sm.AddScore(ScoreToAdd);
+            audioManager.PlayScoreSound();
         }
         Destroy(this.gameObject);
 

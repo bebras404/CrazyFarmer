@@ -35,7 +35,7 @@ public class Projectile : MonoBehaviour
             if (enemyHealth != null)
             {
                 enemyHealth.TakeDamageFromPlayer(damage);
-            }
+            }            
             Destroy(gameObject);
         }
         else if (!collision.CompareTag("Player"))

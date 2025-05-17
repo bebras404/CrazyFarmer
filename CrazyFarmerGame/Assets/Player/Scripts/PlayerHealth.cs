@@ -7,9 +7,17 @@ public class PlayerHealth : MonoBehaviour
 
     public SpriteRenderer playerSr;
     public PlayerMovement playerMovement;
+    public SaveManager sm;
 
     public bool isInvincible = false; // Controls invincibility
 
+    private Audiomanager audioManager;
+
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("SFXAudio").GetComponent<Audiomanager>();
+    }
     void Start()
     {
         health = MaxHealth;
@@ -21,13 +29,15 @@ public class PlayerHealth : MonoBehaviour
 
         health -= amount;
         Debug.Log("Player took damage! Health: " + health);
-
+        
         if (health <= 0)
-        {
+        {            
             Debug.Log("Player died!");
             playerSr.enabled = false;
-            playerMovement.enabled = false;
+            playerMovement.enabled = false;            
         }
+        audioManager.PlayPlayerHurtSound();
+
     }
 
     public void Heal(int amount)
@@ -37,6 +47,7 @@ public class PlayerHealth : MonoBehaviour
         {
             health = MaxHealth;
         }
+        audioManager.PlayHealthSound();
         Debug.Log("Player healed! Health: " + health);
     }
 }

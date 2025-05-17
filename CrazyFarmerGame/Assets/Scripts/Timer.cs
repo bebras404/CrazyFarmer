@@ -1,41 +1,21 @@
 using UnityEngine;
 using TMPro;
+using System;
 
 public class Timer : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI timerText;
-    private float elapsedTime = 0f;
-    private float bestTime = 0f;
-
-    void Start()
-    {
-        if (PlayerPrefs.HasKey("bestTime"))
-        {
-            bestTime = PlayerPrefs.GetFloat("bestTime");
-        }
-    }
-
+    public SaveManager sm;
+    public float elapsedTime;
+    [SerializeField] TextMeshProUGUI text;
     void Update()
     {
+
         elapsedTime += Time.deltaTime;
         int minutes = Mathf.FloorToInt(elapsedTime / 60);
-        int seconds = Mathf.FloorToInt(elapsedTime % 60);
-        timerText.text = $"Time: {minutes:00}:{seconds:00}";
-
-        // Save Best Time
-        if (elapsedTime > bestTime)
-        {
-            bestTime = elapsedTime;
-            PlayerPrefs.SetFloat("bestTime", bestTime);
-            PlayerPrefs.Save();
-        }
+        int secconds = Mathf.FloorToInt(elapsedTime % 60);
+        string timerText = string.Format("Time: {0:00}:{1:00}", minutes, secconds);
+        text.text = timerText.ToString();
+        double rounded = (Math.Round(elapsedTime / 3600, 5));
+        sm.SetPlayTime(rounded);
     }
-
-    public void OnPlayerDeath()
-    {
-        Debug.Log($"Player Died. Saving Final Time: {elapsedTime} seconds.");
-        PlayerPrefs.SetFloat("finalTime", elapsedTime); // Save final time correctly
-        PlayerPrefs.Save();
-    }
-
 }

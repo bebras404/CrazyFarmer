@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-
+﻿using System.Collections;
+using UnityEngine;
 
 public class AiController : MonoBehaviour
 {
@@ -7,88 +7,82 @@ public class AiController : MonoBehaviour
     public GameObject player;
     public float speed;
     private float distance;
-    public LayerMask groundLayer;
-    public float groundCheckDistance = 0.1f;
     private bool isFacingRight = true;
     public float range;
     public PlayerHealth playerHealth;
     private bool isTouchingPlayer = false;
     public Animator animator;
     private Rigidbody2D rb;
+    private bool canMove = true;
+    private bool isAttacking = false;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        
 
         if (player == null)
         {
             Debug.LogError("AiController: Player is not assigned! Make sure LevelBlock sets it.");
         }
     }
+
     public void SetTarget(GameObject playerObj)
     {
         this.player = playerObj;
         playerHealth = playerObj.GetComponent<PlayerHealth>();
     }
 
-
     void Update()
     {
-        
-        if (isTouchingPlayer)
-        {
-            animator.SetBool("IsTouchingPlayer", true);
+        if (player == null || playerHealth == null) return;
 
-        }
-        else if (!isTouchingPlayer)
-        {
-            animator.SetBool("IsTouchingPlayer", false);
-        }
+       
         if (playerHealth.health <= 0)
         {
             animator.SetBool("IsPlayerDead", true);
+            isPlayerAlive = false;
+            rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
+            animator.SetBool("IsWalking", false);
+            animator.SetBool("IsTouchingPlayer", false);
+            return;
         }
-        else if (playerHealth.health > 0) 
+        else
         {
             animator.SetBool("IsPlayerDead", false);
         }
-
-            CheckPlayerStatus();
 
         if (transform.position.y < -5)
         {
             Destroy(this.gameObject);
         }
+        distance = Vector2.Distance(transform.position, player.transform.position);
 
-        if (isPlayerAlive)
+        if (isPlayerAlive && distance <= range && canMove && !isAttacking)
         {
-            distance = Vector2.Distance(transform.position, player.transform.position);
+            animator.SetBool("IsWalking", true);
+            animator.SetBool("IsTouchingPlayer", false);
+            MoveTowardsPlayer();
+        }
+        else
+        {
+            animator.SetBool("IsWalking", false);
 
-            if (distance <= range)
+            if (isAttacking)
             {
-                animator.SetBool("IsWalking", true);
-                MoveTowardsPlayer();
-            }
-            else if(distance > range)
-            {
-                animator.SetBool("IsWalking", false);
-                StopMovement();
+                rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
+                animator.SetBool("IsTouchingPlayer", true);
             }
         }
     }
 
     private void MoveTowardsPlayer()
-    {       
+    {
+        if (!canMove) return;
+
         Vector2 direction = (player.transform.position - transform.position).normalized;
         direction.y = 0;
         rb.linearVelocity = new Vector2(direction.x * speed, rb.linearVelocity.y);
         Flip(direction.x);
-    }
-
-    private void StopMovement() 
-    {
-        rb.linearVelocity = new Vector2(0, 0);
     }
 
     private void Flip(float moveDirection)
@@ -107,12 +101,17 @@ public class AiController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player")) 
+        if (collision.gameObject.CompareTag("Player"))
         {
             isTouchingPlayer = true;
+
+            if (!isAttacking)
+            {
+                StartCoroutine(PerformAttack());
+            }
         }
-        
     }
+
 
     private void OnCollisionExit2D(Collision2D collision)
     {
@@ -122,15 +121,22 @@ public class AiController : MonoBehaviour
         }
     }
 
-    private void CheckPlayerStatus()
+    private IEnumerator PerformAttack()
     {
-        if (playerHealth.health <= 0)
+        isAttacking = true;
+        canMove = false;
+
+        while (isTouchingPlayer && playerHealth.health > 0)
         {
-            
-            isPlayerAlive = false;
-            rb.linearVelocity = new Vector2(0, rb.linearVelocity.y); // Stop moving when player is dead
+            animator.SetBool("IsTouchingPlayer", true);
+            animator.SetBool("IsWalking", false);
+
+            rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
+            yield return new WaitForSeconds(0.5f);
         }
+        isAttacking = false;
+        canMove = true;
+        animator.SetBool("IsTouchingPlayer", false);
     }
 
-   
 }

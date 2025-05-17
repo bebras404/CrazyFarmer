@@ -7,8 +7,8 @@ public class PlayerMovement : MonoBehaviour
     private float jumpingPower = 16f;
     private bool isFacingRight = true;
     private bool isAttacking = false;
+    private bool DoubleJump = false;
 
-    public CoinManager cm;
     public Animator animator;
 
     [SerializeField] private Rigidbody2D rb;
@@ -16,8 +16,15 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private LayerMask EntityLayer;
 
-    private float attackCooldown = 0.5f;
+
+    private Audiomanager audioManager;
+    private float attackCooldown = 0.1f;//buvo 0.5f testuoju ar geriau zaidima jauciasi kai nera slowdown po atakinimo
     private float lastAttackTime = 0f;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("SFXAudio").GetComponent<Audiomanager>();
+    }
 
     void Update()
     {
@@ -25,25 +32,33 @@ public class PlayerMovement : MonoBehaviour
 
         animator.SetFloat("Speed", Mathf.Abs(horizontal));
 
-        if (Input.GetButtonDown("Jump") && IsGrounded() && !isAttacking)
+        if (Input.GetButtonDown("Jump") && IsGrounded() && !isAttacking && !DoubleJump)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpingPower);
-        }
+            audioManager.PlaySingleJumpSound();
 
+        }
         if (Input.GetButtonUp("Jump") && rb.linearVelocity.y > 0f)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * 0.5f);
+        }
+        if (Input.GetButtonDown("Jump") && !DoubleJump && !isAttacking && !IsGrounded()) 
+        {
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, (jumpingPower/4)*3);
+            DoubleJump = true;
+            audioManager.PlayDoubleJumpSound();
         }
 
         if (IsGrounded())
         {
             animator.SetBool("IsJumping", false);
+            DoubleJump = false;
         }
         else
         {
             animator.SetBool("IsJumping", true);
         }
-
+        //fireball shooting animation logic
         if (Input.GetMouseButtonDown(0) && Time.time > lastAttackTime + attackCooldown && IsGrounded())
         {
             isAttacking = true;
@@ -58,6 +73,13 @@ public class PlayerMovement : MonoBehaviour
 
         Flip();
     }
+    // Add this method to your PlayerMovement class
+    public void StartAttack()
+    {
+        isAttacking = true;
+        animator.SetBool("IsAttacking", true);
+        lastAttackTime = Time.time;
+    }
 
     private void FixedUpdate()
     {
@@ -71,7 +93,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private bool IsGrounded()
+    public bool IsGrounded()
     {
         return Physics2D.OverlapCircle(groundCheck.position, 0.3f, groundLayer) || Physics2D.OverlapCircle(groundCheck.position, 0.3f, EntityLayer);
     }
@@ -87,14 +109,6 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.CompareTag("Coin"))
-        {
-            Destroy(other.gameObject);
-            cm.coinCount++;
-        }
-    }
     public bool IsFacingRight()
     {
         return isFacingRight;

@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 1739668124751676938}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.086, y: 0.043, z: 0}
+  m_LocalPosition: {x: 0.69, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -221,7 +221,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 6
-  cm: {fileID: 0}
   animator: {fileID: 3754891978047544136}
   rb: {fileID: 6803454138311911570}
   groundCheck: {fileID: 8684574897397543499}
@@ -247,6 +246,8 @@ MonoBehaviour:
   MaxHealth: 10
   playerSr: {fileID: 1608632500305954404}
   playerMovement: {fileID: 2476884488792057782}
+  sm: {fileID: 0}
+  isInvincible: 0
 --- !u!50 &6803454138311911570
 Rigidbody2D:
   serializedVersion: 5
@@ -325,3 +326,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firePosition: {fileID: 7842493571132711756}
   projectilePrefab: {fileID: 6223898036703120850, guid: 50375c011ddbfa14791facbd8e56e98d, type: 3}
+  meleePrefab: {fileID: 6223898036703120850, guid: 80f32d53f81c7a54f878e4382bc65ccb, type: 3}
+  icePrefab: {fileID: 6223898036703120850, guid: 0eed1c1b112703048958fe0b1d19f831, type: 3}
+  poisonPrefab: {fileID: 6223898036703120850, guid: dab4aa4b43ad2ec44b52a61dd4ed85c0, type: 3}
+  fireballDelay: 0.01
+  meleeDelay: 0.01
+  iceDelay: 0.2
+  poisonDelay: 0.2
