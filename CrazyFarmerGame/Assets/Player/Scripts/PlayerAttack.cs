@@ -5,9 +5,12 @@ public class PlayerAttack : MonoBehaviour
     public Transform firePosition;
     public GameObject projectilePrefab;
     public GameObject meleePrefab;
+    public GameObject icePrefab;
+    public GameObject poisonPrefab;
+
 
     // Attack mode system
-    private enum AttackMode { Ranged = 0, Melee = 1 }
+    private enum AttackMode { Ranged = 0, Melee = 1, Ice = 2, Poison = 3}
     private AttackMode currentAttackMode = AttackMode.Melee;
     private KeyCode modeSwitchKey = KeyCode.Q; // Change this to your preferred key
 
@@ -15,10 +18,12 @@ public class PlayerAttack : MonoBehaviour
     private PlayerMovement playerMovement;
 
     // Cooldown variables
-    private float attackCooldown = 0.5f;
+    private float attackCooldown = 0.2f;
     private float lastAttackTime = 0f;
     public float fireballDelay = 0.2f;
     public float meleeDelay = 0.1f;
+    public float iceDelay = 0.2f;
+    public float poisonDelay = 0.2f;
 
     private Audiomanager audioManager;
 
@@ -56,6 +61,12 @@ public class PlayerAttack : MonoBehaviour
                     break;
                 case AttackMode.Melee:
                     Invoke("Melee", meleeDelay);
+                    break;
+                case AttackMode.Ice:
+                    Invoke("Ice", iceDelay);
+                    break;
+                case AttackMode.Poison:
+                    Invoke("Poison", poisonDelay);
                     break;
             }
         }
@@ -97,6 +108,36 @@ public class PlayerAttack : MonoBehaviour
         {
             audioManager.PlayMeleeAttackSound();
             meleeScript.SetDirection(playerMovement.IsFacingRight() ? 1 : -1);
+        }
+    }
+    void Ice()
+    {
+        GameObject projectile = Instantiate(
+            icePrefab,
+            firePosition.position,
+            Quaternion.identity
+        );
+
+        Projectile projectileScript = projectile.GetComponent<Projectile>();
+        if (projectileScript != null)
+        {
+            audioManager.PlayerFireballSound(); // place holder sound
+            projectileScript.SetDirection(playerMovement.IsFacingRight() ? 1 : -1);
+        }
+    }
+    void Poison()
+    {
+        GameObject projectile = Instantiate(
+            poisonPrefab,
+            firePosition.position,
+            Quaternion.identity
+        );
+
+        Projectile projectileScript = projectile.GetComponent<Projectile>();
+        if (projectileScript != null)
+        {
+            audioManager.PlayerFireballSound(); // place holder sound
+            projectileScript.SetDirection(playerMovement.IsFacingRight() ? 1 : -1);
         }
     }
 

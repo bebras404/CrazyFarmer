@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -2253911629886400664, guid: 5450aeffddebc384a8b2b31c10bdef3f, type: 3}
       propertyPath: m_Name
-      value: melee attack
+      value: poison projectile
       objectReference: {fileID: 0}
     - target: {fileID: -2253911629886400664, guid: 5450aeffddebc384a8b2b31c10bdef3f, type: 3}
       propertyPath: m_Layer
@@ -20,10 +20,14 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Projectile
       objectReference: {fileID: 0}
+    - target: {fileID: 1160356261127867848, guid: 5450aeffddebc384a8b2b31c10bdef3f, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 1409972519100071453, guid: 8ba60a49144e4454a879f651b82aef33, type: 3}
     - target: {fileID: 3626916397498700004, guid: 5450aeffddebc384a8b2b31c10bdef3f, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -8238461944310809435, guid: 8ba60a49144e4454a879f651b82aef33, type: 3}
     - target: {fileID: 3626916397498700004, guid: 5450aeffddebc384a8b2b31c10bdef3f, type: 3}
       propertyPath: m_SortingLayer
       value: 4
@@ -31,14 +35,6 @@ PrefabInstance:
     - target: {fileID: 3626916397498700004, guid: 5450aeffddebc384a8b2b31c10bdef3f, type: 3}
       propertyPath: m_SortingLayerID
       value: 967685663
-      objectReference: {fileID: 0}
-    - target: {fileID: 7878350319992209165, guid: 5450aeffddebc384a8b2b31c10bdef3f, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7878350319992209165, guid: 5450aeffddebc384a8b2b31c10bdef3f, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: 5450aeffddebc384a8b2b31c10bdef3f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -111,9 +107,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb5df71aed416594d8883bcb59e2212a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileSpeed: 0.1
-  lifetime: 0.2
-  damage: 5
+  projectileSpeed: 10
+  lifetime: 2
+  damage: 2
 --- !u!58 &1268626265213078812
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -165,7 +161,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0
-  m_GravityScale: 0
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2

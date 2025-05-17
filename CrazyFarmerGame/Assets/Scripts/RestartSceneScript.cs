@@ -23,6 +23,11 @@ public class RestartSceneScript : MonoBehaviour
 
         SceneManager.LoadSceneAsync(0);
     }
+    public void ShowCredits()
+    {
 
-   
+        SceneManager.LoadSceneAsync(4);
+    }
+
+
 }

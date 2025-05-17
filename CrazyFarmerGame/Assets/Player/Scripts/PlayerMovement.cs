@@ -18,7 +18,7 @@ public class PlayerMovement : MonoBehaviour
 
 
     private Audiomanager audioManager;
-    private float attackCooldown = 0.5f;
+    private float attackCooldown = 0.1f;//buvo 0.5f testuoju ar geriau zaidima jauciasi kai nera slowdown po atakinimo
     private float lastAttackTime = 0f;
 
     private void Awake()
