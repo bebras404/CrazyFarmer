@@ -1,12 +1,13 @@
 # CrazyFarmer
 ### Komanda
-Komanda X
+* Komanda X
 
 ### Autoriai
-Adomas Danilevičius
-Jokūbas Stulpinas
-Tomas Macijauskas
-Domantas Barauskas
+
+* [@bebras404] - Adomas Danilevičius
+* [@jacobobos] - Jokūbas Stulpinas
+* [@Tomzaza-joint] - Tomas Macijauskas
+* [@Damke24] - Domantas Barauskas
 
 ### Aprašymas
 
@@ -15,13 +16,13 @@ Atidarius žaidimą naudotojas yra nukreipiamas į pradinį meniu, kuriame gali 
 Žaidėjas turi 10 gyvybių, kurias gali pasipildyti skirtingose vietose lygyje atsirandančiais eleksyrais. Kiekvienas gyvūnas, palietęs žaidėją, nuima skirtingą kiekį gyvybių. Žaidėjas gali gintis nuo gyvūnų naudodamas savo šakę arba šaudydamas ugnies kamuolius iš savo šakės (žiūrėti žaidimo valdymą). 
 Žemėpalyje galima rasti ne tik gydančių eliksyrų ar stipresnias galias suteikančių daiktų, bet ir pinigų bei morkų. Pinigai yra kaupiami ir gali bųti panaudoti parduotuvėje, o morkos surinktos duoda taškų. Taškai, geriausias surinktas taškų skaičius, pinigų kiekis ir žaidime praleistas laikas yra kaupiamas lokaliai saugomame faile.
 
----Žaidimo valdymo vadovas---
-(A arba <-) = žaidėjas juda į kairę pusę;
-(D arba ->) = žaidėjas juda į dešinę pusę;
-(Ilgas klavišas) = žaidėjas pašoka;
-(Q) = keičiamas atakavimo rėžimas (šakė arba šaudymas);
+### Žaidimo valdymo vadovas
+* (A arba <-) = žaidėjas juda į kairę pusę;
+* (D arba ->) = žaidėjas juda į dešinę pusę;
+* (Ilgas klavišas) = žaidėjas pašoka;
+* (Q) = keičiamas atakavimo rėžimas (šakė arba šaudymas);
 
----Testavimas---
+### Testavimas
 
 | Veiksmas                                 | Norimas rezultatas                         | Gaunamas rezultatas                      |
 |------------------------------------------|--------------------------------------------|------------------------------------------|
@@ -45,3 +46,4 @@ Atidarius žaidimą naudotojas yra nukreipiamas į pradinį meniu, kuriame gali 
 | Spaudžiamas "Credits" mygtukas           | Pasijungia kreditai                        | Pasijungia kreditai                      |
 | Spaudžiamas "Credits" mygtukas dukart    | Pasijungia kreditai                        | Pasijungia kreditai                      |
 | Spaudžiamas "Credits" mygtukas triskart  | Pasijungia kreditai                        | Pasijungia kreditai                      |
+
