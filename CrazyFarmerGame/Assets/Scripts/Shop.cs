@@ -20,6 +20,10 @@ public class Shop : MonoBehaviour
 
     private void Start()
     {
+        //PlayerPrefs.DeleteKey("bought_sword");
+        //PlayerPrefs.DeleteKey("bought_wand");
+        //PlayerPrefs.DeleteKey("bought_ice");
+
         swordButton.onClick.AddListener(() => BuyItem("sword", 1, ref swordBought, swordButton, swordFeedback));
         wandButton.onClick.AddListener(() => BuyItem("wand", 1, ref wandBought, wandButton, wandFeedback));
         iceButton.onClick.AddListener(() => BuyItem("ice", 1, ref iceBought, iceButton, iceFeedback));

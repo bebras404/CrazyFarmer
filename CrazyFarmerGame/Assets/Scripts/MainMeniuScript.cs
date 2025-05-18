@@ -26,4 +26,11 @@ public class MainMeniuScript : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void ShopButton()
+    {
+        SceneManager.LoadSceneAsync(5);
+    }
+
+
 }
