@@ -769,7 +769,7 @@ PrefabInstance:
     - target: {fileID: 528937296788372945, guid: 67779a2002735d24c937b236627b59a9, type: 3}
       propertyPath: BearAttack
       value: 
-      objectReference: {fileID: 8300000, guid: 16eafe90efab85e42b5bcb8e01ae8e59, type: 3}
+      objectReference: {fileID: 8300000, guid: 9cbbcd008e3e6864d81360523027f839, type: 3}
     - target: {fileID: 528937296788372945, guid: 67779a2002735d24c937b236627b59a9, type: 3}
       propertyPath: DoubleJump
       value: 
@@ -789,7 +789,7 @@ PrefabInstance:
     - target: {fileID: 528937296788372945, guid: 67779a2002735d24c937b236627b59a9, type: 3}
       propertyPath: WolfAttack
       value: 
-      objectReference: {fileID: 8300000, guid: ce3d33dff16d6334fa4b89acd0b550f4, type: 3}
+      objectReference: {fileID: 8300000, guid: 00cb1abfcfd82eb42a14ce989f4e22a4, type: 3}
     - target: {fileID: 528937296788372945, guid: 67779a2002735d24c937b236627b59a9, type: 3}
       propertyPath: background
       value: 
@@ -797,7 +797,7 @@ PrefabInstance:
     - target: {fileID: 528937296788372945, guid: 67779a2002735d24c937b236627b59a9, type: 3}
       propertyPath: EagleAttack
       value: 
-      objectReference: {fileID: 8300000, guid: b995badf61e1a7b4598b88bbc374b178, type: 3}
+      objectReference: {fileID: 8300000, guid: ae5a8ed0e9807784bad6bfcad8a68a7f, type: 3}
     - target: {fileID: 528937296788372945, guid: 67779a2002735d24c937b236627b59a9, type: 3}
       propertyPath: MeleeAttack
       value: 
