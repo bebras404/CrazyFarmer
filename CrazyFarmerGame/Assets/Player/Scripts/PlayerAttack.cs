@@ -12,7 +12,7 @@ public class PlayerAttack : MonoBehaviour
     // Attack mode system
     private enum AttackMode { Ranged = 0, Melee = 1, Ice = 2, Poison = 3}
     private AttackMode currentAttackMode = AttackMode.Melee;
-    private KeyCode modeSwitchKey = KeyCode.Q; // Change this to your preferred key
+    private KeyCode modeSwitchKey = KeyCode.P; // Change this to your preferred key
 
     // Reference to your movement script
     private PlayerMovement playerMovement;
@@ -56,18 +56,18 @@ public class PlayerAttack : MonoBehaviour
             // Invoke the appropriate attack based on current mode
             switch (currentAttackMode)
             {
-                case AttackMode.Ranged:
-                    Invoke("Shoot", fireballDelay);
-                    break;
+                //case AttackMode.Ranged:
+                //    Invoke("Shoot", fireballDelay);
+                //    break;
                 case AttackMode.Melee:
                     Invoke("Melee", meleeDelay);
                     break;
-                case AttackMode.Ice:
-                    Invoke("Ice", iceDelay);
-                    break;
-                case AttackMode.Poison:
-                    Invoke("Poison", poisonDelay);
-                    break;
+                //case AttackMode.Ice:
+                //    Invoke("Ice", iceDelay);
+                //    break;
+                //case AttackMode.Poison:
+                //    Invoke("Poison", poisonDelay);
+                //    break;
             }
         }
     }
