@@ -6,54 +6,54 @@ public class PlayerController : MonoBehaviour
 {
     private PlayerHealth playerHealth;
 
+    [Header("References")]
     public GameObject fireballPrefab;
     public Transform firePoint;
-
     public TextMeshProUGUI fireballCooldownText;
     public TextMeshProUGUI invincibilityCooldownText;
 
+    // --- State flags ---
     private bool canUseInvincibility = true;
-    private bool canUseFireball = false; // 🔒 Locked until pickup
+    private bool canUseFireball = false; // locked until pickup
     private bool fireballModeActive = false;
 
-    public float powerUpDuration = 5f;
-    public float cooldownTime = 60f;
+    [Header("Timings")]
+    public float powerUpDuration = 5f;    // how long each power‐up lasts
+    public float cooldownTime = 60f;   // invincibility cooldown
 
-    private float fireballCooldownTimer = 0f;
+    private float fireballActiveTimer = 0f;
     private float invincibilityCooldownTimer = 0f;
 
     void Start()
     {
+        // grab your health component
         playerHealth = GetComponent<PlayerHealth>();
-
         if (playerHealth == null)
-        {
             Debug.LogError("PlayerHealth component is missing on Player!");
-        }
-
-        // 🔄 Load fireball unlocked state from saved prefs
-        if (PlayerPrefs.GetInt("fireballUnlocked", 0) == 1)
-        {
-            canUseFireball = true;
-        }
     }
 
     void Update()
     {
+        // — INVINCIBILITY (Q) —
         if (Input.GetKeyDown(KeyCode.Q) && canUseInvincibility)
-        {
             StartCoroutine(ActivateInvincibility());
-        }
 
-        if (Input.GetKeyDown(KeyCode.E) && canUseFireball)
+        // — FIREBALL MODE (E) —
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            StartCoroutine(ActivateFireballMode());
+            if (!canUseFireball)
+            {
+                Debug.Log("Fireball is locked! Pick up the power‐up in the world first.");
+            }
+            else if (!fireballModeActive)
+            {
+                StartCoroutine(ActivateFireballMode());
+            }
         }
 
+        // — SHOOT FIREBALL (Left‐click) —
         if (Input.GetMouseButtonDown(0) && fireballModeActive)
-        {
             ShootFireball();
-        }
 
         UpdateCooldownUI();
     }
@@ -65,11 +65,13 @@ public class PlayerController : MonoBehaviour
         invincibilityCooldownTimer = cooldownTime;
         Debug.Log("Invincibility Activated!");
 
+        // active window
         yield return new WaitForSeconds(powerUpDuration);
 
         playerHealth.isInvincible = false;
         Debug.Log("Invincibility Ended!");
 
+        // cooldown before you can Q again
         yield return new WaitForSeconds(cooldownTime - powerUpDuration);
         canUseInvincibility = true;
         Debug.Log("Invincibility Ready Again!");
@@ -77,46 +79,43 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator ActivateFireballMode()
     {
+        // consume your pickup
         canUseFireball = false;
         fireballModeActive = true;
-        fireballCooldownTimer = cooldownTime;
+        fireballActiveTimer = powerUpDuration;
         Debug.Log("Fireball Mode Activated!");
 
+        // active window
         yield return new WaitForSeconds(powerUpDuration);
 
         fireballModeActive = false;
-        Debug.Log("Fireball Mode Ended!");
-
-        yield return new WaitForSeconds(cooldownTime - powerUpDuration);
-        canUseFireball = true;
-        Debug.Log("Fireball Mode Ready Again!");
+        Debug.Log("Fireball Mode Ended! You must pick up another one to use it again.");
+        // no re‐enable here — locked until next pickup
     }
 
     void ShootFireball()
     {
-        if (fireballPrefab != null && firePoint != null)
+        if (fireballPrefab == null || firePoint == null)
         {
-            GameObject fireball = Instantiate(fireballPrefab, firePoint.position, Quaternion.identity);
-
-            float direction = transform.localScale.x > 0 ? 1f : -1f;
-
-            fireball.GetComponent<Fireball>().SetDirection(direction);
+            Debug.LogError("Cannot shoot: assign fireballPrefab and firePoint in the Inspector!");
+            return;
         }
-        else
-        {
-            Debug.LogError("Fireball Prefab or Fire Point is not assigned!");
-        }
+
+        var fb = Instantiate(fireballPrefab, firePoint.position, Quaternion.identity);
+        float dir = transform.localScale.x > 0 ? 1f : -1f;
+        fb.GetComponent<Fireball>().SetDirection(dir);
     }
 
     void UpdateCooldownUI()
     {
+        // Fireball UI
         if (fireballCooldownText != null)
         {
-            if (!canUseFireball && fireballModeActive == false)
+            if (fireballModeActive)
             {
-                fireballCooldownTimer -= Time.deltaTime;
-                fireballCooldownTimer = Mathf.Max(fireballCooldownTimer, 0f);
-                fireballCooldownText.text = "Fireball: " + Mathf.Ceil(fireballCooldownTimer).ToString() + "s";
+                fireballActiveTimer -= Time.deltaTime;
+                fireballActiveTimer = Mathf.Max(fireballActiveTimer, 0f);
+                fireballCooldownText.text = "Fireball: Active " + Mathf.Ceil(fireballActiveTimer) + "s";
             }
             else if (canUseFireball)
             {
@@ -128,13 +127,14 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+        // Invincibility UI (unchanged)
         if (invincibilityCooldownText != null)
         {
             if (!canUseInvincibility)
             {
                 invincibilityCooldownTimer -= Time.deltaTime;
                 invincibilityCooldownTimer = Mathf.Max(invincibilityCooldownTimer, 0f);
-                invincibilityCooldownText.text = "Invincibility: " + Mathf.Ceil(invincibilityCooldownTimer).ToString() + "s";
+                invincibilityCooldownText.text = "Invincibility: " + Mathf.Ceil(invincibilityCooldownTimer) + "s";
             }
             else
             {
@@ -143,11 +143,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    // 🔓 Public method to unlock fireball
+    /// <summary>
+    /// Call this from your Pickup script (e.g. OnTriggerEnter) when the player grabs the fireball prefab.
+    /// </summary>
     public void UnlockFireball()
     {
         canUseFireball = true;
-        PlayerPrefs.SetInt("fireballUnlocked", 1);
-        Debug.Log("Fireball Power-Up Unlocked!");
+        Debug.Log("Fireball Power‐Up Picked Up and Ready to Use!");
     }
 }

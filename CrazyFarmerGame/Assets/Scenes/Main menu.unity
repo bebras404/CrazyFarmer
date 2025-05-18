@@ -1982,7 +1982,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 648074734}
         m_TargetAssemblyTypeName: MainMeniuScript, Assembly-CSharp
-        m_MethodName: CreditsButton
+        m_MethodName: StatsButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2483,7 +2483,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7321026553392850884, guid: bf0a9a19a4f5ce24eaebe158c94fe8a5, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

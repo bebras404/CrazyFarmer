@@ -459,7 +459,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7321026553392850884, guid: bf0a9a19a4f5ce24eaebe158c94fe8a5, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -553,7 +553,7 @@ MonoBehaviour:
   fireballCooldownText: {fileID: 1654997412}
   invincibilityCooldownText: {fileID: 1773492275}
   powerUpDuration: 30
-  cooldownTime: 60
+  cooldownTime: 30
 --- !u!114 &1543968045 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6768941969346967100, guid: 6055ea22e83a2e348a2a53ee8d399ea8, type: 3}
@@ -1240,6 +1240,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7842493571132711756, guid: c8bef31b20c4a1642a34da84cab2800e, type: 3}
       propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8069184554289208358, guid: c8bef31b20c4a1642a34da84cab2800e, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
