@@ -56,18 +56,18 @@ public class PlayerAttack : MonoBehaviour
             // Invoke the appropriate attack based on current mode
             switch (currentAttackMode)
             {
-                //case AttackMode.Ranged:
-                //    Invoke("Shoot", fireballDelay);
-                //    break;
+                case AttackMode.Ranged:
+                    Invoke("Shoot", fireballDelay);
+                    break;
                 case AttackMode.Melee:
                     Invoke("Melee", meleeDelay);
                     break;
-                //case AttackMode.Ice:
-                //    Invoke("Ice", iceDelay);
-                //    break;
-                //case AttackMode.Poison:
-                //    Invoke("Poison", poisonDelay);
-                //    break;
+                case AttackMode.Ice:
+                    Invoke("Ice", iceDelay);
+                    break;
+                case AttackMode.Poison:
+                    Invoke("Poison", poisonDelay);
+                    break;
             }
         }
     }
