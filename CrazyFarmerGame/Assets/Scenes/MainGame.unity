@@ -743,6 +743,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: 7e8b4a0e684a5594a873c2abd324029f, type: 3}
     - target: {fileID: 528937296788372945, guid: 67779a2002735d24c937b236627b59a9, type: 3}
+      propertyPath: bear
+      value: 
+      objectReference: {fileID: 6358507573066290634, guid: 2adb12ed104f6ee429487d1b05c53f84, type: 3}
+    - target: {fileID: 528937296788372945, guid: 67779a2002735d24c937b236627b59a9, type: 3}
+      propertyPath: wolf
+      value: 
+      objectReference: {fileID: 3205182364496061563, guid: 567e18f041ce22342a96a592d7fbd3da, type: 3}
+    - target: {fileID: 528937296788372945, guid: 67779a2002735d24c937b236627b59a9, type: 3}
+      propertyPath: eagle
+      value: 
+      objectReference: {fileID: 585394838583268646, guid: a32c68a70be714b43b02bce8646325bc, type: 3}
+    - target: {fileID: 528937296788372945, guid: 67779a2002735d24c937b236627b59a9, type: 3}
       propertyPath: Health
       value: 
       objectReference: {fileID: 8300000, guid: 75e59888e0ddd2d4dabd56fedf407fcb, type: 3}
@@ -754,6 +766,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 528937296788372945, guid: 67779a2002735d24c937b236627b59a9, type: 3}
+      propertyPath: BearAttack
+      value: 
+      objectReference: {fileID: 8300000, guid: 16eafe90efab85e42b5bcb8e01ae8e59, type: 3}
     - target: {fileID: 528937296788372945, guid: 67779a2002735d24c937b236627b59a9, type: 3}
       propertyPath: DoubleJump
       value: 
@@ -771,9 +787,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: 26d34fde1f4ddb149a57ddf72f64f782, type: 3}
     - target: {fileID: 528937296788372945, guid: 67779a2002735d24c937b236627b59a9, type: 3}
+      propertyPath: WolfAttack
+      value: 
+      objectReference: {fileID: 8300000, guid: ce3d33dff16d6334fa4b89acd0b550f4, type: 3}
+    - target: {fileID: 528937296788372945, guid: 67779a2002735d24c937b236627b59a9, type: 3}
       propertyPath: background
       value: 
       objectReference: {fileID: 8300000, guid: 559c232a43caebe41870ce54786f604e, type: 3}
+    - target: {fileID: 528937296788372945, guid: 67779a2002735d24c937b236627b59a9, type: 3}
+      propertyPath: EagleAttack
+      value: 
+      objectReference: {fileID: 8300000, guid: b995badf61e1a7b4598b88bbc374b178, type: 3}
     - target: {fileID: 528937296788372945, guid: 67779a2002735d24c937b236627b59a9, type: 3}
       propertyPath: MeleeAttack
       value: 

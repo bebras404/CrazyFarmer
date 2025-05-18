@@ -19,6 +19,9 @@ public class Audiomanager : MonoBehaviour
     public AudioClip[] FireBallSounds;
     public AudioClip MeleeAttack;
     public GameObject player;
+    public AudioClip BearAttack;
+    public AudioClip WolfAttack;
+    public AudioClip EagleAttack;
 
     private bool hasPlayedDeathSFX = false;
 
@@ -49,6 +52,30 @@ public class Audiomanager : MonoBehaviour
     private void Awake()
     {
         SFXSource.volume = 1;
+    }
+
+    public void PlayEagleAttackSound()
+    {
+        if (SFXSource != null && EagleAttack != null)
+        {
+            SFXSource.PlayOneShot(EagleAttack);
+        }
+    }
+
+    public void PlayWolfAttackSound()
+    {
+        if (SFXSource != null && WolfAttack != null)
+        {
+            SFXSource.PlayOneShot(WolfAttack);
+        }
+    }
+
+    public void PlayBearAttackSound()
+    {
+        if (SFXSource != null && BearAttack != null)
+        {
+            SFXSource.PlayOneShot(BearAttack);
+        }
     }
 
     public void PlayMeleeAttackSound()
