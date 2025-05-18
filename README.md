@@ -47,3 +47,12 @@ Atidarius žaidimą naudotojas yra nukreipiamas į pradinį meniu, kuriame gali 
 | Spaudžiamas "Credits" mygtukas dukart    | Pasijungia kreditai                        | Pasijungia kreditai                      |
 | Spaudžiamas "Credits" mygtukas triskart  | Pasijungia kreditai                        | Pasijungia kreditai                      |
 
+
+
+[@bebras404]: <https://github.com/bebras404>
+[@jacobobos]: <https://github.com/jacobobos>
+[@Tomzaza-joint]: <https://github.com/Tomzaza-joint>
+[@Damke24]: <https://github.com/Damke24>
+
+
+
