@@ -32,5 +32,8 @@ public class MainMeniuScript : MonoBehaviour
         SceneManager.LoadSceneAsync(5);
     }
 
-
+    public void StatsButton()
+    {
+        SceneManager.LoadSceneAsync(6);
+    }
 }
