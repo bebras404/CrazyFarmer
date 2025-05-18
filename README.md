@@ -1,14 +1,15 @@
 # CrazyFarmer
----Komanda---
+### Komanda
 Komanda X
 
----Autoriai---
+### Autoriai
 Adomas Danilevičius
 Jokūbas Stulpinas
 Tomas Macijauskas
 Domantas Barauskas
 
----Aprašymas---
+### Aprašymas
+
 Paprastas platformer tipo žaidimas dvimatėje erdvėje. Žaidimo tikslas - surinkti kuo daugiau žaidimo taškų (score). Žaidime yra galimybė rinkti pinigus, už kuriuos galima nusipirkti kitokius žaidėjo modelius. 
 Atidarius žaidimą naudotojas yra nukreipiamas į pradinį meniu, kuriame gali rinktis nustatymus, peržiūrėti kūrėjus ir rėmėjus, apsilankyti žaidimo parduotuvėje, keisti garso nustatymus ir išeiti iš žaidimo. Pasirinkus mygtuką 'Play' naudotojas yra užkraunamas į nesibaigiantį lygį, kuriame jis valdo žaidėją (farmerį). Žaidėją nuolatos puola įvairūs priešai, šiuo atvėju, gyvūnai (meškos, vilkai, sakalai).
 Žaidėjas turi 10 gyvybių, kurias gali pasipildyti skirtingose vietose lygyje atsirandančiais eleksyrais. Kiekvienas gyvūnas, palietęs žaidėją, nuima skirtingą kiekį gyvybių. Žaidėjas gali gintis nuo gyvūnų naudodamas savo šakę arba šaudydamas ugnies kamuolius iš savo šakės (žiūrėti žaidimo valdymą). 
