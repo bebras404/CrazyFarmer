@@ -15,7 +15,15 @@ public class AiController : MonoBehaviour
     private Rigidbody2D rb;
     private bool canMove = true;
     private bool isAttacking = false;
+    private Audiomanager audiomanager;
+    private GameObject obj;
 
+
+    private void Awake()
+    {
+        this.obj = this.gameObject;
+        audiomanager = GameObject.FindGameObjectWithTag("SFXAudio").GetComponent<Audiomanager>();
+    }
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -132,6 +140,7 @@ public class AiController : MonoBehaviour
             animator.SetBool("IsWalking", false);
 
             rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
+            audiomanager.PlayAIAttackSound(obj);
             yield return new WaitForSeconds(0.5f);
         }
         isAttacking = false;

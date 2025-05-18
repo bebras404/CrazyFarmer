@@ -10,6 +10,13 @@ public class AiDamageToPlayer : MonoBehaviour
     public int Damage = 10;
     public float damageInterval = 2f;
 
+    private Audiomanager audiomanager;
+
+    private void Awake()
+    {
+        audiomanager = GameObject.FindGameObjectWithTag("SFXAudio").GetComponent<Audiomanager>();
+    }
+
     public void SetTarget(GameObject obj)
     {
         playerHealth = obj.GetComponent<PlayerHealth>();
@@ -51,6 +58,7 @@ public class AiDamageToPlayer : MonoBehaviour
         {
             if (playerHealth != null)
             {
+                audiomanager.PlayAIAttackSound(gameObject);
                 playerHealth.TakeDamage(Damage);
             }
 

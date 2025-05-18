@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Linq;
 using UnityEngine;
 
@@ -51,32 +52,28 @@ public class Audiomanager : MonoBehaviour
     }
     private void Awake()
     {
-        SFXSource.volume = 1;
+        SFXSource.volume = 0.5f;
     }
 
-    public void PlayEagleAttackSound()
+    public void PlayAIAttackSound(GameObject obj) 
     {
-        if (SFXSource != null && EagleAttack != null)
+        switch (obj.name) 
         {
-            SFXSource.PlayOneShot(EagleAttack);
+            case ("MiniBear(Clone)"):
+                SFXSource.PlayOneShot(BearAttack);
+                break;
+            case ("MiniWolf(Clone)"):
+                SFXSource.PlayOneShot(WolfAttack);
+                break;
+            case ("MiniEagle(Clone)"):
+                SFXSource.PlayOneShot(EagleAttack);
+                break;
+            default:
+            Debug.LogWarning("Unknown AI object: " + obj.name);
+            break;
         }
     }
 
-    public void PlayWolfAttackSound()
-    {
-        if (SFXSource != null && WolfAttack != null)
-        {
-            SFXSource.PlayOneShot(WolfAttack);
-        }
-    }
-
-    public void PlayBearAttackSound()
-    {
-        if (SFXSource != null && BearAttack != null)
-        {
-            SFXSource.PlayOneShot(BearAttack);
-        }
-    }
 
     public void PlayMeleeAttackSound()
     {
