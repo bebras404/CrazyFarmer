@@ -1,3 +1,5 @@
+using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour
@@ -7,10 +9,17 @@ public class Projectile : MonoBehaviour
     public float damage = 5f; // Added damage value
     private int direction = 1;
 
+
     void Start()
     {
         GetComponent<Rigidbody2D>().linearVelocity = new Vector2(projectileSpeed * direction, 0);
+        Debug.Log(damage);
+        if (PlayerPrefs.GetInt("bought_sword", 0) == 1)
+        {
+            damage *= 1.5f;
+        }
 
+        Debug.Log(damage);
         if (direction < 0)
         {
             Vector3 newScale = transform.localScale;
@@ -32,6 +41,7 @@ public class Projectile : MonoBehaviour
         {
             // Deal damage to enemy
             EnemyHealth enemyHealth = collision.GetComponent<EnemyHealth>();
+ 
             if (enemyHealth != null)
             {
                 enemyHealth.TakeDamageFromPlayer(damage);

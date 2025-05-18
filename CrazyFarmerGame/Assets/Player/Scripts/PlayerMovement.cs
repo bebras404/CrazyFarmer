@@ -24,6 +24,12 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         audioManager = GameObject.FindGameObjectWithTag("SFXAudio").GetComponent<Audiomanager>();
+
+
+        if (PlayerPrefs.GetInt("bought_wand", 0) == 1)
+        {
+            speed *= 1.5f;
+        }
     }
 
     void Update()
