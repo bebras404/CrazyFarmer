@@ -68,7 +68,7 @@ public class Shop : MonoBehaviour
     }
 
     void LoadPurchaseStates()
-    {
+    { 
         if (PlayerPrefs.GetInt("bought_sword", 0) == 1)
         {
             swordBought = true;
