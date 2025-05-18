@@ -33,25 +33,31 @@ Atidarius žaidimą naudotojas yra nukreipiamas į pradinį meniu, kuriame gali 
 | Spaudžiamas ilgas klavišas triskart          | Žaidėjas pašoka dukart (nuo žemės ir ore)  | Žaidėjas pašoka dukart (nuo žemės ir ore)|
 | Spaudžiamas "Play" mygtukas                  | Pasijungia žaidimas                        | Pasijungia žaidimas                      |
 | Spaudžiamas "Play" mygtukas dukart           | Pasijungia žaidimas                        | Pasijungia žaidimas                      |
-| Spaudžiamas "Play" mygtukas triskart         | Pasijungia žaidimas                        | Pasijungia žaidimas                      |
-| Spaudžiamas "Options" mygtukas               | Pasijungia nustatymai                      | Pasijungia nustatymai                    |
-| Spaudžiamas "Options" mygtukas dukart        | Pasijungia nustatymai                      | Pasijungia nustatymai                    |
-| Spaudžiamas "Options" mygtukas triskart      | Pasijungia nustatymai                      | Pasijungia nustatymai                    |
-| Spaudžiamas "Exit" mygtukas                  | Žaidimas išsijungia                        | Žaidimas išsijungia                      |
-| Spaudžiamas "Exit" mygtukas dukart           | Žaidimas išsijungia                        | Žaidimas išsijungia                      |
-| Spaudžiamas "Exit" mygtukas triskart         | Žaidimas išsijungia                        | Žaidimas išsijungia                      |
-| Spaudžiamas "Shop" mygtukas                  | Pasijungia parduotuvė                      | Pasijungia parduotuvė                    |
-| Spaudžiamas "Shop" mygtukas dukart           | Pasijungia parduotuvė                      | Pasijungia parduotuvė                    |
-| Spaudžiamas "Shop" mygtukas triskart         | Pasijungia parduotuvė                      | Pasijungia parduotuvė                    |
-| Spaudžiamas "Credits" mygtukas               | Pasijungia kreditai                        | Pasijungia kreditai                      |
-| Spaudžiamas "Credits" mygtukas dukart        | Pasijungia kreditai                        | Pasijungia kreditai                      |
-| Spaudžiamas "Credits" mygtukas triskart      | Pasijungia kreditai                        | Pasijungia kreditai                      |
-| Spaudžiamas "Restart" mygtukas               | Pasijungia žaidimas iš naujo               | Pasijungia žaidimas iš naujo             |
-| Spaudžiamas "Restart" mygtukas dukart        | Pasijungia žaidimas iš naujo               | Pasijungia žaidimas iš naujo             |
-| Spaudžiamas "Restart" mygtukas triskart      | Pasijungia žaidimas iš naujo               | Pasijungia žaidimas iš naujo             |
-| Spaudžiamas "Back to menu" mygtukas          | Grižtama į pradinį žaidimo menu            | Grižtama į pradinį žaidimo meniu         |
-| Spaudžiamas "Back to menu" mygtukas dukart   | Grižtama į pradinį žaidimo menu            | Grižtama į pradinį žaidimo meniu         |
-| Spaudžiamas "Back to menu" mygtukas triskart | Grižtama į pradinį žaidimo menu            | Grižtama į pradinį žaidimo meniu         |
+| Spaudžiamas "Play" mygtukas triskart          | Pasijungia žaidimas                        | Pasijungia žaidimas                      |
+| Spaudžiamas "Options" mygtukas                | Pasijungia nustatymai                      | Pasijungia nustatymai                    |
+| Spaudžiamas "Options" mygtukas dukart         | Pasijungia nustatymai                      | Pasijungia nustatymai                    |
+| Spaudžiamas "Options" mygtukas triskart       | Pasijungia nustatymai                      | Pasijungia nustatymai                    |
+| Spaudžiamas "Exit" mygtukas                   | Žaidimas išsijungia                        | Žaidimas išsijungia                      |
+| Spaudžiamas "Exit" mygtukas dukart            | Žaidimas išsijungia                        | Žaidimas išsijungia                      |
+| Spaudžiamas "Exit" mygtukas triskart          | Žaidimas išsijungia                        | Žaidimas išsijungia                      |
+| Spaudžiamas "Shop" mygtukas                   | Pasijungia parduotuvė                      | Pasijungia parduotuvė                    |
+| Spaudžiamas "Shop" mygtukas dukart            | Pasijungia parduotuvė                      | Pasijungia parduotuvė                    |
+| Spaudžiamas "Shop" mygtukas triskart          | Pasijungia parduotuvė                      | Pasijungia parduotuvė                    |
+| Spaudžiamas "Credits" mygtukas                | Pasijungia kreditai                        | Pasijungia kreditai                      |
+| Spaudžiamas "Credits" mygtukas dukart         | Pasijungia kreditai                        | Pasijungia kreditai                      |
+| Spaudžiamas "Credits" mygtukas triskart       | Pasijungia kreditai                        | Pasijungia kreditai                      |
+| Spaudžiamas "Restart" mygtukas                | Pasijungia žaidimas iš naujo               | Pasijungia žaidimas iš naujo             |
+| Spaudžiamas "Restart" mygtukas dukart         | Pasijungia žaidimas iš naujo               | Pasijungia žaidimas iš naujo             |
+| Spaudžiamas "Restart" mygtukas triskart       | Pasijungia žaidimas iš naujo               | Pasijungia žaidimas iš naujo             |
+| Spaudžiamas "Back to menu" mygtukas           | Grižtama į pradinį žaidimo menu            | Grižtama į pradinį žaidimo meniu         |
+| Spaudžiamas "Back to menu" mygtukas dukart    | Grižtama į pradinį žaidimo menu            | Grižtama į pradinį žaidimo meniu         |
+| Spaudžiamas "Back to menu" mygtukas triskart  | Grižtama į pradinį žaidimo menu            | Grižtama į pradinį žaidimo meniu         |
+| Žaidėjas paima pinigėlį                       | 1 pridedamas prie pinigų bendros sumos     | 1 pridedamas prie pinigų bendros sumos   |
+| Žaidėjas paima eleksyrą                       | Žaidėjas yra pagydomas                     | Žaidėjas yra pagydomas                   |
+| Žaidėjas paima morką                          | Žaidėjui yra suteikiami papildomi taškai   | Žaidėjui yra suteikiami papildomi taškai |
+| Žaidėjas iškrenta iš žemėlapio                | Žaidėjas miršta                            | Žaidėjas miršta                          |
+|Žaidėjas paliečia priešą (erelį, lokį ar vilką)| Žaidėjui nuimamos gyvybės                  | Žaidėjui nuimamos gyvybės                | 
+
 
 [@bebras404]: <https://github.com/bebras404>
 [@jacobobos]: <https://github.com/jacobobos>
