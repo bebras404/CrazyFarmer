@@ -57,3 +57,5 @@ MonoBehaviour:
   spawnDelay: 1
   SpawnRangeFar: 60
   SpawnRangeClose: 30
+  fireballPickupPrefab: {fileID: 511531387565906505, guid: 4384a6dd120278a49909b1b40e3c6241, type: 3}
+  fireballSpawnChance: 0.2

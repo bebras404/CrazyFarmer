@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.InputSystem.XR;
 using System;
@@ -13,7 +13,8 @@ public class SpawnAssets : MonoBehaviour
     private float DistanceToPlayer;
     private GameObject UIcanvas;
     private AIDamageDealing Playerdmg;
-
+    public GameObject fireballPickupPrefab; // Your fireball power-up prefab
+    public float fireballSpawnChance = 0.2f; // 20% chance to spawn a fireball instead of enemy
 
     private List<Transform> availableSpawnPoints;
     private GameObject player;
@@ -55,63 +56,61 @@ public class SpawnAssets : MonoBehaviour
             return;
         }
 
-        // Pick a random available spawn point
         int index = UnityEngine.Random.Range(0, availableSpawnPoints.Count);
         Transform spawnPoint = availableSpawnPoints[index];
         DistanceToPlayer = Vector2.Distance(spawnPoint.position, player.transform.position);
+
         if (DistanceToPlayer <= SpawnRangeFar && DistanceToPlayer >= SpawnRangeClose)
         {
-            // Pick a random enemy type
-            GameObject enemyPrefab = enemyPrefabs[UnityEngine.Random.Range(0, enemyPrefabs.Length)];
+            GameObject newSpawned;
 
-            // Instantiate enemy at spawn point
-            GameObject newEnemy = Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity);
+            // 🔀 Random chance to spawn fireball pickup instead of enemy
+            if (fireballPickupPrefab != null && UnityEngine.Random.value < fireballSpawnChance)
+            {
+                newSpawned = Instantiate(fireballPickupPrefab, spawnPoint.position, Quaternion.identity);
+                Debug.Log("Spawned fireball power-up.");
+            }
+            else
+            {
+                GameObject enemyPrefab = enemyPrefabs[UnityEngine.Random.Range(0, enemyPrefabs.Length)];
+                newSpawned = Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity);
+            }
 
-            // Assign PlayerHealth to the AIController.
-
-
-
-           if(newEnemy.GetComponent<CoinScript>() != null) 
-           {
-                CoinScript cs = newEnemy.GetComponent<CoinScript>();
+            // Shared setup for all spawned objects
+            if (newSpawned.GetComponent<CoinScript>() != null)
+            {
+                CoinScript cs = newSpawned.GetComponent<CoinScript>();
                 CoinManager cm = GameObject.Find("GameManager").GetComponent<CoinManager>();
                 cs.SetCM(cm);
-           }
-
-            if (newEnemy.GetComponent<ProjDamage>() != null) 
-            {
-                ProjDamage projDamage = newEnemy.GetComponent<ProjDamage>();
-                projDamage.SetManager(UIcanvas);
             }
 
-            
-
-            if (newEnemy.GetComponent<AiController>() != null)
+            if (newSpawned.GetComponent<ProjDamage>() != null)
             {
-                AiController aiController = newEnemy.GetComponent<AiController>();
-                aiController.SetTarget(player);
+                newSpawned.GetComponent<ProjDamage>().SetManager(UIcanvas);
             }
 
-            if (newEnemy.GetComponent<AiDamageToPlayer>() != null)
+            if (newSpawned.GetComponent<AiController>() != null)
             {
-                AiDamageToPlayer damageScript = newEnemy.GetComponent<AiDamageToPlayer>();
-                
-                damageScript.SetTarget(player);
+                newSpawned.GetComponent<AiController>().SetTarget(player);
             }
 
-            if (newEnemy.GetComponent<FlyingAIController>() != null)
+            if (newSpawned.GetComponent<AiDamageToPlayer>() != null)
             {
-                FlyingAIController Fcontroller = newEnemy.GetComponent<FlyingAIController>();
-                Fcontroller.SetPlayer(player);
+                newSpawned.GetComponent<AiDamageToPlayer>().SetTarget(player);
             }
 
-            if (newEnemy.GetComponent<HealingPotion>() != null)
+            if (newSpawned.GetComponent<FlyingAIController>() != null)
             {
-                HealingPotion hp = newEnemy.GetComponent<HealingPotion>();
-                hp.SetPlayer(player);
+                newSpawned.GetComponent<FlyingAIController>().SetPlayer(player);
+            }
+
+            if (newSpawned.GetComponent<HealingPotion>() != null)
+            {
+                newSpawned.GetComponent<HealingPotion>().SetPlayer(player);
             }
 
             availableSpawnPoints.RemoveAt(index);
         }
     }
+
 }

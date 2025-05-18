@@ -1,19 +1,19 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
-    private PlayerHealth playerHealth; // Reference to PlayerHealth script
+    private PlayerHealth playerHealth;
 
-    public GameObject fireballPrefab; // Fireball prefab
-    public Transform firePoint; // Fireball spawn position
+    public GameObject fireballPrefab;
+    public Transform firePoint;
 
-    public TextMeshProUGUI fireballCooldownText; // UI Text for Fireball cooldown
-    public TextMeshProUGUI invincibilityCooldownText; // UI Text for Invincibility cooldown
+    public TextMeshProUGUI fireballCooldownText;
+    public TextMeshProUGUI invincibilityCooldownText;
 
     private bool canUseInvincibility = true;
-    private bool canUseFireball = true;
+    private bool canUseFireball = false; // 🔒 Locked until pickup
     private bool fireballModeActive = false;
 
     public float powerUpDuration = 5f;
@@ -30,6 +30,12 @@ public class PlayerController : MonoBehaviour
         {
             Debug.LogError("PlayerHealth component is missing on Player!");
         }
+
+        // 🔄 Load fireball unlocked state from saved prefs
+        if (PlayerPrefs.GetInt("fireballUnlocked", 0) == 1)
+        {
+            canUseFireball = true;
+        }
     }
 
     void Update()
@@ -44,7 +50,7 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(ActivateFireballMode());
         }
 
-        if (Input.GetMouseButtonDown(0) && fireballModeActive) // Left Mouse Click to Shoot
+        if (Input.GetMouseButtonDown(0) && fireballModeActive)
         {
             ShootFireball();
         }
@@ -104,26 +110,44 @@ public class PlayerController : MonoBehaviour
 
     void UpdateCooldownUI()
     {
-        if (!canUseFireball)
+        if (fireballCooldownText != null)
         {
-            fireballCooldownTimer -= Time.deltaTime;
-            fireballCooldownTimer = Mathf.Max(fireballCooldownTimer, 0f);
-            fireballCooldownText.text = "Fireball: " + Mathf.Ceil(fireballCooldownTimer).ToString() + "s";
-        }
-        else
-        {
-            fireballCooldownText.text = "Fireball: Ready!";
+            if (!canUseFireball && fireballModeActive == false)
+            {
+                fireballCooldownTimer -= Time.deltaTime;
+                fireballCooldownTimer = Mathf.Max(fireballCooldownTimer, 0f);
+                fireballCooldownText.text = "Fireball: " + Mathf.Ceil(fireballCooldownTimer).ToString() + "s";
+            }
+            else if (canUseFireball)
+            {
+                fireballCooldownText.text = "Fireball: Ready!";
+            }
+            else
+            {
+                fireballCooldownText.text = "Fireball: Locked!";
+            }
         }
 
-        if (!canUseInvincibility)
+        if (invincibilityCooldownText != null)
         {
-            invincibilityCooldownTimer -= Time.deltaTime;
-            invincibilityCooldownTimer = Mathf.Max(invincibilityCooldownTimer, 0f);
-            invincibilityCooldownText.text = "Invincibility: " + Mathf.Ceil(invincibilityCooldownTimer).ToString() + "s";
+            if (!canUseInvincibility)
+            {
+                invincibilityCooldownTimer -= Time.deltaTime;
+                invincibilityCooldownTimer = Mathf.Max(invincibilityCooldownTimer, 0f);
+                invincibilityCooldownText.text = "Invincibility: " + Mathf.Ceil(invincibilityCooldownTimer).ToString() + "s";
+            }
+            else
+            {
+                invincibilityCooldownText.text = "Invincibility: Ready!";
+            }
         }
-        else
-        {
-            invincibilityCooldownText.text = "Invincibility: Ready!";
-        }
+    }
+
+    // 🔓 Public method to unlock fireball
+    public void UnlockFireball()
+    {
+        canUseFireball = true;
+        PlayerPrefs.SetInt("fireballUnlocked", 1);
+        Debug.Log("Fireball Power-Up Unlocked!");
     }
 }
