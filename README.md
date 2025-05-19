@@ -11,7 +11,7 @@
 
 ### Aprašymas
 
-Paprastas "platformer" tipo žaidimas dvimatėje erdvėje (2D). Žaidimo tikslas - surinkti kuo daugiau žaidimo taškų (score). Žaidime yra galimybė rinkti pinigus, už kuriuos galima nusipirkti kitokius žaidėjo modelius. 
+Paprastas "platformer" tipo žaidimas dvimatėje erdvėje (2D). Žaidimo tikslas - surinkti kuo daugiau žaidimo taškų (score). Žaidime yra galimybė rinkti pinigus, už kuriuos galima nusipirkti kitokius žaidėjo patobulinimus. 
 Atidarius žaidimą naudotojas yra nukreipiamas į pradinį meniu, kuriame gali rinktis nustatymus, peržiūrėti kūrėjus ir rėmėjus, apsilankyti žaidimo parduotuvėje, keisti garso nustatymus ir išeiti iš žaidimo. Pasirinkus mygtuką 'Play' naudotojas yra užkraunamas į nesibaigiantį lygį, kuriame jis valdo žaidėją (farmerį). Žaidėją nuolatos puola įvairūs priešai, šiuo atvėju, gyvūnai (meškos, vilkai, sakalai).
 Žaidėjas turi 10 gyvybių, kurias gali pasipildyti skirtingose vietose lygyje atsirandančiais eleksyrais. Kiekvienas gyvūnas, palietęs žaidėją, nuima skirtingą kiekį gyvybių. Žaidėjas gali gintis nuo gyvūnų naudodamas savo šakę arba šaudydamas ugnies kamuolius iš savo šakės (žiūrėti žaidimo valdymą). 
 Žemėpalyje galima rasti ne tik gydančių eliksyrų ar stipresnias galias suteikančių daiktų, bet ir pinigų bei morkų. Pinigai yra kaupiami ir gali būti panaudoti parduotuvėje, o morkos surinktos duoda taškų. Taškai, geriausias surinktas taškų skaičius, pinigų kiekis ir žaidime praleistas laikas yra kaupiamas lokaliai saugomame faile.
@@ -20,7 +20,8 @@ Atidarius žaidimą naudotojas yra nukreipiamas į pradinį meniu, kuriame gali 
 * (A arba <-) = žaidėjas juda į kairę pusę;
 * (D arba ->) = žaidėjas juda į dešinę pusę;
 * (Ilgas klavišas) = žaidėjas pašoka;
-* (Q) = keičiamas atakavimo rėžimas (šakė arba šaudymas);
+* (Q) - suteikia žaidėjui nemirtingumą;
+* (E) - suteikia žaidėjui galimybę šaudyti;
 
 ### Testavimas
 
