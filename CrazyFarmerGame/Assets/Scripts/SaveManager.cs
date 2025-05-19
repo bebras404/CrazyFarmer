@@ -89,7 +89,12 @@ public class SaveManager : MonoBehaviour
 
     public void Update()
     {
-        if (playerHealth.health <= 0 && !SavedData) 
+        if (playerHealth != null && playerHealth.health <= 0 && !SavedData)
+        {
+            SaveGame();
+            SavedData = true;
+        }
+        else 
         {
             SaveGame();
             SavedData = true;

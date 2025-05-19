@@ -5,6 +5,7 @@ public class MainMeniuScript : MonoBehaviour
 {
     public void PlayButton()
     {
+        
         SceneManager.LoadSceneAsync(3);
     }
 
@@ -24,7 +25,9 @@ public class MainMeniuScript : MonoBehaviour
     }
     public void QuitGame()
     {
-        Application.Quit();
+
+        PlayerPrefs.DeleteAll();
+        //Application.Quit();
     }
 
     public void ShopButton()
